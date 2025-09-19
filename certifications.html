@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane – Mes Certifications</title>
+  <style>
+    :root {
+      --primary-color: #e65616;
+      --secondary-color: #ffffff;
+      --text-color: #1f1f1f;
+      --background-color: #f5f5f5;
+      --neon-green: #00ff41;
+      --dark-bg: #0a0a0a;
+      --matrix-green: #00ff00;
+      --neon-blue: #00ffff;
+      --neon-purple: #bf00ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-color);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Animation matrix background */
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.08;
+    }
+
+    .matrix-rain {
+      position: absolute;
+      color: var(--matrix-green);
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      animation: fall linear infinite;
+      text-shadow: 0 0 5px var(--matrix-green);
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100vh); }
+      to { transform: translateY(100vh); }
+    }
+
+    /* NOUVEAU HEADER CYBERPUNK */
+    header {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 46, 0.95) 50%, rgba(22, 33, 62, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-green);
+      position: relative;
+      box-shadow: 
+        0 4px 20px rgba(0,0,0,0.8),
+        0 0 40px rgba(0, 255, 65, 0.2);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      color: #fff;
+      text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 40px var(--primary-color);
+      font-weight: 900;
+      letter-spacing: 3px;
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes pulse-glow {
+      from { 
+        text-shadow: 
+          0 0 10px var(--primary-color),
+          0 0 20px var(--primary-color),
+          0 0 40px var(--primary-color);
+      }
+      to { 
+        text-shadow: 
+          0 0 15px var(--primary-color),
+          0 0 25px var(--primary-color),
+          0 0 50px var(--primary-color),
+          0 0 75px var(--primary-color);
+      }
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.3rem;
+      color: var(--neon-green);
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .language-selector {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 10;
+    }
+
+    .language-selector .flag-wrapper {
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--neon-green);
+      border-radius: 8px;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+
+    .language-selector .flag-wrapper:hover {
+      background: rgba(0, 255, 65, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+      transform: scale(1.05);
+    }
+
+    .language-selector .flag-wrapper img {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .flag-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 10px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    }
+
+    .flag-list.hidden {
+      display: none;
+    }
+
+    .flag-list img {
+      width: 30px;
+      height: 20px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      transition: all 0.3s ease;
+      padding: 2px;
+    }
+
+    .flag-list img:hover {
+      transform: scale(1.1);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+    }
+
+    /* NAVIGATION CYBERPUNK */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
+      backdrop-filter: blur(15px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: nav-scan 4s linear infinite;
+    }
+
+    @keyframes nav-scan {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    nav a {
+      color: var(--neon-green);
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(230, 86, 22, 0.1));
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 25px;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: linear-gradient(45deg, rgba(0, 255, 65, 0.2), rgba(230, 86, 22, 0.2));
+      border-color: var(--neon-green);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 
+        0 5px 15px rgba(0, 255, 65, 0.4),
+        0 0 30px rgba(0, 255, 65, 0.3);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    nav a.active {
+      background: linear-gradient(45deg, rgba(230, 86, 22, 0.3), rgba(0, 255, 65, 0.2));
+      border-color: var(--primary-color);
+      color: #fff;
+      box-shadow: 
+        0 5px 15px rgba(230, 86, 22, 0.4),
+        0 0 30px rgba(230, 86, 22, 0.3);
+      text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .linkedin-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 20;
+      display: inline-block;
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--neon-green);
+      border-radius: 10px;
+      padding: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    }
+
+    .linkedin-btn:hover {
+      background: rgba(0, 255, 65, 0.2);
+      box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+      transform: scale(1.1);
+    }
+
+    .linkedin-btn img {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      filter: brightness(1.2);
+    }
+
+    /* Particules flottantes */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary-color);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: particle-float linear infinite;
+    }
+
+    @keyframes particle-float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Conteneur principal des certifications CYBERPUNK */
+    .certifications-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .certifications-hero {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(0, 255, 65, 0.1);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .certifications-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      animation: scan-slow 4s linear infinite;
+    }
+
+    @keyframes scan-slow {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .certifications-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 2rem 0;
+      text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 40px var(--primary-color);
+      background: linear-gradient(45deg, #fff, var(--primary-color), #fff);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-shift 3s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .certifications-intro {
+      font-size: 1.3rem;
+      color: #ccc;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+    }
+
+    /* Certifications Cards CYBERPUNK */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .certification {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transform-style: preserve-3d;
+    }
+
+    .certification::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-purple), var(--primary-color));
+      background-size: 300% 100%;
+      animation: rainbow-border 4s linear infinite;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes rainbow-border {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    .certification:hover::before {
+      transform: scaleX(1);
+    }
+
+    .certification:hover {
+      border-color: var(--neon-green);
+      box-shadow: 
+        0 15px 40px rgba(0, 255, 65, 0.3),
+        0 0 60px rgba(0, 255, 65, 0.2);
+      transform: translateY(-10px) rotateX(5deg);
+      background: rgba(0, 255, 65, 0.05);
+    }
+
+    .certification.expanded {
+      transform: scale(1.02) translateY(-10px);
+      box-shadow: 
+        0 25px 50px rgba(0, 255, 65, 0.4),
+        0 0 80px rgba(0, 255, 65, 0.3);
+      z-index: 100;
+      border-color: var(--primary-color);
+      background: rgba(230, 86, 22, 0.1);
+    }
+
+    .cert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .cert-header h3 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cert-icon {
+      font-size: 2.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .cert-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-detail {
+      display: flex;
+      align-items: center;
+      color: #ddd;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+    }
+
+    .cert-detail-icon {
+      margin-right: 10px;
+      color: var(--primary-color);
+      text-shadow: 0 0 5px var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .expand-arrow {
+      font-size: 1.5rem;
+      color: var(--neon-green);
+      transition: transform 0.3s ease;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .certification.expanded .expand-arrow {
+      transform: rotate(180deg);
+      color: var(--primary-color);
+      text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    /* Contenu étendu CYBERPUNK */
+    .expanded-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 2rem;
+    }
+
+    .expanded-content.show {
+      max-height: 800px;
+      opacity: 1;
+    }
+
+    .cert-image {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 15px;
+      margin: 1rem auto;
+      display: block;
+      border: 3px solid var(--neon-green);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      box-shadow: 
+        0 0 30px rgba(0, 255, 65, 0.5),
+        inset 0 0 20px rgba(0, 255, 65, 0.1);
+      transition: all 0.3s ease;
+      animation: glow-pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow-pulse {
+      from { box-shadow: 0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 20px rgba(0, 255, 65, 0.1); }
+      to { box-shadow: 0 0 40px rgba(0, 255, 65, 0.8), inset 0 0 30px rgba(0, 255, 65, 0.2); }
+    }
+
+    .cert-description {
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+      backdrop-filter: blur(5px);
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--neon-green);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-description::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: scan-description 3s linear infinite;
+    }
+
+    @keyframes scan-description {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .cert-description h4 {
+      color: var(--neon-green);
+      margin: 0 0 1rem 0;
+      font-size: 1.4rem;
+      text-shadow: 0 0 10px var(--neon-green);
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cert-description p {
+      margin: 0;
+      line-height: 1.8;
+      color: #ddd;
+      font-size: 1.1rem;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+
+    .skills-list {
+      color: #ddd;
+      line-height: 2;
+      font-family: 'Courier New', monospace;
+    }
+
+    .cert-badge-btn {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--primary-color) 0%, var(--neon-green) 100%);
+      color: #000;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      margin: 1.5rem auto;
+      display: block;
+      text-align: center;
+      max-width: 250px;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 5px 15px rgba(230, 86, 22, 0.4),
+        0 0 30px rgba(0, 255, 65, 0.3);
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-badge-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .cert-badge-btn:hover::before {
+      left: 100%;
+    }
+
+    .cert-badge-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 25px rgba(230, 86, 22, 0.6),
+        0 0 40px rgba(0, 255, 65, 0.5);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Terminal de certification */
+    .cert-terminal {
+      background: #000;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Courier New', monospace;
+      border: 2px solid var(--neon-green);
+      box-shadow: 
+        0 0 30px rgba(0, 255, 65, 0.4),
+        0 10px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-terminal::before {
+      content: "●●●";
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: #ff5f57;
+      font-size: 1rem;
+    }
+
+    .terminal-header {
+      color: var(--neon-green);
+      margin-bottom: 1rem;
+      padding-top: 1rem;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .terminal-line {
+      color: var(--neon-green);
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: typewriter-appear 0.5s ease forwards;
+      animation-delay: calc(var(--delay) * 0.2s);
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+
+    @keyframes typewriter-appear {
+      to { opacity: 1; }
+    }
+
+    .cursor {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Overlay pour fermer */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 50;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .certifications-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .certification.expanded {
+        transform: none;
+        position: relative;
+        z-index: 1000;
+      }
+      
+      .cert-image {
+        width: 150px;
+        height: 150px;
+      }
+
+      .certifications-hero {
+        padding: 2rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Glitch effect */
+    .glitch {
+      position: relative;
+    }
+
+    .glitch:before,
+    .glitch:after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+
+    .glitch:before {
+      animation: glitch-1 2s infinite linear alternate-reverse;
+      color: #ff00ff;
+      z-index: -1;
+    }
+
+    .glitch:after {
+      animation: glitch-2 2s infinite linear alternate-reverse;
+      color: #00ffff;
+      z-index: -2;
+    }
+
+    @keyframes glitch-1 {
+      0% { clip-path: inset(40% 0 61% 0); }
+      20% { clip-path: inset(92% 0 1% 0); }
+      40% { clip-path: inset(43% 0 1% 0); }
+      60% { clip-path: inset(25% 0 58% 0); }
+      80% { clip-path: inset(54% 0 7% 0); }
+      100% { clip-path: inset(58% 0 43% 0); }
+    }
+
+    @keyframes glitch-2 {
+      0% { clip-path: inset(25% 0 58% 0); }
+      20% { clip-path: inset(54% 0 7% 0); }
+      40% { clip-path: inset(58% 0 43% 0); }
+      60% { clip-path: inset(40% 0 61% 0); }
+      80% { clip-path: inset(92% 0 1% 0); }
+      100% { clip-path: inset(43% 0 1% 0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix rain background -->
+  <div class="matrix-bg"></div>
+
+  <!-- Particules flottantes -->
+  <div class="particles"></div>
+  
+  <!-- Bouton LinkedIn -->
+  <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
+    <img src="images/linkedin.png" alt="LinkedIn" />
+  </a>
+  
+  <!-- HEADER CYBERPUNK -->
+  <header>
+    <h1>Mes Certifications</h1>
+    <p>Découvrez mes certifications en cybersécurité et réseaux</p>
+
+    <div class="language-selector">
+      <button class="flag-wrapper" onclick="toggleFlags()">
+        <img src="images/Flag_of_France.svg.png" alt="Français" id="current-flag">
+      </button>
+      <div id="flag-container" class="flag-list hidden">
+        <img src="images/Flag_of_the_United_Kingdom.png" alt="Anglais" onclick="changeLanguage('certifications_en.html')">
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION CYBERPUNK -->
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos de moi</a>
+    <a href="projects.html">Projets</a>
+    <a href="certifications.html" class="active">Certifications</a>
+    <a href="compétences.html">Compétences</a>
+    <a href="equipements.html">Équipements</a>
+  </nav>
+
+  <!-- SECTION CERTIFICATIONS CYBERPUNK -->
+  <div class="certifications-container">
+    <div class="certifications-hero">
+      <h1 class="certifications-title glitch" data-text="CERTIFICATIONS">CERTIFICATIONS</h1>
+      <p class="certifications-intro">
+        Mes certifications officielles qui attestent de mes compétences en cybersécurité et réseaux
+      </p>
+    </div>
+
+    <div class="certifications-grid">
+      <!-- Certification CCNA -->
+      <div class="certification" onclick="toggleCertification(this)">
+        <div class="cert-header">
+          <h3>CCNA: Introduction to Networks</h3>
+          <div class="cert-icon">🌐</div>
+        </div>
+        
+        <div class="cert-info">
+          <div class="cert-detail">
+            <span class="cert-detail-icon">🏢</span>
+            <strong>Organisme:</strong> Cisco Systems
+          </div>
+          <div class="cert-detail">
+            <span class="cert-detail-icon">📅</span>
+            <strong>Date:</strong> Mai 2025
+          </div>
+          <div class="cert-detail">
+            <span class="cert-detail-icon">⚡</span>
+            <strong>Statut:</strong> En cours
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--neon-green); font-family: 'Courier New', monospace;">Cliquer pour plus d'infos</span>
+          <span class="expand-arrow">▼</span>
+        </div>
+        
+        <div class="expanded-content">
+          <img src="images/cisco-ccna-badge.png" alt="Cisco CCNA Badge" class="cert-image">
+          
+          <div class="cert-terminal">
+            <div class="terminal-header">root@cisco:~$ cat ccna_details.txt</div>
+            <div class="terminal-line" style="--delay: 1">→ Niveau: Associé</div>
+            <div class="terminal-line" style="--delay: 2">→ Domaine: Réseaux & Infrastructure</div>
+            <div class="terminal-line" style="--delay: 3">→ Durée de validité: 3 ans</div>
+            <div class="terminal-line" style="--delay: 4">→ Prérequis: Aucun</div>
+            <div class="terminal-line" style="--delay: 5">root@cisco:~$ <span class="cursor">█</span></div>
+          </div>
+          
+          <div class="cert-description">
+            <h4>📖 Description de la certification</h4>
+            <p>La certification CCNA Introduction to Networks est le premier niveau de la formation Cisco. Elle couvre les concepts fondamentaux des réseaux, incluant les modèles OSI et TCP/IP, la configuration des équipements Cisco, le routage et la commutation de base, ainsi que les protocoles réseau essentiels. Cette certification valide ma capacité à installer, configurer et dépanner des réseaux d'entreprise de taille petite à moyenne.</p>
+          </div>
+          
+          <div class="cert-description">
+            <h4>🎯 Compétences techniques acquises</h4>
+            <div class="skills-list">
+              • Configuration avancée des routeurs et commutateurs Cisco<br>
+              • Maîtrise complète des protocoles TCP/IP, OSPF, EIGRP<br>
+              • Implémentation et dépannage de VLANs et VTP<br>
+              • Sécurisation des équipements réseau (ACLs, SSH, SNMP)<br>
+              • Diagnostic réseau avec des outils professionnels<br>
+              • Architecture réseau et planification d'adressage IP<br>
+              • Redondance et haute disponibilité (STP, HSRP)
+            </div>
+          </div>
+          
+          <div class="cert-description">
+            <h4>🚀 Impact professionnel</h4>
+            <p>Cette certification me positionne comme un professionnel capable de gérer l'infrastructure réseau d'une entreprise. Elle ouvre la voie vers des rôles d'administrateur réseau, d'ingénieur support et constitue une base solide pour les certifications Cisco de niveau supérieur (CCNP, CCIE).</p>
+          </div>
+          
+          <a href="#" class="cert-badge-btn" onclick="event.stopPropagation()">🏆 Voir mon badge officiel</a>
+        </div>
+      </div>
+
+      <!-- Certification SecNumedu -->
+      <div class="certification" onclick="toggleCertification(this)">
+        <div class="cert-header">
+          <h3>SecNumedu</h3>
+          <div class="cert-icon">🛡️</div>
+        </div>
+        
+        <div class="cert-info">
+          <div class="cert-detail">
+            <span class="cert-detail-icon">🏢</span>
+            <strong>Organisme:</strong> ANSSI France
+          </div>
+          <div class="cert-detail">
+            <span class="cert-detail-icon">📅</span>
+            <strong>Date:</strong> 2024
+          </div>
+          <div class="cert-detail">
+            <span class="cert-detail-icon">✅</span>
+            <strong>Statut:</strong> Certifié
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--neon-green); font-family: 'Courier New', monospace;">Cliquer pour plus d'infos</span>
+          <span class="expand-arrow">▼</span>
+        </div>
+        
+        <div class="expanded-content">
+          <img src="images/anssi-secnumedu-badge.png" alt="ANSSI SecNumedu Badge" class="cert-image">
+          
+          <div class="cert-terminal">
+            <div class="terminal-header">root@anssi:~$ cat secnumedu_details.txt</div>
+            <div class="terminal-line" style="--delay: 1">→ Niveau: Label national</div>
+            <div class="terminal-line" style="--delay: 2">→ Domaine: Cybersécurité avancée</div>
+            <div class="terminal-line" style="--delay: 3">→ Reconnaissance: État français</div>
+            <div class="terminal-line" style="--delay: 4">→ Secteur: Sécurité défensive</div>
+            <div class="terminal-line" style="--delay: 5">root@anssi:~$ <span class="cursor">█</span></div>
+          </div>
+          
+          <div class="cert-description">
+            <h4>📖 Description de la certification</h4>
+            <p>SecNumedu est un label de qualité délivré par l'ANSSI (Agence nationale de la sécurité des systèmes d'information) qui atteste que ma formation répond aux plus hauts critères de qualité en matière de cybersécurité. Cette certification garantit une formation complète et reconnue par l'État français aux enjeux critiques de la sécurité des systèmes d'information.</p>
+          </div>
+          
+          <div class="cert-description">
+            <h4>🎯 Compétences stratégiques acquises</h4>
+            <div class="skills-list">
+              • Analyse approfondie des menaces et vulnérabilités critiques<br>
+              • Conception et mise en place de mesures de sécurité robustes<br>
+              • Gestion d'incidents de sécurité et réponse aux cyberattaques<br>
+              • Audit de sécurité et évaluation de conformité réglementaire<br>
+              • Cryptographie avancée et gestion de PKI d'entreprise<br>
+              • Gouvernance de la sécurité et management des risques<br>
+              • Veille technologique et intelligence des menaces cyber
+            </div>
+          </div>
+          
+          <div class="cert-description">
+            <h4>🎖️ Reconnaissance institutionnelle</h4>
+            <p>Le label SecNumedu représente l'excellence académique française en cybersécurité. Il est reconnu par les entreprises du secteur comme un gage de qualité et d'expertise. Cette certification me positionne dans l'élite des professionnels de la cybersécurité formés selon les standards les plus exigeants de l'ANSSI.</p>
+          </div>
+          
+          <a href="#" class="cert-badge-btn" onclick="event.stopPropagation()">🏆 Voir ma certification officielle</a>
+        </div>
+      </div>
+
+
+    <!-- Stats Section -->
+    <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 2rem; margin: 3rem 0; border-radius: 20px; border: 1px solid rgba(0, 255, 65, 0.3); text-align: center;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+        <div style="color: white;">
+          <span style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); text-shadow: 0 0 10px var(--primary-color); display: block;">2</span>
+          <span style="font-size: 1rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px;">Certifications obtenues</span>
+        </div>
+        <div style="color: white;">
+          <span style="font-size: 2.5rem; font-weight: bold; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); display: block;">3+</span>
+          <span style="font-size: 1rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px;">En préparation</span>
+        </div>
+        <div style="color: white;">
+          <span style="font-size: 2.5rem; font-weight: bold; color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); display: block;">100%</span>
+          <span style="font-size: 1rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px;">Réussite</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fonction pour le sélecteur de langue
+    function toggleFlags() {
+      document.getElementById('flag-container').classList.toggle('hidden');
+    }
+    
+    function changeLanguage(url) {
+      window.location.href = url;
+    }
+    
+    // Fonction pour toggle les certifications
+    function toggleCertification(element) {
+      const isExpanded = element.classList.contains('expanded');
+      const overlay = document.getElementById('overlay');
+      
+      // Fermer toutes les autres certifications
+      document.querySelectorAll('.certification').forEach(cert => {
+        cert.classList.remove('expanded');
+        const content = cert.querySelector('.expanded-content');
+        if (content) content.classList.remove('show');
+      });
+      
+      if (!isExpanded) {
+        // Ouvrir la certification cliquée
+        element.classList.add('expanded');
+        const content = element.querySelector('.expanded-content');
+        if (content) {
+          setTimeout(() => {
+            content.classList.add('show');
+          }, 100);
+        }
+        overlay.classList.add('show');
+        
+        // Scroll vers l'élément
+        setTimeout(() => {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }, 200);
+      } else {
+        // Fermer la certification
+        overlay.classList.remove('show');
+      }
+    }
+    
+    // Fermer en cliquant sur l'overlay
+    document.getElementById('overlay').addEventListener('click', function() {
+      document.querySelectorAll('.certification').forEach(cert => {
+        cert.classList.remove('expanded');
+        const content = cert.querySelector('.expanded-content');
+        if (content) content.classList.remove('show');
+      });
+      this.classList.remove('show');
+    });
+    
+    // Fermer avec la touche Echap
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('.certification').forEach(cert => {
+          cert.classList.remove('expanded');
+          const content = cert.querySelector('.expanded-content');
+          if (content) content.classList.remove('show');
+        });
+        document.getElementById('overlay').classList.remove('show');
+      }
+    });
+
+    // Animation Matrix Rain
+    function createMatrixRain() {
+      const matrixBg = document.querySelector('.matrix-bg');
+      const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      
+      for (let i = 0; i < 50; i++) {
+        const rain = document.createElement('div');
+        rain.className = 'matrix-rain';
+        rain.style.left = Math.random() * 100 + '%';
+        rain.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        rain.style.animationDelay = Math.random() * 2 + 's';
+        rain.textContent = characters[Math.floor(Math.random() * characters.length)];
+        matrixBg.appendChild(rain);
+      }
+    }
+
+    // Créer des particules flottantes
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', function() {
+      createMatrixRain();
+      createParticles();
+    });
+
+    // Effet de parallax au scroll
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.certifications-container');
+      if (parallax) {
+        const speed = scrolled * 0.3;
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
+    });
+  </script>
+</body>
+</html>

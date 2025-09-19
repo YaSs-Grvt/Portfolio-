@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane - Compétences Cybersécurité</title>
+  <style>
+    :root {
+      --primary-color: #e65616;
+      --secondary-color: #ffffff;
+      --text-color: #1f1f1f;
+      --background-color: #f5f5f5;
+      --neon-green: #00ff41;
+      --dark-bg: #0a0a0a;
+      --matrix-green: #00ff00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    /* Animation matrix background */
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.1;
+    }
+
+    .matrix-rain {
+      position: absolute;
+      color: var(--matrix-green);
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      animation: fall linear infinite;
+      text-shadow: 0 0 5px var(--matrix-green);
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100vh); }
+      to { transform: translateY(100vh); }
+    }
+
+    /* HEADER CYBERPUNK */
+    header {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 46, 0.95) 50%, rgba(22, 33, 62, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-green);
+      position: relative;
+      box-shadow: 
+        0 4px 20px rgba(0,0,0,0.8),
+        0 0 40px rgba(0, 255, 65, 0.2);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      color: #fff;
+      text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 40px var(--primary-color);
+      font-weight: 900;
+      letter-spacing: 3px;
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes pulse-glow {
+      from { 
+        text-shadow: 
+          0 0 10px var(--primary-color),
+          0 0 20px var(--primary-color),
+          0 0 40px var(--primary-color);
+      }
+      to { 
+        text-shadow: 
+          0 0 15px var(--primary-color),
+          0 0 25px var(--primary-color),
+          0 0 50px var(--primary-color),
+          0 0 75px var(--primary-color);
+      }
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.3rem;
+      color: var(--neon-green);
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .language-selector {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 10;
+    }
+
+    .language-selector .flag-wrapper {
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--neon-green);
+      border-radius: 8px;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+
+    .language-selector .flag-wrapper:hover {
+      background: rgba(0, 255, 65, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+      transform: scale(1.05);
+    }
+
+    .language-selector .flag-wrapper img {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .flag-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 10px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    }
+
+    .flag-list.hidden {
+      display: none;
+    }
+
+    .flag-list img {
+      width: 30px;
+      height: 20px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      transition: all 0.3s ease;
+      padding: 2px;
+    }
+
+    .flag-list img:hover {
+      transform: scale(1.1);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+    }
+
+    /* NAVIGATION CYBERPUNK */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
+      backdrop-filter: blur(15px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: nav-scan 4s linear infinite;
+    }
+
+    @keyframes nav-scan {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    nav a {
+      color: var(--neon-green);
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(230, 86, 22, 0.1));
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 25px;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover {
+      background: linear-gradient(45deg, rgba(0, 255, 65, 0.2), rgba(230, 86, 22, 0.2));
+      border-color: var(--neon-green);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 
+        0 5px 15px rgba(0, 255, 65, 0.4),
+        0 0 30px rgba(0, 255, 65, 0.3);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    nav a.active {
+      background: linear-gradient(45deg, rgba(230, 86, 22, 0.3), rgba(0, 255, 65, 0.2));
+      border-color: var(--primary-color);
+      color: #fff;
+      box-shadow: 
+        0 5px 15px rgba(230, 86, 22, 0.4),
+        0 0 30px rgba(230, 86, 22, 0.3);
+      text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .linkedin-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 20;
+      display: inline-block;
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--neon-green);
+      border-radius: 10px;
+      padding: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    }
+
+    .linkedin-btn:hover {
+      background: rgba(0, 255, 65, 0.2);
+      box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+      transform: scale(1.1);
+    }
+
+    .linkedin-btn img {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      filter: brightness(1.2);
+    }
+
+    /* Section des compétences cyberpunk */
+    #skills-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    #skills-section h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 40px var(--primary-color);
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #skills-section h2::before {
+      content: '>> ';
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    #skills-section h2::after {
+      content: ' <<';
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 255, 65, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      transition: left 0.5s;
+    }
+
+    .skill-card:hover::before {
+      left: 100%;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(0, 255, 65, 0.4),
+        0 0 20px rgba(230, 86, 22, 0.3);
+      border-color: var(--neon-green);
+    }
+
+    .skill-card.expanded {
+      transform: scale(1.02);
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(230, 86, 22, 0.5);
+      z-index: 100;
+      border-color: var(--primary-color);
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      padding: 1.8rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.05), rgba(230, 86, 22, 0.05));
+    }
+
+    .skill-icon {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 1.5rem;
+      border: 2px solid var(--neon-green);
+      background: rgba(0, 255, 65, 0.1);
+      padding: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+      filter: brightness(1.2);
+    }
+
+    .skill-title {
+      flex-grow: 1;
+    }
+
+    .skill-title h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      letter-spacing: 1px;
+    }
+
+    .skill-title p {
+      margin: 0.5rem 0 0;
+      color: var(--neon-green);
+      font-size: 1rem;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+
+    .expand-arrow {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      margin-left: 1rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .skill-card.expanded .expand-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Contenu étendu cyberpunk */
+    .expanded-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.3s ease;
+      opacity: 0;
+      padding: 0 1.8rem;
+    }
+
+    .expanded-content.show {
+      max-height: 800px;
+      opacity: 1;
+      padding: 1.8rem;
+    }
+
+    .skill-description {
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.08) 0%, rgba(230, 86, 22, 0.08) 100%);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 4px solid var(--primary-color);
+      border: 1px solid rgba(0, 255, 65, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-description h4 {
+      color: var(--neon-green);
+      margin: 0 0 0.8rem 0;
+      font-size: 1.2rem;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px var(--neon-green);
+      letter-spacing: 1px;
+    }
+
+    .skill-description p {
+      margin: 0;
+      line-height: 1.7;
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    .technologies-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .tech-tag {
+      background: linear-gradient(45deg, var(--primary-color), #ff6b35);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      box-shadow: 
+        0 3px 10px rgba(230, 86, 22, 0.4),
+        0 0 15px rgba(230, 86, 22, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(230, 86, 22, 0.5);
+    }
+
+    .tech-tag:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 
+        0 5px 15px rgba(230, 86, 22, 0.6),
+        0 0 25px rgba(230, 86, 22, 0.5);
+    }
+
+    /* Overlay cyberpunk */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 50;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Particules flottantes */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary-color);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: particle-float linear infinite;
+    }
+
+    @keyframes particle-float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .skill-card.expanded {
+        transform: none;
+        position: static;
+      }
+      
+      .skill-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      
+      .skill-icon {
+        margin: 0 0 1rem 0;
+      }
+      
+      #skills-section {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.8rem;
+      }
+
+      #skills-section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Animation d'apparition */
+    .skill-card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 0.6s ease forwards;
+    }
+
+    .skill-card:nth-child(1) { animation-delay: 0.1s; }
+    .skill-card:nth-child(2) { animation-delay: 0.2s; }
+    .skill-card:nth-child(3) { animation-delay: 0.3s; }
+    .skill-card:nth-child(4) { animation-delay: 0.4s; }
+    .skill-card:nth-child(5) { animation-delay: 0.5s; }
+    .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glitch effect sur les compétences */
+    .glitch-text {
+      position: relative;
+    }
+
+    .glitch-text:before,
+    .glitch-text:after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+
+    .glitch-text:before {
+      animation: glitch-1 2s infinite linear alternate-reverse;
+      color: #ff00ff;
+      z-index: -1;
+    }
+
+    .glitch-text:after {
+      animation: glitch-2 2s infinite linear alternate-reverse;
+      color: #00ffff;
+      z-index: -2;
+    }
+
+    @keyframes glitch-1 {
+      0% { clip-path: inset(40% 0 61% 0); }
+      20% { clip-path: inset(92% 0 1% 0); }
+      40% { clip-path: inset(43% 0 1% 0); }
+      60% { clip-path: inset(25% 0 58% 0); }
+      80% { clip-path: inset(54% 0 7% 0); }
+      100% { clip-path: inset(58% 0 43% 0); }
+    }
+
+    @keyframes glitch-2 {
+      0% { clip-path: inset(25% 0 58% 0); }
+      20% { clip-path: inset(54% 0 7% 0); }
+      40% { clip-path: inset(58% 0 43% 0); }
+      60% { clip-path: inset(40% 0 61% 0); }
+      80% { clip-path: inset(92% 0 1% 0); }
+      100% { clip-path: inset(43% 0 1% 0); }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Matrix rain background -->
+  <div class="matrix-bg"></div>
+  
+  <div class="overlay" id="overlay"></div>
+  
+  <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA7ElEQVRYR+2X0Q6CMAyE/wfexjfQ1/KNeAf8E4gxJmqCJkZjfLDJkjWjHV3Xa1sG4M8D4M8BQgjBzDwQkSilnF5+FZFdSumklHrmed4CwE5ESymlRGQ4xrTWWkRkrTUOgojsAWBjjHGOc+69vyulnpxzGwC4iMgppZRz7uKc2wDAYzQatdZaaw1jjBORQ0rJOecuIrIFgI2INO+9v4jIKaW0cs69RGRrjLHee++996cRORpjrPfee++9P4vIKqVkvffee38RkYMxxnrvvffeX0TkYIyx3nvvvb+IyMoYY7333l9EZG2Msd577y8isjLGWO+991cROaYYf8D8Bfj9hATEZk+EQAAAA" alt="LinkedIn" />
+  </a>
+  
+  <header>
+    <h1 class="glitch-text" data-text="Mes Compétences">Mes Compétences</h1>
+    <p>Arsenal technologique & expertise cybersécurité</p>
+
+    <div class="language-selector">
+      <button class="flag-wrapper" onclick="toggleFlags()">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA7ElEQVRYR+2X0Q6CMAyE/wfexjfQ1/KNeAf8E4gxJmqCJkZjfLDJkjWjHV3Xa1sG4M8D4M8BQgjBzDwQkSilnL5+FZFdSumklHrmed4CwE5ESymlRGQ4xrTWWkRkrTUOgojsAWBjjHGOc+69vyulnpxzGwC4iMgppZRz7uKc2wDAYzQatdZaaw1jjBORQ0rJOecuIrIFgI2INO+9v4jIKaW0cs69RGRrjLHee++996cRORpjrPfee++9P4vIKqVkvffee38RkYMxxnrvvffeX0TkYIyx3nvvvb+IyMoYY7333l9EZG2Msd577y8isjLGWO+991cROaYYf8D8Bfj9hATEZk+EQAAAA" alt="Français" id="current-flag">
+      </button>
+      <div id="flag-container" class="flag-list hidden">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA7ElEQVRYR+2X0Q6CMAyE/wfexjfQ1/KNeAf8E4gxJmqCJkZjfLDJkjWjHV3Xa1sG4M8D4M8BQgjBzDwQkSilnL5+FZFdSumklHrmed4CwE5ESymlRGQ4xrTWWkRkrTUOgojsAWBjjHGOc+69vyulnpxzGwC4iMgppZRz7uKc2wDAYzQatdZaaw1jjBORQ0rJOecuIrIFgI2INO+9v4jIKaW0cs69RGRrjLHee++996cRORpjrPfee++9P4vIKqVkvffee38RkYMxxnrvvffeX0TkYIyx3nvvvb+IyMoYY7333l9EZG2Msd577y8isjLGWO+991cROaYYf8D8Bfj9hATEZk+EQAAAA" alt="Anglais" onclick="changeLanguage('compétances_en.html')">
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="projects.html">Projets</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="equipements.html">Équipements</a>
+    <a href="#" class="active">Compétences</a>
+  </nav>
+
+  <section id="skills-section">
+    <div class="particles"></div>
+    
+    <h2>Skills Matrix</h2>
+    
+    <div class="skills-grid">
+      <!-- Programmation -->
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMkQ0MDU2Ii8+CjxwYXRoIGQ9Ik0xNiAyMEgyMFYyNEgxNlYyOFYzMkgxNlYzNkg0OEgxNlY0MEg0OFY0NEgxNlY0OFYzMkgyMFYyOEg0OFYyNEgyMFYyMFoiIGZpbGw9IiNGRkZGRkYiLz4KPHA0cCBkPSJNMjggMzJIMzZWMzZIMjhWNDBIMzZWNDRIMjhWNDBIMjhWMzJaIiBmaWxsPSIjRTY1NjE2Ii8+Cjx0ZXh0IHg9IjMyIiB5PSIzMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnt9PC90ZXh0Pgo8L3N2Zz4K" alt="Programmation" class="skill-icon">
+          <div class="skill-title">
+            <h3>
+              Programmation
+              <span class="expand-arrow">▼</span>
+            </h3>
+            <p>Python • C • Java</p>
+          </div>
+        </div>
+        
+        <div class="expanded-content">
+          <div class="skill-description">
+            <h4>[INFO] Expertise</h4>
+            <p>Développement d'outils de sécurité, scripts d'automatisation et applications sur mesure. Maîtrise des paradigmes orienté objet et procédural.</p>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[TECH] Stack technologique</h4>
+            <div class="technologies-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">C/C++</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">VS Code</span>
+            </div>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[PROJ] Réalisations</h4>
+            <p>• Scanner de vulnérabilités en Python<br>
+               • Outils de pentest personnalisés<br>
+               • Applications web sécurisées<br>
+               • Scripts d'automatisation système</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Administration Système -->
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMkQ0MDU2Ii8+CjxyZWN0IHg9IjEyIiB5PSIxNiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzMzMzMzMyIvPgo8cmVjdCB4PSIxNiIgeT0iMjAiIHdpZHRoPSIzMiIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iI0U2NTYxNiIvPgo8cmVjdCB4PSIxNiIgeT0iMzIiIHdpZHRoPSIzMiIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iIzU1NTU1NSIvPgo8Y2lyY2xlIGN4PSI0NCIgY3k9IjM2IiByPSIyIiBmaWxsPSIjRkZGRkZGIi8+Cjwvc3ZnPgo=" alt="Administration Système" class="skill-icon">
+          <div class="skill-title">
+            <h3>
+              Admin Système
+              <span class="expand-arrow">▼</span>
+            </h3>
+            <p>Linux • Windows Server</p>
+          </div>
+        </div>
+        
+        <div class="expanded-content">
+          <div class="skill-description">
+            <h4>[INFO] Expertise</h4>
+            <p>Gestion complète de serveurs Linux/Windows, automatisation de tâches système et supervision d'infrastructures critiques.</p>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[TECH] Stack technologique</h4>
+            <div class="technologies-list">
+              <span class="tech-tag">Ubuntu/CentOS</span>
+              <span class="tech-tag">Windows Server</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Bash/PowerShell</span>
+              <span class="tech-tag">Nagios</span>
+              <span class="tech-tag">Apache/Nginx</span>
+            </div>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[PROJ] Réalisations</h4>
+            <p>• Déploiement d'infrastructures virtualisées<br>
+               • Scripts d'automatisation système<br>
+               • Monitoring et alerting<br>
+               • Sauvegardes automatisées</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hacking Éthique -->
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDAzQzFFIi8+CjxwYXRoIGQ9Ik0yMCAyOEMxOCAyOCAxNiAzMCAxNiAzMlYzNkMxNiAzOCAxOCA0MCAyMCA0MEg0NEw0NiA0MEM0OCA0MCA1MCAzOCA1MCAzNlYzMkM1MCAzMCA0OCAyOCA0NiAyOEgyMFoiIGZpbGw9IiNFNjU2MTYiLz4KPHA0cCBkPSJNMjggMzJIMzZWMzZIMjhWMzJaIiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMjAiIHI9IjQiIGZpbGw9IiNGRkZGRkYiLz4KPHA0cCBkPSJNMzIgMTZWMjRNMjggMTZWMjRNMzYgMTZWMjQiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=" alt="Hacking Éthique" class="skill-icon">
+          <div class="skill-title">
+            <h3>
+              Ethical Hacking
+              <span class="expand-arrow">▼</span>
+            </h3>
+            <p>Pentest • Audit sécurité</p>
+          </div>
+        </div>
+        
+        <div class="expanded-content">
+          <div class="skill-description">
+            <h4>[INFO] Expertise</h4>
+            <p>Tests d'intrusion approfondis, analyse de vulnérabilités système et applicatives, rédaction de rapports de sécurité détaillés.</p>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[TECH] Stack technologique</h4>
+            <div class="technologies-list">
+              <span class="tech-tag">Kali Linux</span>
+              <span class="tech-tag">Metasploit</span>
+              <span class="tech-tag">Nmap</span>
+              <span class="tech-tag">Burp Suite</span>
+              <span class="tech-tag">Wireshark</span>
+              <span class="tech-tag">OWASP</span>
+            </div>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[PROJ] Compétences clés</h4>
+            <p>• Tests d'intrusion réseau et web<br>
+               • Analyse de malware<br>
+               • Social engineering<br>
+               • Audit de configurations<br>
+               • Forensic numérique</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bases de Données -->
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDA2Qzc3Ii8+CjxlbGxpcHNlIGN4PSIzMiIgY3k9IjIwIiByeD0iMTYiIHJ5PSI2IiBmaWxsPSIjRTY1NjE2Ii8+CjxwYXRoIGQ9Ik0xNiAyMFYzMkMxNiAzNSAyMyAzOCAzMiAzOEM0MSAzOCA0OCAzNSA0OCAzMlYyMEMzNiAxNiAzNiAyMCIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBkPSJNMTYgMzJWNDRDMTYgNDcgMjMgNTAgMzIgNTBDNDEgNTAgNDggNDcgNDggNDRWMzJDNDggMzUgNDEgMzggMzIgMzhDMjMgMzggMTYgMzUgMTYgMzIiIGZpbGw9IiNGRkZGRkYiLz4KPHA0cCBkPSJNMjAgMzBIMjRWMzRIMzZWMzBINDBWMzRINDQiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPgo=" alt="Bases de Données" class="skill-icon">
+          <div class="skill-title">
+            <h3>
+              Database Systems
+              <span class="expand-arrow">▼</span>
+            </h3>
+            <p>SQL • NoSQL • MariaDB</p>
+          </div>
+        </div>
+        
+        <div class="expanded-content">
+          <div class="skill-description">
+            <h4>[INFO] Expertise</h4>
+            <p>Conception, optimisation et administration de bases de données relationnelles et orientées documents. Maîtrise des requêtes complexes et de l'optimisation des performances.</p>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[TECH] Stack technologique</h4>
+            <div class="technologies-list">
+              <span class="tech-tag">MySQL/MariaDB</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">phpMyAdmin</span>
+            </div>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[PROJ] Réalisations</h4>
+            <p>• Conception de schémas de BDD complexes<br>
+               • Optimisation de requêtes SQL<br>
+               • Mise en place de réplication<br>
+               • Sauvegardes et restaurations<br>
+               • Migration de données</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Réseaux Informatiques -->
+      <div class="skill-card" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMTU3NTNGIi8+CjxyZWN0IHg9IjE2IiB5PSIyNCIgd2lkdGg9IjMyIiBoZWlnaHQ9IjE2IiByeD0iNCIgZmlsbD0iI0U2NTYxNiIvPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjMyIiByPSIyIiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjIiIGZpbGw9IiNGRkZGRkYiLz4KPGNpcmNsZSBjeD0iNDQiIGN5PSIzMiIgcj0iMiIgZmlsbD0iI0ZGRkZGRiIvPgo8bGluZSB4MT0iMTYiIHkxPSIxNiIgeDI9IjMyIiB5Mj0iMjQiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxsaW5lIHgxPSI0OCIgeTE9IjE2IiB4Mj0iMzIiIHkyPSIyNCIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjIiLz4KPGxpbmUgeDE9IjMyIiB5MT0iNDAiIHgyPSIxNiIgeTI9IjQ4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMiIvPgo8bGluZSB4MT0iMzIiIHkxPSI0MCIgeDI9IjQ4IiB5Mj0iNDgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjgiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3QgeD0iNDQiIHk9IjEyIiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iI0ZGRkZGRiIvPgo8cmVjdCB4PSIxMiIgeT0iNDQiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjQ0IiB5PSI0NCIgd2lkdGg9IjgiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+Cg==" alt="Réseaux Informatiques" class="skill-icon">
+          <div class="skill-title">
+            <h3>
+              Network Systems
+              <span class="expand-arrow">▼</span>
+            </h3>
+            <p>Cisco • Routage • Switching</p>
+          </div>
+        </div>
+        
+        <div class="expanded-content">
+          <div class="skill-description">
+            <h4>[INFO] Expertise</h4>
+            <p>Configuration et dépannage avancé de routeurs, switches et pare-feu. Optimisation des performances réseau et mise en place d'architectures sécurisées.</p>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[TECH] Stack technologique</h4>
+            <div class="technologies-list">
+              <span class="tech-tag">Cisco IOS</span>
+              <span class="tech-tag">Packet Tracer</span>
+              <span class="tech-tag">OSPF/EIGRP</span>
+              <span class="tech-tag">VLANs</span>
+              <span class="tech-tag">VPN</span>
+              <span class="tech-tag">pfSense</span>
+            </div>
+          </div>
+          
+          <div class="skill-description">
+            <h4>[PROJ] Réalisations</h4>
+            <p>• Configuration de réseaux d'entreprise<br>
+               • Mise en place de VLANs et trunk<br>
+               • Déploiement de VPN site-to-site<br>
+               • Optimisation des protocoles de routage<br>
+               • Sécurisation des infrastructures réseau</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animation Matrix Rain
+    function createMatrixRain() {
+      const matrixBg = document.querySelector('.matrix-bg');
+      const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      
+      for (let i = 0; i < 50; i++) {
+        const rain = document.createElement('div');
+        rain.className = 'matrix-rain';
+        rain.style.left = Math.random() * 100 + '%';
+        rain.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        rain.style.animationDelay = Math.random() * 2 + 's';
+        rain.textContent = characters[Math.floor(Math.random() * characters.length)];
+        matrixBg.appendChild(rain);
+      }
+    }
+
+    // Créer des particules flottantes
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    function toggleFlags() {
+      document.getElementById('flag-container').classList.toggle('hidden');
+    }
+    
+    function changeLanguage(url) {
+      window.location.href = url;
+    }
+    
+    function toggleSkill(element) {
+      const isExpanded = element.classList.contains('expanded');
+      const overlay = document.getElementById('overlay');
+      
+      // Fermer toutes les autres compétences
+      document.querySelectorAll('.skill-card').forEach(card => {
+        card.classList.remove('expanded');
+        const content = card.querySelector('.expanded-content');
+        content.classList.remove('show');
+      });
+      
+      if (!isExpanded) {
+        // Ouvrir la compétence cliquée
+        element.classList.add('expanded');
+        const content = element.querySelector('.expanded-content');
+        
+        setTimeout(() => {
+          content.classList.add('show');
+        }, 100);
+        
+        overlay.classList.add('show');
+        
+        // Scroll vers l'élément
+        setTimeout(() => {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }, 200);
+      } else {
+        // Fermer la compétence
+        overlay.classList.remove('show');
+      }
+    }
+    
+    // Fermer en cliquant sur l'overlay
+    document.getElementById('overlay').addEventListener('click', function() {
+      document.querySelectorAll('.skill-card').forEach(card => {
+        card.classList.remove('expanded');
+        const content = card.querySelector('.expanded-content');
+        content.classList.remove('show');
+      });
+      this.classList.remove('show');
+    });
+    
+    // Fermer avec la touche Echap
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('.skill-card').forEach(card => {
+          card.classList.remove('expanded');
+          const content = card.querySelector('.expanded-content');
+          content.classList.remove('show');
+        });
+        document.getElementById('overlay').classList.remove('show');
+      }
+    });
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', function() {
+      createMatrixRain();
+      createParticles();
+    });
+
+    // Effet de parallax au scroll
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('#skills-section');
+      const speed = scrolled * 0.1;
+      parallax.style.transform = `translateY(${speed}px)`;
+    });
+  </script>
+</body>
+</html>
