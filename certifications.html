@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane – Certifications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles spécifiques pour les certifications */
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 35px;
+      backdrop-filter: blur(15px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: cardSlideUp 0.8s ease forwards;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon-green);
+      box-shadow: var(--shadow-neon);
+      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(0, 255, 65, 0.05));
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      transition: left 0.5s;
+    }
+
+    .cert-card:hover::before {
+      left: 100%;
+    }
+
+    .cert-badge-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+.cert-badge {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  box-shadow: var(--shadow-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-badge img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+}
+
+    .cert-badge::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, var(--neon-green), var(--primary-color), var(--neon-blue));
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate-glow 3s linear infinite;
+    }
+
+    @keyframes rotate-glow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cert-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .cert-issuer {
+      font-size: 1rem;
+      color: var(--neon-green);
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+
+    .cert-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .cert-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .cert-skill-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(0, 255, 65, 0.15);
+      border: 1px solid var(--neon-green);
+      border-radius: 20px;
+      color: var(--neon-green);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cert-date {
+      text-align: center;
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .cert-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--neon-green);
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      margin: 0 auto;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    .cert-in-progress {
+      background: rgba(230, 86, 22, 0.1);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .cert-in-progress .status-dot {
+      background: var(--primary-color);
+    }
+
+    .category-divider {
+      text-align: center;
+      margin: 60px 0 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .category-divider h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .category-divider p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="matrix-rain"></div>
+    <div class="floating-particles"></div>
+    <div class="cyber-grid"></div>
+  </div>
+
+  <!-- Navigation -->
+<nav class="desktop-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">Y</div>
+      <span>Yacine Ben Omrane</span>
+      <div class="nav-underline"></div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">
+        <span class="nav-text">Accueil</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="about.html" class="nav-item">
+        <span class="nav-text">À propos</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-text">Projets</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="certifications.html" class="nav-item active">
+        <span class="nav-text">Certifications</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="compétences.html" class="nav-item">
+        <span class="nav-text">Compétences</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="equipements.html" class="nav-item">
+        <span class="nav-text">Équipements</span>
+        <div class="nav-underline"></div>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Main Section -->
+  <main class="main-section">
+    <div class="main-container">
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">
+          MES <span class="accent">CERTIFICATIONS</span>
+        </h1>
+        <div class="page-subtitle">
+          <span class="typing-text">Compétences • Formation • Validation</span>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <h2 class="stats-title">Vue d'Ensemble</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Certifications Obtenues</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Taux de Réussite</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Toujours Curieux</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications Cybersécurité -->
+      <div class="category-divider" style="animation-delay: 1.5s;">
+        <h2>Cisco Networking Academy</h2>
+        <p>Certifications officielles Cisco</p>
+      </div>
+      <div class="content-grid">
+        <div class="cert-card" style="animation-delay: 1.7s;">
+          <div class="cert-badge-container">
+            <div class="cert-badge">
+              <img src="Image/Cisco_logo.png" alt="Cisco Logo">
+            </div>
+          </div>
+          <h3 class="cert-title">CCNA: Introduction to Networks</h3>
+          <p class="cert-issuer">CISCO</p>
+          <div class="cert-status">
+            <div class="status-dot"></div>
+            <span>Certifié</span>
+          </div>
+
+          <p class="cert-description">
+Introduction to Networks est le premier module de la certification Cisco CCNA, qui se concentre sur les fondamentaux des réseaux. L’objectif principal est de te donner les bases pour comprendre comment les réseaux fonctionnent et comment configurer des équipements simples.
+          </p>
+          <div class="cert-skills">
+            <span class="cert-skill-tag">Réseaux LAN/WAN</span>
+            <span class="cert-skill-tag">VLAN & Topologies  </span>
+            <span class="cert-skill-tag">Switch & Router Cisco</span>
+            <span class="cert-skill-tag">IPv4 / IPv6</span>
+            <span class="cert-skill-tag">Subnetting</span>
+            <span class="cert-skill-tag">TCP/IP, DHCP, ICMP</span>
+            <span class="cert-skill-tag">Diagnostic réseau (ping, traceroute)</span>
+            <span class="cert-skill-tag">Sécurité réseau de base</span>
+          </div>
+          <p class="cert-date">Obtenu : 2025</p>
+        </div>
+
+
+
+
+
+        <div class="cert-card" style="animation-delay: 1.9s;">
+                  <div class="cert-badge-container">
+            <div class="cert-badge">
+              <img src="Image/Cisco_logo.png" alt="Cisco Logo">
+            </div>
+          </div>
+
+          <h3 class="cert-title">Network Support and Security</h3>
+          <p class="cert-issuer">CISCO</p>
+          <div class="cert-status">
+            <div class="status-dot"></div>
+            <span>Certifié</span>
+          </div>
+          <p class="cert-description">
+ Network Support and Security est un cours qui apprend à comprendre et protéger les réseaux informatiques. L’objectif est de savoir résoudre des problèmes techniques, protéger les ordinateurs et les informations, et assurer un accès sécurisé aux utilisateurs.
+          </p>
+          <div class="cert-skills">
+            <span class="cert-skill-tag">Troubleshooting & Help Desk</span>
+            <span class="cert-skill-tag">Network Troubleshooting</span>
+            <span class="cert-skill-tag">User Access Configuration</span>
+            <span class="cert-skill-tag">IPv4/IPv6 Networking</span>
+            <span class="cert-skill-tag">TCP/IP Protocols</span>
+          </div>
+          <p class="cert-date">Obtenu : 2025</p>
+        </div>
+
+        <div class="cert-card" style="animation-delay: 2.1s;">
+                  <div class="cert-badge-container">
+            <div class="cert-badge">
+              <img src="Image/Cisco_logo.png" alt="Cisco Logo">
+            </div>
+          </div>
+
+          <h3 class="cert-title">Introduction to Cybersecurity</h3>
+          <p class="cert-issuer">CISCO</p>
+          <div class="cert-status">
+            <div class="status-dot"></div>
+            <span>Certifié</span>
+          </div>
+          <p class="cert-description">
+            Introduction to Cybersecurity est un cours qui présente les bases de la sécurité en ligne. L’objectif est de comprendre les menaces et attaques courantes, apprendre à se protéger soi-même sur Internet, et découvrir comment les organisations sécurisent leurs systèmes. Le cours permet également d’explorer les différentes carrières possibles dans la cybersécurité.
+          </p>
+          <div class="cert-skills">
+            <span class="cert-skill-tag">Cybersecurity Basics</span>
+            <span class="cert-skill-tag">Online Safety</span>
+            <span class="cert-skill-tag">Personal Cyber Protection</span>
+            <span class="cert-skill-tag">Organizational Security</span>
+            <span class="cert-skill-tag">Cybersecurity Career Exploration</span>
+          </div>
+          <p class="cert-date">Obtenu : 2025</p>
+        </div>
+      </div>
+
+      <!-- Certifications Réseau -->
+      <div class="category-divider" style="animation-delay: 2.3s;">
+        <h2>Autres Certifications</h2>
+        <p>Certifications complémentaires en informatique et cybersécurité</p>
+      </div>
+
+      <div class="content-grid">
+        <div class="cert-card" style="animation-delay: 2.5s;">
+                  <div class="cert-badge-container">
+            <div class="cert-badge">
+              <img src="Image/Anssi_logo.png" alt="Cisco Logo">
+            </div>
+          </div>
+
+          <h3 class="cert-title">MOOC</h3>
+          <p class="cert-issuer">ANSSI - Agence nationale de la sécurité des systèmes d'information</p>
+          <div class="cert-status">
+            <div class="status-dot"></div>
+            <span>Certifié</span>
+          </div>
+          <p class="cert-description">
+SecNumedu est un label officiel de l’ANSSI qui certifie la qualité des formations en cybersécurité dans l’enseignement supérieur français. Il garantit que les étudiants acquièrent des compétences solides en protection des systèmes, gestion des risques et bonnes pratiques de cybersécurité.
+          </p>
+          <div class="cert-skills">
+            <span class="cert-skill-tag">Cybersecurity Fundamentals</span>
+            <span class="cert-skill-tag">Risk Management</span>
+            <span class="cert-skill-tag">System Protection</span>
+            <span class="cert-skill-tag">Incident Response</span>
+            <span class="cert-skill-tag">Cyber Hygiene</span>
+          </div>
+          <p class="cert-date">Obtenu : 2025</p>
+        </div>
+
+        <div class="cert-card" style="animation-delay: 2.7s;">
+                  <div class="cert-badge-container">
+            <div class="cert-badge">
+              <img src="Image/Cisco_logo.png" alt="Cisco Logo">
+            </div>
+          </div>
+          <h3 class="cert-title">CCNA2</h3>
+          <p class="cert-issuer">CISCO</p>
+          <div class="cert-status cert-in-progress ">
+            <div class="status-dot"></div>
+            <span>En cours de préparation
+
+</span>
+          </div>
+          <p class="cert-description">
+            
+          </p>
+          <div class="cert-skills">
+
+          </div>
+          <p class="cert-date">Prévu : 2026</p>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-title">Pour en savoir plus sur mon parcours et mes projets Contactez-moi </h2>
+        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/"target="_blank" class="cta-btn">
+        <span> Contactez-moi 💬</span>
+        
+
+          <span></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const typingElement = document.querySelector('.typing-text');
+      if (typingElement) {
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
+        typingElement.style.borderRight = '2px solid var(--neon-green)';
+        
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          }
+        }
+        setTimeout(typeWriter, 800);
+      }
+    });
+  </script>
+</body>
+</html>

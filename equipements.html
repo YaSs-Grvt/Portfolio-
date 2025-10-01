@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane – Équipements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles spécifiques pour les équipements */
+    .equipment-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 0;
+      backdrop-filter: blur(15px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: cardSlideUp 0.8s ease forwards;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon-green);
+      box-shadow: var(--shadow-neon);
+    }
+
+    .equipment-header-bar {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    .equipment-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .equipment-model {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .equipment-title {
+      font-size: 1rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .equipment-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .equipment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .equipment-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(0, 255, 65, 0.15);
+      border: 1px solid var(--neon-green);
+      border-radius: 20px;
+      color: var(--neon-green);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .category-section {
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .category-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-primary);
+    }
+
+    .category-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .intro-section {
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 60px;
+      backdrop-filter: blur(15px);
+      opacity: 0;
+      animation: fadeInUp 1s ease 1s forwards;
+      text-align: center;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .intro-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="matrix-rain"></div>
+    <div class="floating-particles"></div>
+    <div class="cyber-grid"></div>
+  </div>
+
+  <!-- Navigation -->
+<nav class="desktop-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">Y</div>
+      <span>Yacine Ben Omrane</span>
+      <div class="nav-underline"></div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">
+        <span class="nav-text">Accueil</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="about.html" class="nav-item">
+        <span class="nav-text">À propos</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-text">Projets</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="certifications.html" class="nav-item">
+        <span class="nav-text">Certifications</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="compétences.html" class="nav-item">
+        <span class="nav-text">Compétences</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="equipements.html" class="nav-item active">
+        <span class="nav-text">Équipements</span>
+        <div class="nav-underline"></div>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Main Section -->
+  <main class="main-section">
+    <div class="main-container">
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">
+          CYBER <span class="accent">EQUIPMENTS</span>
+        </h1>
+        <div class="page-subtitle">
+          <span class="typing-text">Matériels Réseau • Infrastructure • Topologies</span>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <div class="intro-section">
+        <h2 class="intro-title">🔧 Présentation des Équipements</h2>
+        <p class="intro-description">
+          Découvrez les différents équipements et environnements réseau utilisés dans le cadre de ma formation, appliqués à des scénarios pratiques et variés.
+        </p>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <h2 class="stats-title">Vue d'Ensemble</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Équipements Réseau</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Catégories</span>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Switches Cisco -->
+      <div class="category-section" style="animation-delay: 1.5s;">
+        <div class="category-title">
+          <div class="category-icon">🔀</div>
+          <span>Switches Cisco</span>
+        </div>
+        <p class="category-subtitle">Commutateurs Réseau Enterprise</p>
+
+        <div class="content-grid">
+          <!-- Cisco Catalyst 2960 -->
+          <div class="equipment-card" style="animation-delay: 1.7s;">
+            <div class="equipment-header-bar">LAYER 2</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 2960</h3>
+              <h4 class="equipment-title">Switch d'accès FastEthernet/Gigabit</h4>
+              <p class="equipment-description">
+                Switch d'accès robuste avec fonctionnalités de sécurité avancées, support VLAN complet pour environnements d'entreprise.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">FastEthernet</span>
+                <span class="equipment-tag">VLAN</span>
+                <span class="equipment-tag">PoE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cisco Catalyst 3560 -->
+          <div class="equipment-card" style="animation-delay: 1.9s;">
+            <div class="equipment-header-bar">LAYER 2+</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3560</h3>
+              <h4 class="equipment-title">Switch multicouche avec routage IP</h4>
+              <p class="equipment-description">
+                Switch convergent combinant commutation L2 et routage IP L3, support protocoles dynamiques pour architectures hiérarchiques.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">Layer 3</span>
+                <span class="equipment-tag">OSPF</span>
+                <span class="equipment-tag">EIGRP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cisco Catalyst 3650 -->
+          <div class="equipment-card" style="animation-delay: 2.1s;">
+            <div class="equipment-header-bar">POE+</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3650</h3>
+              <h4 class="equipment-title">Switch convergé nouvelle génération</h4>
+              <p class="equipment-description">
+                Plateforme unifiée intégrant commutation, routage sans fil et sécurité. PoE+ pour alimenter AP WiFi, téléphones IP et caméras.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">PoE+</span>
+                <span class="equipment-tag">WiFi</span>
+                <span class="equipment-tag">IoT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cisco Catalyst 3750 -->
+          <div class="equipment-card" style="animation-delay: 2.3s;">
+            <div class="equipment-header-bar">STACKWISE</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3750</h3>
+              <h4 class="equipment-title">Switch multicouche stackable</h4>
+              <p class="equipment-description">
+                Architecture StackWise révolutionnaire pour stacks de 9 switches, redondance exceptionnelle et plan de données 32 Gbps.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">Stack</span>
+                <span class="equipment-tag">32Gbps</span>
+                <span class="equipment-tag">HA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Routeurs ISR -->
+      <div class="category-section" style="animation-delay: 2.5s;">
+        <div class="category-title">
+          <div class="category-icon">🌐</div>
+          <span>Routeurs ISR</span>
+        </div>
+        <p class="category-subtitle">Services Intégrés Cisco</p>
+
+        <div class="content-grid">
+          <!-- Cisco ISR 2911 -->
+          <div class="equipment-card" style="animation-delay: 2.7s;">
+            <div class="equipment-header-bar">ISR G2</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco ISR 2911</h3>
+              <h4 class="equipment-title">Routeur services intégrés haute performance</h4>
+              <p class="equipment-description">
+                Plateforme modulaire pour succursales moyennes/grandes intégrant routage, sécurité, commutation et voix dans architecture unifiée.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">VPN</span>
+                <span class="equipment-tag">IPSec</span>
+                <span class="equipment-tag">Firewall</span>
+                <span class="equipment-tag">Voice</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cisco ISR 2811 -->
+          <div class="equipment-card" style="animation-delay: 2.9s;">
+            <div class="equipment-header-bar">BRANCH</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco ISR 2811</h3>
+              <h4 class="equipment-title">Routeur optimisé succursales</h4>
+              <p class="equipment-description">
+                Solution économique pour petites/moyennes succursales avec intégration complète voix, données et sécurité dans plateforme consolidée.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">WAN</span>
+                <span class="equipment-tag">Security</span>
+                <span class="equipment-tag">Cost-Effective</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Points d'Accès WiFi -->
+      <div class="category-section" style="animation-delay: 3.1s;">
+        <div class="category-title">
+          <div class="category-icon">📶</div>
+          <span>Points d'Accès WiFi</span>
+        </div>
+        <p class="category-subtitle">Connectivité Sans Fil Avancée</p>
+
+        <div class="content-grid">
+          <!-- Cisco Catalyst 9130AXI -->
+          <div class="equipment-card" style="animation-delay: 3.3s;">
+            <div class="equipment-header-bar">WIFI 6</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 9130AXI</h3>
+              <h4 class="equipment-title">Point d'accès WiFi 6 haute densité</h4>
+              <p class="equipment-description">
+                AP révolutionnaire 802.11ax avec débits 5.4 Gbps, intelligence intégrée Cisco DNA, sécurité WPA3 et analyse comportementale avancée.
+              </p>
+              <div class="equipment-tags">
+                <span class="equipment-tag">802.11ax</span>
+                <span class="equipment-tag">5.4Gbps</span>
+                <span class="equipment-tag">WPA3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-title">Pour en savoir plus sur mon parcours et mes projets Contactez-moi </h2>
+
+        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="cta-btn">
+          <span>Contactez-moi</span>
+          <span>💬</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const typingElement = document.querySelector('.typing-text');
+      if (typingElement) {
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
+        typingElement.style.borderRight = '2px solid var(--neon-green)';
+        
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          }
+        }
+        setTimeout(typeWriter, 800);
+      }
+    });
+  </script>
+</body>
+</html>
