@@ -3,11 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yacine Ben Omrane — Équipements et Matériels</title>
-  <link rel="stylesheet" href="equipments-styles.css">
+  <title>Yacine Ben Omrane – Équipements</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles spécifiques pour les équipements */
+    .equipment-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 0;
+      backdrop-filter: blur(15px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: cardSlideUp 0.8s ease forwards;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon-green);
+      box-shadow: var(--shadow-neon);
+    }
+
+    .equipment-header-bar {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    .equipment-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .equipment-model {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .equipment-title {
+      font-size: 1rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .equipment-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .equipment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .equipment-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(0, 255, 65, 0.15);
+      border: 1px solid var(--neon-green);
+      border-radius: 20px;
+      color: var(--neon-green);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .category-section {
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .category-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-primary);
+    }
+
+    .category-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .intro-section {
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 60px;
+      backdrop-filter: blur(15px);
+      opacity: 0;
+      animation: fadeInUp 1s ease 1s forwards;
+      text-align: center;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .intro-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Animated Background -->
@@ -17,722 +162,266 @@
     <div class="cyber-grid"></div>
   </div>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav-wrapper">
-    <button class="mobile-menu-btn" onclick="toggleMobileNav()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    
-    <div class="mobile-nav-overlay" id="mobile-nav">
-      <div class="mobile-nav-content">
-        <div class="mobile-nav-header">
-          <h3>NAVIGATION</h3>
-          <button class="close-btn" onclick="toggleMobileNav()">×</button>
-        </div>
-        
-        <div class="mobile-nav-links">
-          <a href="index.html" class="nav-link">
-            <div class="nav-icon">🏠</div>
-            <span>Accueil</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="about.html" class="nav-link">
-            <div class="nav-icon">👤</div>
-            <span>À propos</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="projects.html" class="nav-link">
-            <div class="nav-icon">💻</div>
-            <span>Projets</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="certifications.html" class="nav-link">
-            <div class="nav-icon">🏆</div>
-            <span>Certifications</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="compétences.html" class="nav-link">
-            <div class="nav-icon">⚡</div>
-            <span>Compétences</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="equipements.html" class="nav-link active">
-            <div class="nav-icon">🔧</div>
-            <span>Équipements</span>
-            <div class="nav-arrow">→</div>
-          </a>
-        </div>
-        
-        <div class="mobile-nav-footer">
-          <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
-            <img src="images/linkedin.png" alt="LinkedIn" />
-            <span>LinkedIn Profile</span>
-          </a>
-        </div>
-      </div>
+  <!-- Navigation -->
+<nav class="desktop-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">Y</div>
+      <span>Yacine Ben Omrane</span>
+      <div class="nav-underline"></div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">
+        <span class="nav-text">Accueil</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="about.html" class="nav-item">
+        <span class="nav-text">À propos</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-text">Projets</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="certifications.html" class="nav-item">
+        <span class="nav-text">Certifications</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="compétences.html" class="nav-item">
+        <span class="nav-text">Compétences</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="equipements.html" class="nav-item active">
+        <span class="nav-text">Équipements</span>
+        <div class="nav-underline"></div>
+      </a>
     </div>
   </div>
+</nav>
 
-  <!-- Desktop Navigation -->
-  <nav class="desktop-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <div class="logo-icon">Y</div>
-        <span>Yacine Ben Omrane</span>
-      </div>
-      
-      <div class="nav-links">
-        <a href="index.html" class="nav-item">
-          <span class="nav-text">Accueil</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="about.html" class="nav-item">
-          <span class="nav-text">À propos</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="projects.html" class="nav-item">
-          <span class="nav-text">Projets</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="certifications.html" class="nav-item">
-          <span class="nav-text">Certifications</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="compétences.html" class="nav-item">
-          <span class="nav-text">Compétences</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="equipements.html" class="nav-item active">
-          <span class="nav-text">Équipements</span>
-          <div class="nav-underline"></div>
-        </a>
-      </div>
-      
-      <div class="nav-actions">
-        <div class="language-selector">
-          <button class="lang-btn" onclick="toggleFlags()">
-            <img src="images/Flag_of_France.svg.png" alt="FR" id="current-flag">
-          </button>
-          <div id="flag-dropdown" class="flag-dropdown hidden">
-            <img src="images/Flag_of_the_United_Kingdom.png" alt="EN" onclick="changeLanguage('equipements_en.html')">
-          </div>
-        </div>
-        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="desktop-linkedin">
-          <img src="images/linkedin.png" alt="LinkedIn" />
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section Mobile-First -->
-  <main class="hero-section">
-    <div class="hero-container">
-      <!-- Mobile Hero -->
-      <div class="mobile-hero">
-        <div class="mobile-title">
-          <h1>
-            <span class="title-line">CYBER</span>
-            <span class="title-line accent">EQUIPMENTS</span>
-          </h1>
-        </div>
-        
-        <div class="mobile-subtitle">
-          <p>Matériels Réseau • Infrastructure • Technologies Cisco</p>
-        </div>
-        
-        <div class="mobile-description">
-          <p>Découvrez l'arsenal technologique professionnel que j'ai maîtrisé lors de mes formations.</p>
-        </div>
-        
-        <div class="mobile-stats">
-          <div class="stat-card">
-            <div class="stat-number">7</div>
-            <div class="stat-label">Équipements</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Catégories</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Protocoles</div>
-          </div>
+  <!-- Main Section -->
+  <main class="main-section">
+    <div class="main-container">
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">
+          CYBER <span class="accent">EQUIPMENTS</span>
+        </h1>
+        <div class="page-subtitle">
+          <span class="typing-text">Matériels Réseau • Infrastructure • Topologies</span>
         </div>
       </div>
 
-      <!-- Desktop Hero -->
-      <div class="desktop-hero">
-        <div class="hero-content">
-          <div class="hero-intro">
-            <h1 class="hero-title">
-              <span class="title-word glitch" data-text="CYBER">CYBER</span>
-              <span class="title-word glitch" data-text="EQUIPMENTS">EQUIPMENTS</span>
-            </h1>
-            
-            <div class="hero-subtitle">
-              <span class="typing-text">Matériels Réseau • Infrastructure • Topologies</span>
-            </div>
-            
-            <p class="hero-description">
-              Présentation des différents équipements et environnements réseau utilisés dans le cadre de ma formation,
-              appliqués à des scénarios pratiques et variés.
-            
-            </p>
+      <!-- Introduction -->
+      <div class="intro-section">
+        <h2 class="intro-title">🔧 Présentation des Équipements</h2>
+        <p class="intro-description">
+          Découvrez les différents équipements et environnements réseau utilisés dans le cadre de ma formation, appliqués à des scénarios pratiques et variés.
+        </p>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <h2 class="stats-title">Vue d'Ensemble</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Équipements Réseau</span>
           </div>
-          
-          <div class="hero-stats">
-            <div class="stat-card">
-              <div class="stat-icon">🔧</div>
-              <div class="stat-content">
-                <div class="stat-number">7</div>
-                <div class="stat-label">Équipements Cisco</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">🌐</div>
-              <div class="stat-content">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Catégories</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">💼</div>
-              <div class="stat-content">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Protocoles</div>
-              </div>
-            </div>
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Catégories</span>
           </div>
+
+
         </div>
       </div>
-    </div>
-  </main>
 
-  <!-- Equipment Categories Section -->
-  <section class="equipment-section">
-    <div class="section-container">
-      
-      <!-- Switches Category -->
-      <div class="equipment-category">
-        <div class="category-header">
+      <!-- Switches Cisco -->
+      <div class="category-section" style="animation-delay: 1.5s;">
+        <div class="category-title">
           <div class="category-icon">🔀</div>
-          <h2 class="category-title">Switches Cisco</h2>
-          <div class="category-subtitle">Commutateurs Réseau Enterprise</div>
+          <span>Switches Cisco</span>
         </div>
-        
-        <div class="equipment-list">
+        <p class="category-subtitle">Commutateurs Réseau Enterprise</p>
+
+        <div class="content-grid">
           <!-- Cisco Catalyst 2960 -->
-          <div class="equipment-item" onclick="openModal('cisco-2960')">
-            <div class="equipment-photo">
-              <img src="images/administration_system.jpg" alt="Cisco Catalyst 2960" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">Layer 2</div>
-              <h3 class="equipment-name">Cisco Catalyst 2960</h3>
-              <p class="equipment-type">Switch d'accès FastEthernet/Gigabit</p>
+          <div class="equipment-card" style="animation-delay: 1.7s;">
+            <div class="equipment-header-bar">LAYER 2</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 2960</h3>
+              <h4 class="equipment-title">Switch d'accès FastEthernet/Gigabit</h4>
               <p class="equipment-description">
-                Switch d'accès robuste avec fonctionnalités de sécurité avancées, 
-                support VLAN complet pour environnements d'entreprise.
+                Switch d'accès robuste avec fonctionnalités de sécurité avancées, support VLAN complet pour environnements d'entreprise.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">FastEthernet</span>
-                <span class="tech-tag">VLAN</span>
-                <span class="tech-tag">PoE</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">FastEthernet</span>
+                <span class="equipment-tag">VLAN</span>
+                <span class="equipment-tag">PoE</span>
               </div>
             </div>
           </div>
 
           <!-- Cisco Catalyst 3560 -->
-          <div class="equipment-item" onclick="openModal('cisco-3560')">
-            <div class="equipment-photo">
-              <img src="images/cisco-3560.jpg" alt="Cisco Catalyst 3560" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">Layer 2+</div>
-              <h3 class="equipment-name">Cisco Catalyst 3560</h3>
-              <p class="equipment-type">Switch multicouche avec routage IP</p>
+          <div class="equipment-card" style="animation-delay: 1.9s;">
+            <div class="equipment-header-bar">LAYER 2+</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3560</h3>
+              <h4 class="equipment-title">Switch multicouche avec routage IP</h4>
               <p class="equipment-description">
-                Switch convergent combinant commutation L2 et routage IP L3, 
-                support protocoles dynamiques pour architectures hiérarchiques.
+                Switch convergent combinant commutation L2 et routage IP L3, support protocoles dynamiques pour architectures hiérarchiques.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">Layer 3</span>
-                <span class="tech-tag">OSPF</span>
-                <span class="tech-tag">EIGRP</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">Layer 3</span>
+                <span class="equipment-tag">OSPF</span>
+                <span class="equipment-tag">EIGRP</span>
               </div>
             </div>
           </div>
 
           <!-- Cisco Catalyst 3650 -->
-          <div class="equipment-item" onclick="openModal('cisco-3650')">
-            <div class="equipment-photo">
-              <img src="images/cisco-3650.jpg" alt="Cisco Catalyst 3650" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">PoE+</div>
-              <h3 class="equipment-name">Cisco Catalyst 3650</h3>
-              <p class="equipment-type">Switch convergé nouvelle génération</p>
+          <div class="equipment-card" style="animation-delay: 2.1s;">
+            <div class="equipment-header-bar">POE+</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3650</h3>
+              <h4 class="equipment-title">Switch convergé nouvelle génération</h4>
               <p class="equipment-description">
-                Plateforme unifiée intégrant commutation, routage sans fil et sécurité. 
-                PoE+ pour alimenter AP WiFi, téléphones IP et caméras.
+                Plateforme unifiée intégrant commutation, routage sans fil et sécurité. PoE+ pour alimenter AP WiFi, téléphones IP et caméras.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">PoE+</span>
-                <span class="tech-tag">WiFi</span>
-                <span class="tech-tag">IoT</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">PoE+</span>
+                <span class="equipment-tag">WiFi</span>
+                <span class="equipment-tag">IoT</span>
               </div>
             </div>
           </div>
 
           <!-- Cisco Catalyst 3750 -->
-          <div class="equipment-item" onclick="openModal('cisco-3750')">
-            <div class="equipment-photo">
-              <img src="images/cisco-3750.jpg" alt="Cisco Catalyst 3750" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">StackWise</div>
-              <h3 class="equipment-name">Cisco Catalyst 3750</h3>
-              <p class="equipment-type">Switch multicouche stackable</p>
+          <div class="equipment-card" style="animation-delay: 2.3s;">
+            <div class="equipment-header-bar">STACKWISE</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 3750</h3>
+              <h4 class="equipment-title">Switch multicouche stackable</h4>
               <p class="equipment-description">
-                Architecture StackWise révolutionnaire pour stacks de 9 switches, 
-                redondance exceptionnelle et plan de données 32 Gbps.
+                Architecture StackWise révolutionnaire pour stacks de 9 switches, redondance exceptionnelle et plan de données 32 Gbps.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">Stack</span>
-                <span class="tech-tag">32Gbps</span>
-                <span class="tech-tag">HA</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">Stack</span>
+                <span class="equipment-tag">32Gbps</span>
+                <span class="equipment-tag">HA</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Routers Category -->
-      <div class="equipment-category">
-        <div class="category-header">
+      <!-- Routeurs ISR -->
+      <div class="category-section" style="animation-delay: 2.5s;">
+        <div class="category-title">
           <div class="category-icon">🌐</div>
-          <h2 class="category-title">Routeurs ISR</h2>
-          <div class="category-subtitle">Services Intégrés Cisco</div>
+          <span>Routeurs ISR</span>
         </div>
-        
-        <div class="equipment-list">
-          <!-- Cisco ISR 2911 -->
-          <div class="equipment-item" onclick="openModal('cisco-2911')">
-            <div class="equipment-photo">
-              <img src="images/cisco-2911.jpg" alt="Cisco ISR 2911" />
-              <div class="photo-overlay">
+        <p class="category-subtitle">Services Intégrés Cisco</p>
 
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">ISR G2</div>
-              <h3 class="equipment-name">Cisco ISR 2911</h3>
-              <p class="equipment-type">Routeur services intégrés haute performance</p>
+        <div class="content-grid">
+          <!-- Cisco ISR 2911 -->
+          <div class="equipment-card" style="animation-delay: 2.7s;">
+            <div class="equipment-header-bar">ISR G2</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco ISR 2911</h3>
+              <h4 class="equipment-title">Routeur services intégrés haute performance</h4>
               <p class="equipment-description">
-                Plateforme modulaire pour succursales moyennes/grandes intégrant 
-                routage, sécurité, commutation et voix dans architecture unifiée.
+                Plateforme modulaire pour succursales moyennes/grandes intégrant routage, sécurité, commutation et voix dans architecture unifiée.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">VPN IPSec</span>
-                <span class="tech-tag">Firewall</span>
-                <span class="tech-tag">Voice</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">VPN</span>
+                <span class="equipment-tag">IPSec</span>
+                <span class="equipment-tag">Firewall</span>
+                <span class="equipment-tag">Voice</span>
               </div>
             </div>
           </div>
 
           <!-- Cisco ISR 2811 -->
-          <div class="equipment-item" onclick="openModal('cisco-2811')">
-            <div class="equipment-photo">
-              <img src="images/cisco-2811.jpg" alt="Cisco ISR 2811" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">Branch</div>
-              <h3 class="equipment-name">Cisco ISR 2811</h3>
-              <p class="equipment-type">Routeur optimisé succursales</p>
+          <div class="equipment-card" style="animation-delay: 2.9s;">
+            <div class="equipment-header-bar">BRANCH</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco ISR 2811</h3>
+              <h4 class="equipment-title">Routeur optimisé succursales</h4>
               <p class="equipment-description">
-                Solution économique pour petites/moyennes succursales avec intégration 
-                complète voix, données et sécurité dans plateforme consolidée.
+                Solution économique pour petites/moyennes succursales avec intégration complète voix, données et sécurité dans plateforme consolidée.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">WAN</span>
-                <span class="tech-tag">Security</span>
-                <span class="tech-tag">Cost-Effective</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">WAN</span>
+                <span class="equipment-tag">Security</span>
+                <span class="equipment-tag">Cost-Effective</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- WiFi Category -->
-      <div class="equipment-category">
-        <div class="category-header">
+      <!-- Points d'Accès WiFi -->
+      <div class="category-section" style="animation-delay: 3.1s;">
+        <div class="category-title">
           <div class="category-icon">📶</div>
-          <h2 class="category-title">Points d'Accès WiFi</h2>
-          <div class="category-subtitle">Connectivité Sans Fil Avancée</div>
+          <span>Points d'Accès WiFi</span>
         </div>
-        
-        <div class="equipment-list">
+        <p class="category-subtitle">Connectivité Sans Fil Avancée</p>
+
+        <div class="content-grid">
           <!-- Cisco Catalyst 9130AXI -->
-          <div class="equipment-item" onclick="openModal('cisco-9130axi')">
-            <div class="equipment-photo">
-              <img src="images/cisco-9130axi.jpg" alt="Cisco Catalyst 9130AXI" />
-              <div class="photo-overlay">
-              </div>
-            </div>
-            <div class="equipment-info">
-              <div class="equipment-badge">WiFi 6</div>
-              <h3 class="equipment-name">Cisco Catalyst 9130AXI</h3>
-              <p class="equipment-type">Point d'accès WiFi 6 haute densité</p>
+          <div class="equipment-card" style="animation-delay: 3.3s;">
+            <div class="equipment-header-bar">WIFI 6</div>
+            <div class="equipment-content">
+              <h3 class="equipment-model">Cisco Catalyst 9130AXI</h3>
+              <h4 class="equipment-title">Point d'accès WiFi 6 haute densité</h4>
               <p class="equipment-description">
-                AP révolutionnaire 802.11ax avec débits 5.4 Gbps, intelligence intégrée 
-                Cisco DNA, sécurité WPA3 et analyse comportementale avancée.
+                AP révolutionnaire 802.11ax avec débits 5.4 Gbps, intelligence intégrée Cisco DNA, sécurité WPA3 et analyse comportementale avancée.
               </p>
-              <div class="tech-tags">
-                <span class="tech-tag">802.11ax</span>
-                <span class="tech-tag">5.4Gbps</span>
-                <span class="tech-tag">WPA3</span>
+              <div class="equipment-tags">
+                <span class="equipment-tag">802.11ax</span>
+                <span class="equipment-tag">5.4Gbps</span>
+                <span class="equipment-tag">WPA3</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-title">Pour en savoir plus sur mon parcours et mes projets Contactez-moi </h2>
 
-  <!-- Mobile Bottom Navigation -->
-  <div class="mobile-bottom-nav">
-    <a href="index.html" class="bottom-nav-item">
-      <div class="nav-icon">🏠</div>
-      <span>Accueil</span>
-    </a>
-    <a href="projects.html" class="bottom-nav-item">
-      <div class="nav-icon">💻</div>
-      <span>Projets</span>
-    </a>
-    <a href="equipements.html" class="bottom-nav-item active">
-      <div class="nav-icon">🔧</div>
-      <span>Équipements</span>
-    </a>
-    <a href="certifications.html" class="bottom-nav-item">
-      <div class="nav-icon">🏆</div>
-      <span>Certifs</span>
-    </a>
-  </div>
-
-  <!-- Modals avec toutes les images et détails -->
-  <div id="modal-cisco-2960" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco Catalyst 2960</h2>
-        <button class="modal-close" onclick="closeModal('cisco-2960')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/administration_system.jpg" alt="Cisco Catalyst 2960" class="modal-image" />
-          <div class="image-badge">FastEthernet/Gigabit</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Switch de niveau 2</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Ports:</span>
-                <span class="spec-value">24/48 FastEthernet + 2/4 Gigabit</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">VLAN:</span>
-                <span class="spec-value">Support complet 802.1Q</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Sécurité:</span>
-                <span class="spec-value">Port Security, DHCP Snooping</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco Catalyst 2960 est un switch d'accès robuste conçu pour les réseaux d'entreprise modernes. Il offre des fonctionnalités de sécurité avancées incluant la sécurité des ports, DHCP snooping, et le support complet des VLAN avec 802.1Q. Avec ses ports FastEthernet et Gigabit uplink, il constitue une solution fiable et économique pour les connexions d'accès dans les environnements professionnels exigeants.</p>
-          </div>
-        </div>
+        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="cta-btn">
+          <span>Contactez-moi</span>
+          <span>💬</span>
+        </a>
       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- Modal Cisco Catalyst 3560 -->
-  <div id="modal-cisco-3560" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco Catalyst 3560</h2>
-        <button class="modal-close" onclick="closeModal('cisco-3560')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-3560.jpg" alt="Cisco Catalyst 3560" class="modal-image" />
-          <div class="image-badge">Layer 2+ Routing</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Switch multicouche</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Routage:</span>
-                <span class="spec-value">IP Layer 3 intégré</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Protocoles:</span>
-                <span class="spec-value">OSPF, EIGRP, RIP</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Performance:</span>
-                <span class="spec-value">32 Gbps switching fabric</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco Catalyst 3560 combine intelligemment les fonctionnalités de commutation de niveau 2 avec des capacités de routage IP de niveau 3. Cette convergence permet de réduire la complexité du réseau et les coûts opérationnels. Il supporte les protocoles de routage dynamique comme OSPF et EIGRP, ce qui en fait une solution idéale pour les réseaux d'entreprise nécessitant une architecture hiérarchique optimisée.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Cisco Catalyst 3650 -->
-  <div id="modal-cisco-3650" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco Catalyst 3650</h2>
-        <button class="modal-close" onclick="closeModal('cisco-3650')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-3650.jpg" alt="Cisco Catalyst 3650" class="modal-image" />
-          <div class="image-badge">PoE+ Convergé</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Switch convergé nouvelle génération</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">PoE:</span>
-                <span class="spec-value">PoE+ 30W par port</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">WiFi:</span>
-                <span class="spec-value">Support 802.11ac Wave 2</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">IoT:</span>
-                <span class="spec-value">Optimisé IoT et BYOD</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco Catalyst 3650 représente l'évolution moderne des switches d'entreprise. Il intègre des fonctionnalités de commutation, de routage sans fil et de sécurité dans une plateforme unifiée. Avec le support Power over Ethernet Plus (PoE+), il peut alimenter efficacement une large gamme d'appareils connectés incluant les points d'accès Wi-Fi 802.11ac, les téléphones IP et les caméras de sécurité, le rendant parfait pour les déploiements IoT et les infrastructures convergées.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Cisco Catalyst 3750 -->
-  <div id="modal-cisco-3750" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco Catalyst 3750</h2>
-        <button class="modal-close" onclick="closeModal('cisco-3750')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-3750.jpg" alt="Cisco Catalyst 3750" class="modal-image" />
-          <div class="image-badge">StackWise Technology</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Switch multicouche stackable</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Stack:</span>
-                <span class="spec-value">Jusqu'à 9 unités</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Backplane:</span>
-                <span class="spec-value">32 Gbps bidirectionnel</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Redondance:</span>
-                <span class="spec-value">Haute disponibilité StackWise</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco Catalyst 3750 excelle avec sa technologie StackWise révolutionnaire qui permet de créer un stack unifié de jusqu'à 9 switches. Cette architecture offre une redondance exceptionnelle et une gestion simplifiée à travers une seule interface. Le plan de données bidirectionnel 32 Gbps assure des performances élevées même en configuration de stack, ce qui en fait la solution de choix pour les environnements critiques nécessitant une haute disponibilité et une scalabilité maximale.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Cisco ISR 2911 -->
-  <div id="modal-cisco-2911" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco ISR 2911</h2>
-        <button class="modal-close" onclick="closeModal('cisco-2911')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-2911.jpg" alt="Cisco ISR 2911" class="modal-image" />
-          <div class="image-badge">ISR G2 Series</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Routeur services intégrés</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Performance:</span>
-                <span class="spec-value">75 Mbps encrypted throughput</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Modules:</span>
-                <span class="spec-value">4 slots d'extension</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Services:</span>
-                <span class="spec-value">Voice, Data, Security, Wireless</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco ISR 2911 est une plateforme modulaire exceptionnelle conçue pour les succursales moyennes et grandes. Il intègre de manière transparente les services de routage, de sécurité, de commutation et de voix dans une architecture unifiée. Sa conception modulaire avec slots d'extension permet une flexibilité maximale et une évolutivité future. Les fonctionnalités de sécurité intégrées incluent le firewall, VPN IPSec, et les services d'inspection approfondie des paquets (DPI).</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Cisco ISR 2811 -->
-  <div id="modal-cisco-2811" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco ISR 2811</h2>
-        <button class="modal-close" onclick="closeModal('cisco-2811')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-2811.jpg" alt="Cisco ISR 2811" class="modal-image" />
-          <div class="image-badge">Branch Solution</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Routeur succursales</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">WAN:</span>
-                <span class="spec-value">2 ports WAN intégrés</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Voice:</span>
-                <span class="spec-value">Support VoIP intégré</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Sécurité:</span>
-                <span class="spec-value">Firewall, VPN, IPS</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco ISR 2811 est spécifiquement optimisé pour les succursales petites et moyennes nécessitant une solution réseau complète et économique. Il offre une intégration remarquable des services voix, données et sécurité, permettant aux entreprises de déployer une infrastructure réseau consolidée. Sa fiabilité éprouvée et ses performances constantes en font un choix privilégié pour les déploiements WAN où la simplicité de gestion et la réduction des coûts opérationnels sont prioritaires.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Cisco Catalyst 9130AXI -->
-  <div id="modal-cisco-9130axi" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Cisco Catalyst 9130AXI</h2>
-        <button class="modal-close" onclick="closeModal('cisco-9130axi')">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-image-container">
-          <img src="images/cisco-9130axi.jpg" alt="Cisco Catalyst 9130AXI" class="modal-image" />
-          <div class="image-badge">WiFi 6 Ready</div>
-        </div>
-        <div class="modal-details">
-          <div class="detail-section">
-            <h3>Spécifications Techniques</h3>
-            <div class="spec-list">
-              <div class="spec-item">
-                <span class="spec-label">Standard:</span>
-                <span class="spec-value">802.11ax (WiFi 6)</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Débit:</span>
-                <span class="spec-value">5.4 Gbps maximum</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Sécurité:</span>
-                <span class="spec-value">WPA3, Enhanced Open</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Intelligence:</span>
-                <span class="spec-value">Cisco DNA intégré</span>
-              </div>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Description Complète</h3>
-            <p>Le Cisco Catalyst 9130AXI est un point d'accès WiFi 6 révolutionnaire qui redéfinit la connectivité sans fil en entreprise. Équipé de la technologie 802.11ax, il offre des débits jusqu'à 5,4 Gbps et supporte efficacement les environnements à très haute densité d'utilisateurs. Son intelligence intégrée via Cisco DNA permet une optimisation automatique des performances, une sécurité renforcée avec chiffrement WPA3, et des capacités d'analyse comportementale avancées. Parfait pour les campus universitaires, bureaux modernes et espaces publics nécessitant une couverture WiFi exceptionnelle.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="equipments-script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const typingElement = document.querySelector('.typing-text');
+      if (typingElement) {
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
+        typingElement.style.borderRight = '2px solid var(--neon-green)';
+        
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          }
+        }
+        setTimeout(typeWriter, 800);
+      }
+    });
+  </script>
 </body>
 </html>
