@@ -3,983 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yacine Ben Omrane — Projets</title>
+  <title>Yacine Ben Omrane – Projets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Variables CSS Ultra-Stylées */
-    :root {
-      --primary-color: #e65616;
-      --primary-light: #ff6b35;
-      --primary-dark: #cc4a12;
-      --neon-green: #00ff41;
-      --neon-blue: #00d4ff;
-      --neon-purple: #b300ff;
-      --dark-bg: #0a0a0a;
-      --darker-bg: #050505;
-      --card-bg: rgba(15, 15, 35, 0.8);
-      --card-border: rgba(0, 255, 65, 0.2);
-      --text-primary: #ffffff;
-      --text-secondary: #cccccc;
-      --text-accent: #00ff41;
-      --shadow-neon: 0 0 30px rgba(0, 255, 65, 0.5);
-      --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
-    }
-
-    /* Reset et Base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Orbitron', 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* Animated Background Ultra-Stylé */
-    .animated-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .matrix-rain {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-    }
-
-    .floating-particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .cyber-grid {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: grid-move 20s linear infinite;
-    }
-
-    @keyframes grid-move {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
-
-    /* Mobile Navigation Ultra-Moderne */
-    .mobile-nav-wrapper {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-
-    .mobile-menu-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 255, 65, 0.1);
-      border: 2px solid var(--neon-green);
-      border-radius: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .mobile-menu-btn:hover {
-      background: rgba(0, 255, 65, 0.2);
-      box-shadow: var(--shadow-neon);
-      transform: scale(1.05);
-    }
-
-    .mobile-menu-btn span {
-      width: 20px;
-      height: 2px;
-      background: var(--neon-green);
-      border-radius: 1px;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .mobile-menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .mobile-menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
-      backdrop-filter: blur(20px);
-      transform: translateX(-100%);
-      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      overflow-y: auto;
-    }
-
-    .mobile-nav-overlay.active {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-content {
-      padding: 80px 30px 30px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mobile-nav-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 50px;
-    }
-
-    .mobile-nav-header h3 {
-      font-size: 1.8rem;
-      color: var(--neon-green);
-      font-weight: 900;
-      text-shadow: 0 0 10px var(--neon-green);
-    }
-
-    .close-btn {
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 0, 0, 0.1);
-      border: 2px solid #ff4757;
-      border-radius: 50%;
-      color: #ff4757;
-      font-size: 24px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .close-btn:hover {
-      background: rgba(255, 0, 0, 0.2);
-      transform: rotate(90deg);
-    }
-
-    .mobile-nav-links {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .mobile-nav-links .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 15px;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .mobile-nav-links .nav-link:hover,
-    .mobile-nav-links .nav-link.active {
-      background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(230, 86, 22, 0.1));
-      border-color: var(--neon-green);
-      box-shadow: var(--shadow-neon);
-      transform: translateX(10px);
-    }
-
-    .mobile-nav-links .nav-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      text-align: center;
-    }
-
-    .mobile-nav-links .nav-arrow {
-      margin-left: auto;
-      font-size: 1.2rem;
-      color: var(--neon-green);
-      transition: transform 0.3s ease;
-    }
-
-    .mobile-nav-links .nav-link:hover .nav-arrow {
-      transform: translateX(5px);
-    }
-
-    .mobile-nav-footer {
-      margin-top: 30px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .linkedin-btn {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: linear-gradient(45deg, #0077b5, #00a0dc);
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .linkedin-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 20px rgba(0, 119, 181, 0.4);
-    }
-
-    .linkedin-btn img {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-    }
-
-    /* Desktop Navigation Élégante */
-    .desktop-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 900;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
-      padding: 0;
-      display: block;
-    }
-
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 30px;
-      gap: 40px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--neon-green);
-    }
-
-    .logo-icon {
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      color: white;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      box-shadow: var(--shadow-primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-item {
-      position: relative;
-      padding: 10px 0;
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .nav-item:hover,
-    .nav-item.active {
-      color: var(--neon-green);
-      text-shadow: 0 0 10px var(--neon-green);
-    }
-
-    .nav-underline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--neon-green), var(--primary-color));
-      transition: width 0.4s ease;
-    }
-
-    .nav-item:hover .nav-underline,
-    .nav-item.active .nav-underline {
-      width: 100%;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .language-selector {
-      position: relative;
-    }
-
-    .lang-btn {
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 255, 65, 0.1);
-      border: 1px solid var(--neon-green);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .lang-btn:hover {
-      background: rgba(0, 255, 65, 0.2);
-      box-shadow: var(--shadow-neon);
-    }
-
-    .lang-btn img {
-      width: 24px;
-      height: 16px;
-      border-radius: 3px;
-    }
-
-    .flag-dropdown {
-      position: absolute;
-      top: 50px;
-      right: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 10px;
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-neon);
-    }
-
-    .flag-dropdown.hidden {
-      display: none;
-    }
-
-    .flag-dropdown img {
-      width: 24px;
-      height: 16px;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .flag-dropdown img:hover {
-      transform: scale(1.1);
-    }
-
-    .desktop-linkedin {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(45deg, #0077b5, #00a0dc);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .desktop-linkedin:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
-    }
-
-    .desktop-linkedin img {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Projects Section */
-    .projects-section {
-      min-height: 100vh;
-      padding: 120px 20px 20px;
-      position: relative;
-    }
-
-    .projects-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      height: 100%;
-    }
-
-    .projects-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .projects-title {
-      font-size: 4rem;
-      font-weight: 900;
-      line-height: 0.9;
-      color: var(--text-primary);
-      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-      margin-bottom: 20px;
-      animation: slideInDown 1s ease forwards;
-    }
-
-    .projects-title .accent {
-      color: var(--neon-green);
-      text-shadow: 0 0 30px var(--neon-green);
-      background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    @keyframes slideInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .projects-subtitle {
-      font-size: 1.3rem;
-      font-family: 'Fira Code', monospace;
-      color: var(--neon-green);
-      opacity: 0;
-      animation: fadeInUp 1s ease 0.5s forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-      margin-top: 80px;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(15px);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0;
-      animation: projectSlideUp 0.8s ease forwards;
-    }
-
-    .project-card:nth-child(1) { animation-delay: 0.2s; }
-    .project-card:nth-child(2) { animation-delay: 0.4s; }
-    .project-card:nth-child(3) { animation-delay: 0.6s; }
-    .project-card:nth-child(4) { animation-delay: 0.8s; }
-
-    @keyframes projectSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
-      transition: left 0.5s;
-    }
-
-    .project-card:hover::before {
-      left: 100%;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--neon-green);
-      box-shadow: var(--shadow-neon);
-      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(0, 255, 65, 0.05));
-    }
-
-    .project-card.expanded {
-      grid-column: 1 / -1;
-      max-width: 100%;
-      transform: translateY(-5px);
-      border-color: var(--primary-color);
-      box-shadow: var(--shadow-primary);
-      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(230, 86, 22, 0.05));
-    }
-
-    .project-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-primary);
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .project-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-
-    .project-summary {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.6;
-      font-family: 'Fira Code', monospace;
-    }
-
-    .expand-arrow {
-      font-size: 2rem;
-      color: var(--neon-green);
-      transition: all 0.3s ease;
-      text-shadow: 0 0 10px var(--neon-green);
-    }
-
-    .project-card.expanded .expand-arrow {
-      transform: rotate(180deg);
-      color: var(--primary-color);
-      text-shadow: 0 0 10px var(--primary-color);
-    }
-
-    /* Expanded Content */
-    .expanded-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.3s ease;
-      margin-top: 30px;
-    }
-
-    .expanded-content.show {
-      max-height: 2000px;
-      padding-top: 30px;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .project-details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .project-meta {
-      background: rgba(0, 255, 65, 0.1);
-      border: 1px solid rgba(0, 255, 65, 0.3);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-    }
-
-    .meta-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .meta-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 255, 65, 0.2);
-      border: 2px solid var(--neon-green);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    .meta-info h4 {
-      color: var(--text-primary);
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-shadow: 0 0 5px var(--neon-green);
-    }
-
-    .meta-info p {
-      color: var(--neon-green);
-      font-size: 0.9rem;
-      font-family: 'Fira Code', monospace;
-    }
-
-    .project-description {
-      background: rgba(230, 86, 22, 0.1);
-      border: 1px solid rgba(230, 86, 22, 0.3);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(230, 86, 22, 0.2);
-    }
-
-    .project-description h4 {
-      color: var(--text-primary);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 0 0 5px var(--primary-color);
-    }
-
-    .project-description p {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .skills-section {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
-      border: 1px solid rgba(0, 255, 65, 0.3);
-      border-radius: 15px;
-      padding: 25px;
-      margin: 20px 0;
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-    }
-
-    .skills-section h4 {
-      color: var(--text-primary);
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 0 0 5px var(--neon-green);
-    }
-
-    .skills-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 15px;
-    }
-
-    .skills-list li {
-      padding: 15px;
-      background: rgba(0, 255, 65, 0.05);
-      border: 1px solid rgba(0, 255, 65, 0.2);
-      border-radius: 10px;
-      color: var(--text-secondary);
-      transition: all 0.3s ease;
-    }
-
-    .skills-list li:hover {
-      background: rgba(0, 255, 65, 0.1);
-      border-color: var(--neon-green);
-      transform: translateY(-3px);
-    }
-
-    .skills-list li strong {
-      color: var(--neon-green);
-      text-shadow: 0 0 5px var(--neon-green);
-    }
-
-    .competences-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .competence-tag {
-      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border: 1px solid rgba(230, 86, 22, 0.5);
-      box-shadow: 0 0 10px rgba(230, 86, 22, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .competence-tag:hover {
-      box-shadow: 0 0 20px rgba(230, 86, 22, 0.5);
-      transform: scale(1.05);
-    }
-
-    .project-conclusion {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px 0;
-      font-style: italic;
-      color: var(--text-secondary);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-
-    /* Terminal Effect */
-    .terminal-window {
-      background: var(--darker-bg);
-      border-radius: 15px;
-      border: 1px solid var(--neon-green);
-      box-shadow: var(--shadow-neon);
-      margin: 60px auto;
-      max-width: 800px;
-      overflow: hidden;
-      opacity: 0;
-      animation: fadeInUp 1s ease 1s forwards;
-    }
-
-    .terminal-header {
-      background: linear-gradient(135deg, var(--dark-bg), rgba(26, 26, 46, 0.8));
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
-    }
-
-    .terminal-buttons {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .btn.red { background: #ff5f57; }
-    .btn.yellow { background: #ffbd2e; }
-    .btn.green { background: #28ca42; }
-
-    .terminal-title {
-      font-family: 'Fira Code', monospace;
-      color: var(--neon-green);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .terminal-body {
-      padding: 25px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .terminal-line {
-      margin-bottom: 8px;
-      color: var(--neon-green);
-      opacity: 0;
-      animation: terminalType 0.8s ease forwards;
-      animation-delay: calc(var(--line-delay) * 0.3s);
-    }
-
-    @keyframes terminalType {
-      to { opacity: 1; }
-    }
-
-    .prompt {
-      color: var(--neon-green);
-      font-weight: 700;
-    }
-
-    .command {
-      color: var(--neon-blue);
-      font-weight: 600;
-    }
-
-    .output {
-      color: var(--text-secondary);
-    }
-
-    .success {
-      color: var(--neon-green);
-    }
-
-    /* Mobile Bottom Navigation */
-    .mobile-bottom-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(0, 255, 65, 0.2);
-      padding: 10px;
-      z-index: 900;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-    }
-
-    .bottom-nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      padding: 12px 8px;
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .bottom-nav-item:hover,
-    .bottom-nav-item.active {
-      background: rgba(0, 255, 65, 0.1);
-      color: var(--neon-green);
-    }
-
-    .bottom-nav-item .nav-icon {
-      font-size: 1.2rem;
-    }
-
-    /* RESPONSIVE BREAKPOINTS */
-
-    /* Mobile Portrait (jusqu'à 768px) */
-    @media (max-width: 768px) {
-      .mobile-nav-wrapper {
-        display: block;
-      }
-      
-      .desktop-nav {
-        display: none;
-      }
-      
-      .mobile-bottom-nav {
-        display: grid;
-      }
-      
-      .projects-section {
-        padding: 100px 20px 100px;
-      }
-      
-      .projects-title {
-        font-size: clamp(2.5rem, 8vw, 3.5rem);
-      }
-      
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-      
-      .project-card {
-        padding: 20px;
-      }
-      
-      .project-card.expanded {
-        grid-column: 1;
-      }
-      
-      .project-details {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .skills-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Tablet Portrait (769px - 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      
-      .project-details {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Accessibility & Performance */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Animated Background -->
@@ -989,902 +17,295 @@
     <div class="cyber-grid"></div>
   </div>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav-wrapper">
-    <button class="mobile-menu-btn" onclick="toggleMobileNav()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+ <!-- Navigation -->
+<nav class="desktop-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">Y</div>
+      <span>Yacine Ben Omrane</span>
+      <div class="nav-underline"></div>
+    </a>
     
-    <div class="mobile-nav-overlay" id="mobile-nav">
-      <div class="mobile-nav-content">
-        <div class="mobile-nav-header">
-          <h3>NAVIGATION</h3>
-          <button class="close-btn" onclick="toggleMobileNav()">×</button>
-        </div>
-        
-        <div class="mobile-nav-links">
-          <a href="index.html" class="nav-link">
-            <div class="nav-icon">🏠</div>
-            <span>Accueil</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="about.html" class="nav-link">
-            <div class="nav-icon">👤</div>
-            <span>À propos</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="projects.html" class="nav-link active">
-            <div class="nav-icon">💻</div>
-            <span>Projets</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="certifications.html" class="nav-link">
-            <div class="nav-icon">🏆</div>
-            <span>Certifications</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="compétences.html" class="nav-link">
-            <div class="nav-icon">⚡</div>
-            <span>Compétences</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="equipements.html" class="nav-link">
-            <div class="nav-icon">🔧</div>
-            <span>Équipements</span>
-            <div class="nav-arrow">→</div>
-          </a>
-        </div>
-        
-        <div class="mobile-nav-footer">
-          <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
-            <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiByeD0iNCIgZmlsbD0iIzAwNzdCNSIvPgo8cGF0aCBkPSJNNy41IDEwSDEyLjVWMjIuNUg3LjVWMTBaTTEwIDcuNUMxMS4zODA3IDcuNSAxMi41IDguNjE5MjkgMTIuNSAxMEMxMi41IDExLjM4MDcgMTEuMzgwNyAxMi41IDEwIDEyLjVDOC42MTkyOSAxMi41IDcuNSAxMS4zODA3IDcuNSAxMEM3LjUgOC42MTkyOSA4LjYxOTI5IDcuNSAxMCA3LjVaTTE1IDEwSDIwVjExLjVIMjBDMjAuNSAxMC41IDIxLjUgMTAuMjUgMjIuNSAxMC4yNUMyNC41IDEwLjI1IDI2IDExLjUgMjYgMTMuNVYyMi41SDIxVjE0QzIxIDEzIDIwIDEyLjUgMTkgMTIuNUMxOCAxMi41IDE2LjUgMTMgMTYuNSAxNFYyMi41SDE1VjEwWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==';" />
-            <span>LinkedIn Profile</span>
-          </a>
-        </div>
-      </div>
+    
+    
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">
+        <span class="nav-text">Accueil</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="about.html" class="nav-item">
+        <span class="nav-text">À propos</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="projects.html" class="nav-item active">
+        <span class="nav-text">Projets</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="certifications.html" class="nav-item">
+        <span class="nav-text">Certifications</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="compétences.html" class="nav-item">
+        <span class="nav-text">Compétences</span>
+        <div class="nav-underline"></div>
+      </a>
+      <a href="equipements.html" class="nav-item">
+        <span class="nav-text">Équipements</span>
+        <div class="nav-underline"></div>
+      </a>
     </div>
   </div>
+</nav>
 
-  <!-- Desktop Navigation -->
-  <nav class="desktop-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <div class="logo-icon">Y</div>
-        <span>Yacine Ben Omrane</span>
-      </div>
-      
-      <div class="nav-links">
-        <a href="index.html" class="nav-item">
-          <span class="nav-text">Accueil</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="about.html" class="nav-item">
-          <span class="nav-text">À propos</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="projects.html" class="nav-item active">
-          <span class="nav-text">Projets</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="certifications.html" class="nav-item">
-          <span class="nav-text">Certifications</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="compétences.html" class="nav-item">
-          <span class="nav-text">Compétences</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="equipements.html" class="nav-item">
-          <span class="nav-text">Équipements</span>
-          <div class="nav-underline"></div>
-        </a>
-      </div>
-      
-      <div class="nav-actions">
-        <div class="language-selector">
-          <button class="lang-btn" onclick="toggleFlags()">
-            <img src="images/Flag_of_France.svg.png" alt="FR" id="current-flag" onerror="this.outerHTML='<span>🇫🇷</span>';">
-          </button>
-          <div id="flag-dropdown" class="flag-dropdown hidden">
-            <img src="images/Flag_of_the_United_Kingdom.png" alt="EN" onclick="changeLanguage('projects_en.html')" onerror="this.outerHTML='<span onclick=&quot;changeLanguage(&apos;projects_en.html&apos;)&quot; style=&quot;cursor:pointer;&quot;>🇬🇧</span>';">
-          </div>
-        </div>
-        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="desktop-linkedin">
-          <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iIzAwNzdCNSIvPgo8cGF0aCBkPSJNNSA2LjVIOC41VjE1SDVWNi41Wk02Ljc1IDVDNy41ODMzMyA1IDguMjUgNS42NjY2NyA4LjI1IDYuNUM4LjI1IDcuMzMzMzMgNy41ODMzMyA4IDYuNzUgOEM1LjkxNjY3IDggNS4yNSA3LjMzMzMzIDUuMjUgNi41QzUuMjUgNS42NjY2NyA1LjkxNjY3IDUgNi43NSA1Wk0xMCA2LjVIMTNWNy41SDEzQzEzLjI1IDcgMTMuNzUgNi42MjUgMTQuMjUgNi42MjVDMTUuMjUgNi42MjUgMTYgNy4yNSAxNiA4LjI1VjE1SDEyLjVWOC41QzEyLjUgOCAxMi4yNSA3LjYyNSAxMS43NSA3LjYyNUMxMS4yNSA3LjYyNSAxMC43NSA4IDEwLjc1IDguNVYxNUgxMFY2LjVaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';" />
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Projects Section -->
-  <main class="projects-section">
-    <div class="projects-container">
-      <div class="projects-header">
-        <h1 class="projects-title">
+  <!-- Main Section -->
+  <main class="main-section">
+    <div class="main-container">
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">
           MES <span class="accent">PROJETS</span>
         </h1>
-        <div class="projects-subtitle">
-          <span class="typing-text">Découvrez mes réalisations en cybersécurité • Éthique & Innovation</span>
+        <div class="page-subtitle">
+          <span class="typing-text">Innovation • Créativité • Expertise Technique</span>
         </div>
       </div>
-      
-      <div class="projects-grid">
-        <!-- Projet 1 : CTF -->
-        <div class="project-card" onclick="toggleProject(this)">
-          <div class="project-icon">🏁</div>
-          <div class="project-header">
-            <div>
-              <h3 class="project-title">Capture The Flag (CTF)</h3>
-              <div class="project-summary">Challenge de cybersécurité appliquée avec analyse de vulnérabilités et hacking éthique</div>
-            </div>
-            <span class="expand-arrow">▼</span>
+
+      <!-- Content Cards -->
+      <div class="content-grid">
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-icon"></div>
+            <h3 class="card-title">Supervision centralisée de serveurs DHCP</h3>
           </div>
-          
-          <div class="expanded-content">
-            <div class="project-details">
-              <div class="project-meta">
-                <div class="meta-header">
-                  <div class="meta-icon">🎓</div>
-                  <div class="meta-info">
-                    <h4>IUT d'Aix-Marseille</h4>
-                    <p>BUT Réseaux & Télécommunications — Cybersécurité</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="project-description">
-                <h4>📖 Description du projet</h4>
-                <p>Participation à un challenge <strong>Capture The Flag (CTF)</strong> dans le cadre de ma formation, permettant d'appliquer mes compétences en cybersécurité et de résoudre des défis complexes en conditions réelles.</p>
-              </div>
-            </div>
-            
-            <div class="skills-section">
-              <h4>🎯 Compétences acquises et mises en pratique</h4>
-              <ul class="skills-list">
-                <li><strong>Analyse de vulnérabilités :</strong> identification et exploitation de failles de sécurité</li>
-                <li><strong>Hacking éthique :</strong> injection SQL et exploitation d'applications web</li>
-                <li><strong>Outils spécialisés :</strong> utilisation de Nmap, Wireshark</li>
-                <li><strong>Cryptographie :</strong> résolution de puzzles et découverte de "flags"</li>
-                <li><strong>Documentation :</strong> rédaction de rapports détaillés</li>
-              </ul>
-            </div>
-            
-            <div class="project-conclusion">
-              <p>Ce projet CTF m'a permis de renforcer mes compétences pratiques en cybersécurité : j'ai approfondi ma compréhension des mécanismes d'attaque et de défense, tout en améliorant ma capacité à résoudre rapidement des problématiques sous pression.</p>
-            </div>
-            
-            <div class="competences-tags">
-              <span class="competence-tag">Cybersecurity</span>
-              <span class="competence-tag">Pentest</span>
-              <span class="competence-tag">Network Analysis</span>
-              <span class="competence-tag">Ethical Hacking</span>
+          <div class="card-content">
+            <p><strong>Solution de gestion centralisée et automatisée</strong></p>
+            <p>Conception et déploiement d’une solution complète pour gérer centralement des serveurs DHCP conformément à un cahier des charges technique.</p>
+            <ul>
+              <li>Configuration et administration de 6 machines virtuelles.</li>
+              <li>Développement de scripts Python pour l’ajout, la suppression, la vérification et l’affichage des réservations DHCP (MAC/IP).</li>
+              <li>Utilisation de dnsmasq, automation YAML, et modules Python dédiés.</li>
+              <li>SSH sécurisé avec filtrage en bash, gestion sudoers, et capacité du serveur central à modifier les configurations distantes et redémarrer les services.</li>
+            </ul>
+            <div style="margin-top: 15px;">
+              <span class="badge">Administration système & réseau</span>
+              <span class="badge">VLAN</span>
+              <span class="badge">DHCP</span>
+              <span class="badge">Dnsmasq</span>
+              <span class="badge">Python</span>
+              <span class="badge">Sécurité SSH</span>
             </div>
           </div>
         </div>
 
-        <!-- Projet 2 : Initiation aux réseaux informatiques -->
-        <div class="project-card" onclick="toggleProject(this)">
-          <div class="project-icon">🌐</div>
-          <div class="project-header">
-            <div>
-              <h3 class="project-title">Initiation aux réseaux informatiques</h3>
-              <div class="project-summary">Analyse complète d'un réseau domestique avec cartographie et identification des équipements</div>
-            </div>
-            <span class="expand-arrow">▼</span>
+
+
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-icon"></div>
+            <h3 class="card-title">PC Gaming Custom Build</h3>
           </div>
-          
-          <div class="expanded-content">
-            <div class="project-details">
-              <div class="project-meta">
-                <div class="meta-header">
-                  <div class="meta-icon">🎓</div>
-                  <div class="meta-info">
-                    <h4>IUT d'Aix-Marseille</h4>
-                    <p>BUT Réseaux & Télécommunications — Cybersécurité</p>
-                  </div>
-                </div>
-              </div>
+          <div class="card-content">
+            <p><strong>Montage De PC Gamer</strong></p>
+            <p>Conception et assemblage d'un PC gaming personnalisé selon l'envie du client avec optimisation des performances, gestion thermique avancée et RGB synchronisé.</p>
+            <ul>
+              <li>Sélection composants optimale budget/perf</li>
+              <li>Installation des composants</li>
+              <li>Cable management</li>
+              <li>Overclocking CPU/GPU stable</li>
+              <li>Undervolting CPU/GPU stable</li>
               
-              <div class="project-description">
-                <h4>📖 Description du projet</h4>
-                <p>Projet pratique visant à comprendre et analyser un réseau informatique domestique, avec focus sur la découverte, l'analyse et la cartographie de l'infrastructure réseau.</p>
-              </div>
-            </div>
-            
-            <div class="skills-section">
-              <h4>🎯 Compétences acquises et mises en pratique</h4>
-              <ul class="skills-list">
-                <li><strong>Découverte réseau :</strong> identification des hôtes, adresses IP et MAC</li>
-                <li><strong>Outils de cybersécurité :</strong> manipulation de Nmap et fping</li>
-                <li><strong>Configuration réseau :</strong> identification des interfaces</li>
-                <li><strong>Cartographie :</strong> création de schémas avec Inkscape</li>
-                <li><strong>Rédaction technique :</strong> rapports structurés</li>
-              </ul>
-            </div>
-            
-            <div class="project-conclusion">
-              <p>Ce projet m'a permis d'approfondir ma maîtrise des réseaux, d'améliorer ma rigueur dans l'analyse et de renforcer mes compétences en cybersécurité et administration système sous Linux.</p>
-            </div>
-            
-            <div class="competences-tags">
-              <span class="competence-tag">Network Analysis</span>
-              <span class="competence-tag">Nmap</span>
-              <span class="competence-tag">Linux Administration</span>
-              <span class="competence-tag">Network Mapping</span>
+            </ul>
+            <div style="margin-top: 15px;">
+              <span class="badge">Assemblage PC</span>
+              <span class="badge">Installation OS</span>
+              <span class="badge">Drivers & Updates</span>
+              <span class="badge">Overclocking</span>
+              <span class="badge">Undervolting</span>
             </div>
           </div>
         </div>
 
-        <!-- Projet 3 : Introduction aux Réseaux d'Entreprise -->
-        <div class="project-card" onclick="toggleProject(this)">
-          <div class="project-icon">🏢</div>
-          <div class="project-header">
-            <div>
-              <h3 class="project-title">Introduction aux Réseaux d'Entreprise</h3>
-              <div class="project-summary">Découverte de l'environnement GNU-Linux professionnel et déploiement d'infrastructure LAMP</div>
-            </div>
-            <span class="expand-arrow">▼</span>
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-icon"></div>
+            <h3 class="card-title">Initiation aux réseaux informatiques</h3>
           </div>
-          
-          <div class="expanded-content">
-            <div class="project-details">
-              <div class="project-meta">
-                <div class="meta-header">
-                  <div class="meta-icon">🎓</div>
-                  <div class="meta-info">
-                    <h4>IUT d'Aix-Marseille</h4>
-                    <p>BUT Réseaux & Télécommunications — Cybersécurité</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="project-description">
-                <h4>📖 Description du projet</h4>
-                <p>Découverte complète de l'environnement informatique professionnel sous GNU-Linux, avec mise en place d'une infrastructure réseau d'entreprise simulée.</p>
-              </div>
-            </div>
-            
-            <div class="skills-section">
-              <h4>🎯 Compétences techniques développées</h4>
-              <ul class="skills-list">
-                <li><strong>Installation système :</strong> GNU-Linux et machines virtuelles</li>
-                <li><strong>Gestion de paquets :</strong> utilisation d'aptitude</li>
-                <li><strong>Variables d'environnement :</strong> configuration PATH</li>
-                <li><strong>Protocole X Window :</strong> applications graphiques</li>
-                <li><strong>Configuration réseau :</strong> ifdown/ifup, ip addr/ip link</li>
-                <li><strong>Infrastructure LAMP :</strong> déploiement serveur</li>
-              </ul>
-            </div>
-            
-            <div class="project-conclusion">
-              <p>Ce projet a offert une expérience complète des environnements réseaux d'entreprise, renforçant ma maîtrise technique et mon sens de l'initiative en situation réelle.</p>
-            </div>
-            
-            <div class="competences-tags">
-              <span class="competence-tag">GNU-Linux</span>
-              <span class="competence-tag">LAMP Stack</span>
-              <span class="competence-tag">System Administration</span>
-              <span class="competence-tag">Network Configuration</span>
+          <div class="card-content">
+            <p><strong>Analyse et cartographie d’un réseau domestique</strong></p>
+            <p>Projet pratique visant à découvrir, analyser et documenter un réseau domestique pour en comprendre la topologie et les services.</p>
+            <ul>
+              <li>Découverte des hôtes, adresses IP, adresses MAC et identification des fabricants.</li>
+              <li>Utilisation d’outils d’analyse : Nmap, fping.</li>
+              <li>Identification et configuration des interfaces réseau.</li>
+              <li>Rédaction d’un rapport structuré présentant résultats et recommandations.</li>
+            </ul>
+            <div style="margin-top: 15px;">
+              <span class="badge">Scanning réseau</span>
+              <span class="badge">Nmap</span>
+              <span class="badge">Fping</span>
+              <span class="badge">Wireshark</span>
+              <span class="badge">Rédaction technique</span>
             </div>
           </div>
         </div>
 
-        <!-- Projet 4 : Recherche sur la Vidéosurveillance Numérique -->
-        <div class="project-card" onclick="toggleProject(this)">
-          <div class="project-icon">📹</div>
-          <div class="project-header">
-            <div>
-              <h3 class="project-title">Recherche sur la Vidéosurveillance Numérique</h3>
-              <div class="project-summary">Analyse multidimensionnelle des enjeux techniques, économiques et sociétaux</div>
-            </div>
-            <span class="expand-arrow">▼</span>
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-icon"></div>
+            <h3 class="card-title">Introduction aux Réseaux d’Entreprise</h3>
           </div>
-          
-          <div class="expanded-content">
-            <div class="project-details">
-              <div class="project-meta">
-                <div class="meta-header">
-                  <div class="meta-icon">🎓</div>
-                  <div class="meta-info">
-                    <h4>IUT d'Aix-Marseille</h4>
-                    <p>BUT Réseaux & Télécommunications — Cybersécurité</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="project-description">
-                <h4>📖 Description du projet</h4>
-                <p>Participation à une SAE axée sur la vidéosurveillance numérique avec recherches approfondies et rédaction d'un compte rendu détaillé sur les enjeux techniques et sociétaux.</p>
-              </div>
+          <div class="card-content">
+            <p><strong>Approche opérationnelle des environnements professionnels sous GNU/Linux</strong></p>
+            <p>Mise en place d’un poste et d’une VM GNU/Linux et découverte des fondamentaux d’administration et de réseau en milieu professionnel.</p>
+            <ul>
+              <li>Installation et configuration d’une station physique sous GNU/Linux et d’une VM.</li>
+              <li>Gestion des paquets (aptitude), variables d’environnement (PATH), et commandes essentielles.</li>
+              <li>Utilisation de SSH pour l’administration à distance et découverte du protocole X Window.</li>
+              <li>Configuration manuelle du réseau (ifdown/ifup, ip addr/ip link) et mise en place d’une stack LAMP pour simuler des services d’entreprise.</li>
+            </ul>
+            <div style="margin-top: 15px;">
+              <span class="badge">Administration Linux</span>
+              <span class="badge">SSH</span>
+              <span class="badge">Configuration réseau IPv4</span>
+              <span class="badge">Services web (LAMP)</span>
             </div>
-            
-            <div class="skills-section">
-              <h4>🎯 Domaines d'analyse développés</h4>
-              <ul class="skills-list">
-                <li><strong>Analyse multidimensionnelle :</strong> enjeux économiques et sociétaux</li>
-                <li><strong>Aspects techniques :</strong> transmission numérique et filtrage</li>
-                <li><strong>Recherche scientifique :</strong> identification des verrous techniques</li>
-                <li><strong>Travail collaboratif :</strong> préparation et présentation orale</li>
-                <li><strong>Communication :</strong> vulgarisation de concepts complexes</li>
-              </ul>
-            </div>
-            
-            <div class="project-conclusion">
-              <p>Cette expérience a renforcé mes compétences en recherche technique, en communication et en travail d'équipe, tout en développant ma compréhension des enjeux sociétaux liés aux technologies de surveillance.</p>
-            </div>
-            
-            <div class="competences-tags">
-              <span class="competence-tag">Digital Surveillance</span>
-              <span class="competence-tag">Technical Research</span>
-              <span class="competence-tag">Team Collaboration</span>
-              <span class="competence-tag">Communication</span>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-icon"></div>
+            <h3 class="card-title">Recherche et Présentation sur la Vidéosurveillance Numérique</h3>
+          </div>
+          <div class="card-content">
+            <p><strong>Étude des aspects techniques et sociétaux de la vidéosurveillance</strong></p>
+            <p>Travail de recherche et synthèse collective sur la vidéosurveillance numérique, ses enjeux et contraintes techniques.</p>
+            <ul>
+              <li>Analyse des implications économiques, juridiques et sociétales de la vidéosurveillance.</li>
+              <li>Étude des techniques de transmission numérique et des méthodes de filtrage.</li>
+              <li>Identification des verrous scientifiques et techniques pour le développement de solutions logicielles.</li>
+              <li>Travail en équipe et préparation d’une présentation orale pour exposer les résultats.</li>
+            </ul>
+            <div style="margin-top: 15px;">
+              <span class="badge">Recherche technique</span>
+              <span class="badge">Communication orale</span>
+              <span class="badge">Analyse système</span>
+              <span class="badge">Travail en groupe</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Terminal Window -->
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="terminal-buttons">
-            <span class="btn red"></span>
-            <span class="btn yellow"></span>
-            <span class="btn green"></span>
+      <!-- Projects Stats -->
+      <div class="stats-section">
+        <h2 class="stats-title">Statistiques Projets</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Projets Réalisés</span>
           </div>
-          <div class="terminal-title">root@yacine:~/projects</div>
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">PC Montés</span>
+          </div>
+
         </div>
-        <div class="terminal-body">
-          <div class="terminal-line" style="--line-delay: 0">
-            <span class="prompt">$</span>
-            <span class="command">ls -la</span>
+      </div>
+
+      <!-- Featured Projects Section -->
+      <div class="stats-section">
+        <h2 class="stats-title">Projets Personnels</h2>
+        <div class="content-grid" style="margin-top: 40px;">
+          <div class="content-card">
+            <div class="card-header">
+            
+
           </div>
-          <div class="terminal-line" style="--line-delay: 1">
-            <span class="output">total 4</span>
+
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-icon"></div>
+              <h3 class="card-title">Bot Discord de recherche d’offres</h3>
+            </div>
+            <div class="card-content">
+              <p>Développement d’un bot Discord en Python capable de faire du scraping sur Vinted et Leboncoin afin de détecter automatiquement les meilleures offres selon des filtres personnalisés.</p>
+                          <li>Scraping régulier des annonces avec filtres (prix, mots-clés, catégories, taille, état).</li>
+            </ul>
+                          <li>Commandes Discord interactives pour lancer des recherches, créer/afficher/supprimer des alertes et gérer les favoris.</li>
+                          
+                          <li>Notifications automatiques dans un canal Discord avec aperçu complet (titre, prix, photo, lien direct).</li>
+            </ul>
+            
+                          <li>Sauvegarde des annonces favorites et préférences utilisateurs dans un fichier YAML pour une gestion simple et lisible.</li>
+
+                          <li>Sauvegarde des annonces favorites et préférences utilisateurs dans un fichier YAML pour une gestion simple et lisible.</li>
+            </ul>
+              <div style="margin-top: 15px;">
+                <span class="tag">Python</span>
+                <span class="tag">Intégration d’API dans un bot Discord</span>
+                <span class="tag">API</span>
+                <span class="tag">scraping</span>
+                <span class="tag">PyYAML</span>
+                <span class="tag">PowerShell</span>
+                
+              </div>
+              <div class="progress-bar" style="margin-top: 15px;">
+                <div class="progress-fill"></div>
+              </div>
+
+            </div>
           </div>
-          <div class="terminal-line" style="--line-delay: 2">
-            <span class="output">drwxr-xr-x 2 yacine yacine 4096 Sep 19 2025 .</span>
-          </div>
-          <div class="terminal-line" style="--line-delay: 3">
-            <span class="output">-rw-r--r-- 1 yacine yacine 2048 Sep 19 2025 ctf_challenge.log</span>
-          </div>
-          <div class="terminal-line" style="--line-delay: 4">
-            <span class="output">-rw-r--r-- 1 yacine yacine 1536 Sep 19 2025 network_analysis.sh</span>
-          </div>
-          <div class="terminal-line" style="--line-delay: 5">
-            <span class="output">-rw-r--r-- 1 yacine yacine 3072 Sep 19 2025 lamp_setup.conf</span>
-          </div>
-          <div class="terminal-line" style="--line-delay: 6">
-            <span class="output">-rw-r--r-- 1 yacine yacine 1024 Sep 19 2025 surveillance_research.md</span>
-          </div>
-          <div class="terminal-line" style="--line-delay: 7">
-            <span class="prompt">$</span>
-            <span class="command">echo "Projets terminés avec succès"</span>
-          </div>
-          <div class="terminal-line success" style="--line-delay: 8">
-            Projets terminés avec succès
+
+          <div class="content-card">
+            <div class="card-header">
+              <div class="card-icon"></div>
+              
+            </div>
+            <div class="card-content">
+
+              <div style="margin-top: 15px;">
+
+              </div>
+              <div class="progress-bar" style="margin-top: 15px;">
+                <div class="progress-fill"></div>
+              </div>
+              <p style="margin-top: 10px; color: var(--primary-color); font-size: 0.9rem;"></p>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-title">Pour en savoir plus sur mon parcours et mes projets</h2>
+
+        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="cta-btn">
+          <span>Contactez-moi</span>
+          <span>💬</span>
+        </a>
       </div>
     </div>
   </main>
 
-  <!-- Mobile Bottom Navigation -->
-  <div class="mobile-bottom-nav">
-    <a href="index.html" class="bottom-nav-item">
-      <div class="nav-icon">🏠</div>
-      <span>Accueil</span>
-    </a>
-    <a href="projects.html" class="bottom-nav-item active">
-      <div class="nav-icon">💻</div>
-      <span>Projets</span>
-    </a>
-    <a href="about.html" class="bottom-nav-item">
-      <div class="nav-icon">👤</div>
-      <span>À propos</span>
-    </a>
-    <a href="certifications.html" class="bottom-nav-item">
-      <div class="nav-icon">🏆</div>
-      <span>Certifs</span>
-    </a>
-  </div>
-
   <script>
-    // Variables globales
-    let isAnimationReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let isMobile = window.innerWidth <= 768;
-    let particles = [];
-    let matrixChars = [];
-
-    // Utilitaires
-    const $ = (selector) => document.querySelector(selector);
-    const $ = (selector) => document.querySelectorAll(selector);
-
-    // Navigation Mobile Ultra-Stylée
-    function toggleMobileNav() {
-        const mobileNav = $('#mobile-nav');
-        const menuBtn = $('.mobile-menu-btn');
-        const body = document.body;
+    document.addEventListener('DOMContentLoaded', function() {
+      const typingElement = document.querySelector('.typing-text');
+      if (typingElement) {
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
+        typingElement.style.borderRight = '2px solid var(--neon-green)';
         
-        if (mobileNav && menuBtn) {
-            const isActive = mobileNav.classList.contains('active');
-            
-            if (isActive) {
-                // Fermer le menu
-                mobileNav.classList.remove('active');
-                menuBtn.classList.remove('active');
-                body.style.overflow = '';
-                
-                // Animation de fermeture des liens
-                const links = mobileNav.querySelectorAll('.mobile-nav-links .nav-link');
-                links.forEach((link, index) => {
-                    setTimeout(() => {
-                        link.style.transform = 'translateX(-100%)';
-                        link.style.opacity = '0';
-                    }, index * 50);
-                });
-                
-            } else {
-                // Ouvrir le menu
-                mobileNav.classList.add('active');
-                menuBtn.classList.add('active');
-                body.style.overflow = 'hidden';
-                
-                // Animation d'ouverture des liens
-                setTimeout(() => {
-                    const links = mobileNav.querySelectorAll('.mobile-nav-links .nav-link');
-                    links.forEach((link, index) => {
-                        setTimeout(() => {
-                            link.style.transform = 'translateX(0)';
-                            link.style.opacity = '1';
-                            link.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                        }, index * 100);
-                    });
-                }, 200);
-            }
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          }
         }
-    }
-
-    // Fermer le menu mobile en cliquant à l'extérieur
-    function setupMobileNavClose() {
-        document.addEventListener('click', (e) => {
-            const mobileNav = $('#mobile-nav');
-            const menuBtn = $('.mobile-menu-btn');
-            
-            if (mobileNav && mobileNav.classList.contains('active')) {
-                if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
-                    toggleMobileNav();
-                }
-            }
-        });
-    }
-
-    // Sélecteur de langue
-    function toggleFlags() {
-        const dropdown = $('#flag-dropdown');
-        if (dropdown) {
-            dropdown.classList.toggle('hidden');
-        }
-    }
-
-    function changeLanguage(url) {
-        // Animation de transition
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.3s ease';
-        
-        setTimeout(() => {
-            window.location.href = url;
-        }, 300);
-    }
-
-    // Fermer le dropdown de langue
-    function setupLanguageClose() {
-        document.addEventListener('click', (e) => {
-            const selector = $('.language-selector');
-            const dropdown = $('#flag-dropdown');
-            
-            if (dropdown && !dropdown.classList.contains('hidden')) {
-                if (!selector || !selector.contains(e.target)) {
-                    dropdown.classList.add('hidden');
-                }
-            }
-        });
-    }
-
-        // Système de particules optimisé
-    class ParticleSystem {
-        constructor() {
-            this.particles = [];
-            this.canvas = null;
-            this.ctx = null;
-            this.animationId = null;
-            this.isRunning = false;
-        }
-        
-        init() {
-            if (isAnimationReduced || isMobile) return;
-            
-            this.createCanvas();
-            this.createParticles();
-            this.animate();
-        }
-        
-        createCanvas() {
-            const container = $('.floating-particles');
-            if (!container) return;
-            
-            this.canvas = document.createElement('canvas');
-            this.canvas.style.position = 'absolute';
-            this.canvas.style.top = '0';
-            this.canvas.style.left = '0';
-            this.canvas.style.width = '100%';
-            this.canvas.style.height = '100%';
-            this.canvas.style.pointerEvents = 'none';
-            
-            container.appendChild(this.canvas);
-            this.ctx = this.canvas.getContext('2d');
-            this.resize();
-        }
-        
-        createParticles() {
-            const numParticles = isMobile ? 20 : 50;
-            
-            for (let i = 0; i < numParticles; i++) {
-                this.particles.push({
-                    x: Math.random() * this.canvas.width,
-                    y: Math.random() * this.canvas.height,
-                    size: Math.random() * 3 + 1,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.5 + 0.3,
-                    color: Math.random() > 0.5 ? '#00ff41' : '#e65616'
-                });
-            }
-        }
-        
-        animate() {
-            if (!this.ctx) return;
-            
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            
-            this.particles.forEach(particle => {
-                // Mise à jour position
-                particle.x += particle.speedX;
-                particle.y += particle.speedY;
-                
-                // Rebond sur les bords
-                if (particle.x < 0 || particle.x > this.canvas.width) {
-                    particle.speedX *= -1;
-                }
-                if (particle.y < 0 || particle.y > this.canvas.height) {
-                    particle.speedY *= -1;
-                }
-                
-                // Contraindre dans les limites
-                particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
-                particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
-                
-                // Dessiner la particule
-                this.ctx.globalAlpha = particle.opacity;
-                this.ctx.fillStyle = particle.color;
-                this.ctx.shadowBlur = 10;
-                this.ctx.shadowColor = particle.color;
-                this.ctx.beginPath();
-                this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                this.ctx.fill();
-                this.ctx.shadowBlur = 0;
-            });
-            
-            this.animationId = requestAnimationFrame(() => this.animate());
-        }
-        
-        resize() {
-            if (!this.canvas) return;
-            
-            this.canvas.width = this.canvas.offsetWidth;
-            this.canvas.height = this.canvas.offsetHeight;
-            
-            // Recréer les particules avec la nouvelle taille
-            this.particles = [];
-            this.createParticles();
-        }
-        
-        destroy() {
-            if (this.animationId) {
-                cancelAnimationFrame(this.animationId);
-            }
-            if (this.canvas && this.canvas.parentNode) {
-                this.canvas.parentNode.removeChild(this.canvas);
-            }
-            this.particles = [];
-        }
-    }
-
-    // Matrix Rain Effect
-    class MatrixRain {
-        constructor() {
-            this.characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            this.drops = [];
-            this.canvas = null;
-            this.ctx = null;
-            this.animationId = null;
-        }
-        
-        init() {
-            if (isAnimationReduced) return;
-            
-            this.createCanvas();
-            this.createDrops();
-            this.animate();
-        }
-        
-        createCanvas() {
-            const container = $('.matrix-rain');
-            if (!container) return;
-            
-            this.canvas = document.createElement('canvas');
-            this.canvas.style.position = 'absolute';
-            this.canvas.style.top = '0';
-            this.canvas.style.left = '0';
-            this.canvas.style.width = '100%';
-            this.canvas.style.height = '100%';
-            this.canvas.style.pointerEvents = 'none';
-            this.canvas.style.opacity = '0.1';
-            
-            container.appendChild(this.canvas);
-            this.ctx = this.canvas.getContext('2d');
-            this.resize();
-        }
-        
-        createDrops() {
-            const columns = Math.floor(this.canvas.width / 20);
-            
-            for (let i = 0; i < columns; i++) {
-                this.drops.push({
-                    x: i * 20,
-                    y: Math.random() * this.canvas.height,
-                    speed: Math.random() * 3 + 2,
-                    char: this.getRandomChar()
-                });
-            }
-        }
-        
-        getRandomChar() {
-            return this.characters[Math.floor(Math.random() * this.characters.length)];
-        }
-        
-        animate() {
-            if (!this.ctx) return;
-            
-            this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-            
-            this.ctx.fillStyle = '#00ff41';
-            this.ctx.font = '16px "Fira Code", monospace';
-            this.ctx.textAlign = 'left';
-            this.ctx.shadowBlur = 5;
-            this.ctx.shadowColor = '#00ff41';
-            
-            this.drops.forEach(drop => {
-                this.ctx.fillText(drop.char, drop.x, drop.y);
-                
-                drop.y += drop.speed;
-                
-                if (drop.y > this.canvas.height) {
-                    drop.y = 0;
-                    drop.char = this.getRandomChar();
-                }
-                
-                if (Math.random() > 0.98) {
-                    drop.char = this.getRandomChar();
-                }
-            });
-            
-            this.ctx.shadowBlur = 0;
-            this.animationId = requestAnimationFrame(() => this.animate());
-        }
-        
-        resize() {
-            if (!this.canvas) return;
-            
-            this.canvas.width = this.canvas.offsetWidth;
-            this.canvas.height = this.canvas.offsetHeight;
-            
-            // Recréer les gouttes avec la nouvelle taille
-            this.drops = [];
-            this.createDrops();
-        }
-        
-        destroy() {
-            if (this.animationId) {
-                cancelAnimationFrame(this.animationId);
-            }
-            if (this.canvas && this.canvas.parentNode) {
-                this.canvas.parentNode.removeChild(this.canvas);
-            }
-            this.drops = [];
-        }
-    }
-
-    // Gestionnaire de projets
-    function toggleProject(element) {
-        const isExpanded = element.classList.contains('expanded');
-        const allCards = document.querySelectorAll('.project-card');
-        
-        // Fermer tous les autres projets
-        allCards.forEach(card => {
-            if (card !== element) {
-                card.classList.remove('expanded');
-                const content = card.querySelector('.expanded-content');
-                content.classList.remove('show');
-            }
-        });
-        
-        if (!isExpanded) {
-            // Ouvrir le projet cliqué
-            element.classList.add('expanded');
-            const content = element.querySelector('.expanded-content');
-            setTimeout(() => {
-                content.classList.add('show');
-            }, 100);
-            
-            // Scroll vers l'élément avec un petit décalage
-            setTimeout(() => {
-                element.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }, 300);
-        } else {
-            // Fermer le projet
-            element.classList.remove('expanded');
-            const content = element.querySelector('.expanded-content');
-            content.classList.remove('show');
-        }
-    }
-
-    // Système principal d'initialisation
-    class ProjectsApp {
-        constructor() {
-            this.particleSystem = new ParticleSystem();
-            this.matrixRain = new MatrixRain();
-            this.isInitialized = false;
-        }
-        
-        init() {
-            if (this.isInitialized) return;
-            
-            try {
-                console.log('🚀 Initialisation de la page projets...');
-                
-                // Détecter les capacités de l'appareil
-                this.detectDevice();
-                
-                // Configurer les événements
-                this.setupEventListeners();
-                
-                // Initialiser les animations (si supportées)
-                if (!isAnimationReduced) {
-                    this.matrixRain.init();
-                    this.particleSystem.init();
-                }
-                
-                // Finaliser l'initialisation
-                this.finalizeInit();
-                
-                console.log('✅ Page projets initialisée avec succès!');
-                this.isInitialized = true;
-                
-            } catch (error) {
-                console.error('❌ Erreur lors de l\'initialisation:', error);
-            }
-        }
-        
-        detectDevice() {
-            isMobile = window.innerWidth <= 768;
-            isAnimationReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            // Ajouter des classes CSS basées sur le device
-            document.body.classList.toggle('is-mobile', isMobile);
-            document.body.classList.toggle('is-desktop', !isMobile);
-            document.body.classList.toggle('reduced-motion', isAnimationReduced);
-        }
-        
-        setupEventListeners() {
-            // Navigation mobile
-            setupMobileNavClose();
-            setupLanguageClose();
-            
-            // Fermer avec la touche Echap
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    document.querySelectorAll('.project-card').forEach(card => {
-                        card.classList.remove('expanded');
-                        const content = card.querySelector('.expanded-content');
-                        content.classList.remove('show');
-                    });
-                }
-            });
-            
-            // Redimensionnement de fenêtre avec debounce
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    this.handleResize();
-                }, 250);
-            }, { passive: true });
-        }
-        
-        handleResize() {
-            const oldIsMobile = isMobile;
-            isMobile = window.innerWidth <= 768;
-            
-            if (oldIsMobile !== isMobile) {
-                this.detectDevice();
-                
-                // Redémarrer les effets si nécessaire
-                if (!isAnimationReduced) {
-                    this.matrixRain.resize();
-                    this.particleSystem.resize();
-                }
-            }
-        }
-        
-        finalizeInit() {
-            // Animer l'entrée du body
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            requestAnimationFrame(() => {
-                document.body.style.opacity = '1';
-            });
-            
-            // Déclencher l'événement d'initialisation personnalisé
-            window.dispatchEvent(new CustomEvent('projectsAppInitialized'));
-        }
-        
-        destroy() {
-            // Nettoyage pour éviter les fuites mémoire
-            this.particleSystem.destroy();
-            this.matrixRain.destroy();
-            
-            this.isInitialized = false;
-        }
-    }
-
-    // Instanciation et lancement de l'application
-    const projectsApp = new ProjectsApp();
-
-    // Initialisation différée pour optimiser les performances
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            // Petit délai pour s'assurer que tous les styles sont chargés
-            setTimeout(() => projectsApp.init(), 100);
-        });
-    } else {
-        setTimeout(() => projectsApp.init(), 100);
-    }
-
-    // Support pour les navigateurs plus anciens
-    window.addEventListener('load', () => {
-        if (!projectsApp.isInitialized) {
-            projectsApp.init();
-        }
+        setTimeout(typeWriter, 800);
+      }
     });
-
-    // Nettoyage lors de la fermeture de la page
-    window.addEventListener('beforeunload', () => {
-        projectsApp.destroy();
-    });
-
-    // Export pour utilisation globale
-    window.ProjectsApp = projectsApp;
-    window.toggleMobileNav = toggleMobileNav;
-    window.toggleFlags = toggleFlags;
-    window.changeLanguage = changeLanguage;
-    window.toggleProject = toggleProject;
   </script>
 </body>
 </html>
