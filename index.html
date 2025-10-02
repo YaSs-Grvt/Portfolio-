@@ -4,297 +4,314 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yacine Ben Omrane — Cybersécurité</title>
-  <link rel="stylesheet" href="styles_accueil.css">
+
+  <!-- Google Fonts (important: charger avant le CSS) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="styles_accueil.css">
 </head>
 <body>
-  <!-- Animated Background -->
-  <div class="animated-bg">
-    <div class="matrix-rain"></div>
-    <div class="floating-particles"></div>
+  <!-- Mobile Warning Screen (affiché sur mobile) -->
+  <div class="mobile-warning">
     <div class="cyber-grid"></div>
-  </div>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav-wrapper">
-    <button class="mobile-menu-btn" onclick="toggleMobileNav()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    
-    <div class="mobile-nav-overlay" id="mobile-nav">
-      <div class="mobile-nav-content">
-        <div class="mobile-nav-header">
-          <h3>NAVIGATION</h3>
-          <button class="close-btn" onclick="toggleMobileNav()">×</button>
+    <div class="warning-card">
+      <div class="warning-icon">💻</div>
+
+      <h1 class="warning-title">PORTFOLIO<br>VERSION DESKTOP REQUISE</h1>
+
+      <p class="warning-message">
+        Ce portfolio a été optimisé pour offrir une <strong>expérience immersive complète</strong> sur ordinateur.
+      </p>
+
+      <div class="terminal-box">
+        <div class="terminal-line">
+          <span class="prompt">$</span> device_check --mobile
         </div>
-        
-        <div class="mobile-nav-links">
-          <a href="index.html" class="nav-link active">
-            <div class="nav-icon">🏠</div>
-            <span>Accueil</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="about.html" class="nav-link">
-            <div class="nav-icon">👤</div>
-            <span>À propos</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="projects.html" class="nav-link">
-            <div class="nav-icon">💻</div>
-            <span>Projets</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="certifications.html" class="nav-link">
-            <div class="nav-icon">🏆</div>
-            <span>Certifications</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="compétences.html" class="nav-link">
-            <div class="nav-icon">⚡</div>
-            <span>Compétences</span>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="equipements.html" class="nav-link">
-            <div class="nav-icon">🔧</div>
-            <span>Équipements</span>
-            <div class="nav-arrow">→</div>
-          </a>
+        <div class="terminal-line">
+          <span class="error">⚠ AVERTISSEMENT:</span> Appareil mobile détecté
         </div>
-        
-        <div class="mobile-nav-footer">
-          <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
-            <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiByeD0iNCIgZmlsbD0iIzAwNzdCNSIvPgo8cGF0aCBkPSJNNy41IDEwSDEyLjVWMjIuNUg3LjVWMTBaTTEwIDcuNUMxMS4zODA3IDcuNSAxMi41IDguNjE5MjkgMTIuNSAxMEMxMi41IDExLjM4MDcgMTEuMzgwNyAxMi41IDEwIDEyLjVDOC42MTkyOSAxMi41IDcuNSAxMS4zODA3IDcuNSAxMEM3LjUgOC42MTkyOSA4LjYxOTI5IDcuNSAxMCA3LjVaTTE1IDEwSDIwVjExLjVIMjBDMjAuNSAxMC41IDIxLjUgMTAuMjUgMjIuNSAxMC4yNUMyNC41IDEwLjI1IDI2IDExLjUgMjYgMTMuNVYyMi41SDIxVjE0QzIxIDEzIDIwIDEyLjUgMTkgMTIuNUMxOCAxMi41IDE2LjUgMTMgMTYuNSAxNFYyMi41SDE1VjEwWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==';" />
-            <span>LinkedIn Profile</span>
-          </a>
+        <div class="terminal-line">
+          <span class="prompt">→</span> Veuillez utiliser un ordinateur
         </div>
+      </div>
+
+      <!-- Bouton pour forcer la vue mobile (affiche le site complet sur mobile) -->
+      <div style="text-align:center; margin-top: 10px;">
+        <button class="continue-btn" onclick="forceView()">Continuer sur mobile</button>
+      </div>
+
+      <div class="status">
+        <div class="status-dot"></div>
+        <span>Meilleure expérience sur PC</span>
       </div>
     </div>
   </div>
 
-  <!-- Desktop Navigation -->
-  <nav class="desktop-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <div class="logo-icon">Y</div>
-        <span>Yacine Ben Omrane</span>
-      </div>
-      
-      <div class="nav-links">
-        <a href="index.html" class="nav-item active">
-          <span class="nav-text">Accueil</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="about.html" class="nav-item">
-          <span class="nav-text">À propos</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="projects.html" class="nav-item">
-          <span class="nav-text">Projets</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="certifications.html" class="nav-item">
-          <span class="nav-text">Certifications</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="compétences.html" class="nav-item">
-          <span class="nav-text">Compétences</span>
-          <div class="nav-underline"></div>
-        </a>
-        <a href="equipements.html" class="nav-item">
-          <span class="nav-text">Équipements</span>
-          <div class="nav-underline"></div>
-        </a>
-      </div>
-      
+  <!-- Desktop Content : ton ancien site placé ici -->
+  <div class="desktop-content">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="matrix-rain"></div>
+      <div class="floating-particles"></div>
+      <div class="cyber-grid"></div>
+    </div>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-wrapper">
+      <button class="mobile-menu-btn" onclick="toggleMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="mobile-nav-overlay" id="mobile-nav">
+        <div class="mobile-nav-content">
+          <div class="mobile-nav-header">
+            <h3>NAVIGATION</h3>
+            <button class="close-btn" onclick="toggleMobileNav()">×</button>
+          </div>
+
+          <div class="mobile-nav-links">
+            <a href="index.html" class="nav-link active">
+              <div class="nav-icon">🏠</div>
+              <span>Accueil</span>
+              <div class="nav-arrow">→</div>
+            </a>
+            <a href="about.html" class="nav-link">
+              <div class="nav-icon">👤</div>
+              <span>À propos</span>
+              <div class="nav-arrow">→</div>
+            </a>
+            <a href="projects.html" class="nav-link">
+              <div class="nav-icon">💻</div>
+              <span>Projets</span>
+              <div class="nav-arrow">→</div>
+            </a>
+            <a href="certifications.html" class="nav-link">
+              <div class="nav-icon">🏆</div>
+              <span>Certifications</span>
+              <div class="nav-arrow">→</div>
+            </a>
+            <a href="compétences.html" class="nav-link">
+              <div class="nav-icon">⚡</div>
+              <span>Compétences</span>
+              <div class="nav-arrow">→</div>
+            </a>
+            <a href="equipements.html" class="nav-link">
+              <div class="nav-icon">🔧</div>
+              <span>Équipements</span>
+              <div class="nav-arrow">→</div>
+            </a>
+          </div>
+
+          <div class="mobile-nav-footer">
+            <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
+              <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiByeD0iNCIgZmlsbD0iIzAwNzdCNSIvPgo8cGF0aCBkPSJNNy41IDEwSDEyLjVWMjIuNUg3LjVWMTBaTTEwIDcuNUMxMS4zODA3IDcuNSAxMi41IDguNjE5MjkgMTIuNSAxMEMxMi41IDExLjM4MDcgMTEuMzgwNyAxMi41IDEwIDEyLjVDOC42MTkyOSAxMi41IDcuNSAxMS4zODA3IDcuNSAxMEM3LjUgOC42MTkyOSA4LjYxOTI5IDcuNSAxMCA3LjVaTTE1IDEwSDIwVjExLjVIMjBDMjAuNSAxMC41IDIxLjUgMTAuMjUgMjIuNSAxMC4yNUMyNC41IDEwLjI1IDI2IDExLjUgMjYgMTMuNVYyMi41SDIxVjE0QzIxIDEzIDIwIDEyLjUgMTkgMTIuNUMxOCAxMi41IDE2LjUgMTMgMTYuNSAxNFYyMi41SDE1VjEwWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==';" />
+              <span>LinkedIn Profile</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">Y</div>
+          <span>Yacine Ben Omrane</span>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html" class="nav-item active">
+            <span class="nav-text">Accueil</span>
+            <div class="nav-underline"></div>
+          </a>
+          <a href="about.html" class="nav-item">
+            <span class="nav-text">À propos</span>
+            <div class="nav-underline"></div>
+          </a>
+          <a href="projects.html" class="nav-item">
+            <span class="nav-text">Projets</span>
+            <div class="nav-underline"></div>
+          </a>
+          <a href="certifications.html" class="nav-item">
+            <span class="nav-text">Certifications</span>
+            <div class="nav-underline"></div>
+          </a>
+          <a href="compétences.html" class="nav-item">
+            <span class="nav-text">Compétences</span>
+            <div class="nav-underline"></div>
+          </a>
+          <a href="equipements.html" class="nav-item">
+            <span class="nav-text">Équipements</span>
+            <div class="nav-underline"></div>
+          </a>
+        </div>
 
         <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="desktop-linkedin">
           <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/500px-LinkedIn_logo_initials.png';" />
         </a>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero Section -->
-  <main class="hero-section">
-    <div class="hero-container">
-      <!-- Mobile Hero Layout -->
-      <div class="mobile-hero">
-        <div class="mobile-profile">
-          <div class="profile-avatar">
-            <div class="avatar-glow"></div>
-            <span class="avatar-initial">Y</span>
+    <!-- Hero Section -->
+    <main class="hero-section">
+      <div class="hero-container">
+        <!-- Mobile Hero Layout -->
+        <div class="mobile-hero">
+          <div class="mobile-profile">
+            <div class="profile-avatar">
+              <div class="avatar-glow"></div>
+              <span class="avatar-initial">Y</span>
+            </div>
+            <div class="profile-status">
+              <div class="status-dot"></div>
+              <span>FORMATION RÉSEAU - PARCOURS CYBERSÉCURITÉ</span>
+            </div>
           </div>
-          <div class="profile-status">
-            <div class="status-dot"></div>
-            <span>FORMATION RÉSEAU -
-PARCOURS CYBERSÉCURITÉ</span>
-          </div>
-        </div>
-        
-        <div class="mobile-intro">
-          <h1 class="mobile-title">
-            <span class="title-line">ÉTUDIANT</span>
-            <span class="title-line accent">RÉSEAUX & TÉLÉCOMS</span>
-            <span class="title-line">PARCOURS CYBERSÉCURITÉ</span>
-          </h1>
-          
-          <div class="mobile-subtitle">
-            <span class="subtitle-item">🔒 Ethical Hacking</span>
-            <span class="subtitle-item">🛡️ Penetration Testing</span>
-            <span class="subtitle-item">⚡ Security Analysis</span>
-          </div>
-        </div>
-        
-        <div class="mobile-description">
-          <p>Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.</p>
-        </div>
-        
-        <div class="mobile-actions">
-          <a href="projects.html" class="action-btn primary">
-            <span>Mes Projets</span>
-            <div class="btn-icon">💻</div>
-          </a>
-          <a href="about.html" class="action-btn secondary">
-            <span>En savoir plus</span>
-            <div class="btn-icon">👤</div>
-          </a>
-        </div>
-        
-        <div class="mobile-stats">
-          <div class="stat-card">
-            <div class="stat-number">2+</div>
-            <div class="stat-label">Années d'études</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Passion</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Veille techno</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Desktop Hero Layout -->
-      <div class="desktop-hero">
-        <div class="hero-content">
-          <div class="hero-intro">
-            <h1 class="hero-title">
-              <span class="title-word" data-text="FORMATION RÉSEAU & TÉLÉCOMS -">FORMATION RÉSEAU & TÉLÉCOMS -</span>
-              <span class="title-word accent" data-text="PARCOURS CYBERSÉCURITÉ">PARCOURS CYBERSÉCURITÉ</span>
+          <div class="mobile-intro">
+            <h1 class="mobile-title">
+              <span class="title-line">ÉTUDIANT</span>
+              <span class="title-line accent">RÉSEAUX & TÉLÉCOMS</span>
+              <span class="title-line">PARCOURS CYBERSÉCURITÉ</span>
             </h1>
-            
-            <div class="hero-subtitle">
-              <span class="typing-text">Étudiant Cybersécurité • Réseaux & Télécoms • Montage et configuration PC</span>
-            </div>
-            
-            <p class="hero-description">
-              Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.
-            </p>
-            
-            <div class="hero-actions">
-              <a href="projects.html" class="cta-btn primary">
-                <span>Découvrir mes Projets</span>
-                <div class="btn-effect"></div>
-              </a>
-              <a href="about.html" class="cta-btn secondary">
-                <span>En savoir plus</span>
-                <div class="btn-effect"></div>
-              </a>
+
+            <div class="mobile-subtitle">
+              <span class="subtitle-item">🔒 Ethical Hacking</span>
+              <span class="subtitle-item">🛡️ Penetration Testing</span>
+              <span class="subtitle-item">⚡ Security Analysis</span>
             </div>
           </div>
-          
-          <div class="hero-visual">
-            <div class="terminal-window">
-              <div class="terminal-header">
-                <div class="terminal-buttons">
-                  <span class="btn red"></span>
-                  <span class="btn yellow"></span>
-                  <span class="btn green"></span>
-                </div>
-                <div class="terminal-title">root@yacine:~</div>
-              </div>
-              <div class="terminal-body">
-                <div class="terminal-line" style="--delay: 0.5s">
-                  <span class="prompt">$</span>
-                  <span class="command">whoami</span>
-                </div>
-                <div class="terminal-line" style="--delay: 1s">
-                  <span class="output">→ Étudiant BUT Réseaux & Télécoms</span>
-                </div>
-                <div class="terminal-line" style="--delay: 1.5s">
-                  <span class="output">→ Parcours Cybersécurité</span>
-                </div>
-                <div class="terminal-line" style="--delay: 2s">
-                  <span class="output">→ Passionné de technologie</span>
-                </div>
-                <div class="terminal-line" style="--delay: 2.5s">
-                  <span class="output">→ Installation et configuration de PC</span>
-                </div>
-                <div class="terminal-line" style="--delay: 3s">
-                  <span class="prompt">$</span>
-                  <span class="cursor">█</span>
-                </div>
-              </div>
+
+          <div class="mobile-description">
+            <p>Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.</p>
+          </div>
+
+          <div class="mobile-actions">
+            <a href="projects.html" class="action-btn primary">
+              <span>Mes Projets</span>
+              <div class="btn-icon">💻</div>
+            </a>
+            <a href="about.html" class="action-btn secondary">
+              <span>En savoir plus</span>
+              <div class="btn-icon">👤</div>
+            </a>
+          </div>
+
+          <div class="mobile-stats">
+            <div class="stat-card">
+              <div class="stat-number">2+</div>
+              <div class="stat-label">Années d'études</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Passion</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Veille techno</div>
             </div>
           </div>
         </div>
-        
-        <div class="hero-stats">
-          <div class="stats-container">
-            <div  style="--delay: 0.5s">
 
-              <div class="stat-content">
+        <!-- Desktop Hero Layout -->
+        <div class="desktop-hero">
+          <div class="hero-content">
+            <div class="hero-intro">
+              <h1 class="hero-title">
+                <span class="title-word" data-text="FORMATION RÉSEAU & TÉLÉCOMS -">FORMATION RÉSEAU & TÉLÉCOMS -</span>
+                <span class="title-word accent" data-text="PARCOURS CYBERSÉCURITÉ">PARCOURS CYBERSÉCURITÉ</span>
+              </h1>
 
+              <div class="hero-subtitle">
+                <span class="typing-text">Étudiant Cybersécurité • Réseaux & Télécoms • Montage et configuration PC</span>
+              </div>
+
+              <p class="hero-description">
+                Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.
+              </p>
+
+              <div class="hero-actions">
+                <a href="projects.html" class="cta-btn primary">
+                  <span>Découvrir mes Projets</span>
+                  <div class="btn-effect"></div>
+                </a>
+                <a href="about.html" class="cta-btn secondary">
+                  <span>En savoir plus</span>
+                  <div class="btn-effect"></div>
+                </a>
               </div>
             </div>
-            <div class="stat-item" style="--delay: 0.7s">
-              <div class="stat-icon">🎓</div>
-              <div class="stat-content">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Années d'études supérieures</div>
+
+            <div class="hero-visual">
+              <div class="terminal-window">
+                <div class="terminal-header">
+                  <div class="terminal-buttons">
+                    <span class="btn red"></span>
+                    <span class="btn yellow"></span>
+                    <span class="btn green"></span>
+                  </div>
+                  <div class="terminal-title">root@yacine:~</div>
+                </div>
+                <div class="terminal-body">
+                  <div class="terminal-line" style="--delay: 0.5s">
+                    <span class="prompt">$</span>
+                    <span class="command">whoami</span>
+                  </div>
+                  <div class="terminal-line" style="--delay: 1s">
+                    <span class="output">→ Étudiant BUT Réseaux & Télécoms</span>
+                  </div>
+                  <div class="terminal-line" style="--delay: 1.5s">
+                    <span class="output">→ Parcours Cybersécurité</span>
+                  </div>
+                  <div class="terminal-line" style="--delay: 2s">
+                    <span class="output">→ Passionné de technologie</span>
+                  </div>
+                  <div class="terminal-line" style="--delay: 2.5s">
+                    <span class="output">→ Installation et configuration de PC</span>
+                  </div>
+                  <div class="terminal-line" style="--delay: 3s">
+                    <span class="prompt">$</span>
+                    <span class="cursor">█</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="stat-item" style="--delay: 0.9s">
-              <div class="stat-icon">💖</div>
-              <div class="stat-content">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Passion pour la cybersécurité</div>
-              </div>
-            </div>
+          </div> <!-- .hero-content -->
+        </div> <!-- .desktop-hero -->
+      </div> <!-- .hero-container -->
+    </main>
+  </div> <!-- .desktop-content -->
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+  <!-- Script: fonction pour forcer l'affichage (appelée par le bouton Continuer sur mobile) -->
+  <script>
+    function forceView() {
+      // Cache l'avertissement et affiche le contenu
+      const mw = document.querySelector('.mobile-warning');
+      const dc = document.querySelector('.desktop-content');
+      if (mw && dc) {
+        mw.style.display = 'none';
+        dc.style.display = 'block';
+        document.body.style.overflow = 'auto';
+        // Optionnel: sauvegarder la préférence
+        sessionStorage.setItem('forceMobileView', 'true');
+      }
+    }
 
-  <!-- Mobile Bottom Navigation -->
-  <div class="mobile-bottom-nav">
-    <a href="index.html" class="bottom-nav-item active">
-      <div class="nav-icon">🏠</div>
-      <span>Accueil</span>
-    </a>
-    <a href="projects.html" class="bottom-nav-item">
-      <div class="nav-icon">💻</div>
-      <span>Projets</span>
-    </a>
-    <a href="about.html" class="bottom-nav-item">
-      <div class="nav-icon">👤</div>
-      <span>À propos</span>
-    </a>
-    <a href="certifications.html" class="bottom-nav-item">
-      <div class="nav-icon">🏆</div>
-      <span>Certifs</span>
-    </a>
-  </div>
+    // Vérifier si l'utilisateur a déjà choisi de continuer (persistant pendant la session)
+    if (sessionStorage.getItem('forceMobileView') === 'true') {
+      // Si la préférence a été sauvegardée, forcer l'affichage (utile si l'utilisateur recharge la page)
+      forceView();
+    }
+  </script>
 
+  <!-- Ton script principal (toggleMobileNav etc.) -->
   <script src="script.js"></script>
 </body>
 </html>
