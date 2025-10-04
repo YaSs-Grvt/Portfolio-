@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane – Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Variables CSS Ultra-Stylées */
+    :root {
+      --primary-color: #e65616;
+      --primary-light: #ff6b35;
+      --primary-dark: #cc4a12;
+      --neon-green: #00ff41;
+      --neon-blue: #00d4ff;
+      --neon-purple: #b300ff;
+      --dark-bg: #0a0a0a;
+      --darker-bg: #050505;
+      --card-bg: rgba(15, 15, 35, 0.8);
+      --card-border: rgba(0, 255, 65, 0.2);
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-accent: #00ff41;
+      --shadow-neon: 0 0 30px rgba(0, 255, 65, 0.5);
+      --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
+    }
+
+    /* Reset et Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .cyber-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 20s linear infinite;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navigation */
+    .desktop-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+      padding: 0;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      gap: 40px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-item {
+      position: relative;
+      padding: 10px 0;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .nav-underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-green), var(--primary-color));
+      transition: width 0.4s ease;
+    }
+
+    .nav-item:hover .nav-underline,
+    .nav-item.active .nav-underline {
+      width: 100%;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      min-height: 100vh;
+      padding: 120px 20px 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--text-primary);
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      margin-bottom: 20px;
+      animation: slideInDown 1s ease forwards;
+    }
+
+    .contact-title .accent {
+      color: var(--neon-green);
+      text-shadow: 0 0 30px var(--neon-green);
+      background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-subtitle {
+      font-size: 1.3rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Terminal Card */
+    .terminal-card {
+      background: var(--darker-bg);
+      border: 2px solid var(--neon-green);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-neon);
+      opacity: 0;
+      animation: slideInUp 1s ease 1s forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .terminal-header {
+      background: linear-gradient(135deg, var(--dark-bg), rgba(26, 26, 46, 0.8));
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    }
+
+    .terminal-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn.red { background: #ff5f57; }
+    .btn.yellow { background: #ffbd2e; }
+    .btn.green { background: #28ca42; }
+
+    .terminal-title {
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .terminal-body {
+      padding: 40px 30px;
+    }
+
+    .terminal-line {
+      margin-bottom: 15px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      opacity: 0;
+      animation: terminalType 0.8s ease forwards;
+    }
+
+    .terminal-line:nth-child(1) { animation-delay: 1.5s; }
+    .terminal-line:nth-child(2) { animation-delay: 2s; }
+    .terminal-line:nth-child(3) { animation-delay: 2.5s; }
+
+    @keyframes terminalType {
+      to { opacity: 1; }
+    }
+
+    .prompt {
+      color: var(--neon-green);
+      font-weight: 700;
+    }
+
+    .command {
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+
+    .output {
+      color: var(--text-secondary);
+    }
+
+    /* Contact Buttons */
+    .contact-methods {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 3s forwards;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 30px;
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 15px;
+      text-decoration: none;
+      backdrop-filter: blur(15px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      transition: left 0.5s;
+    }
+
+    .contact-btn:hover::before {
+      left: 100%;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-green);
+      box-shadow: var(--shadow-neon);
+      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(0, 255, 65, 0.05));
+    }
+
+    .contact-btn.linkedin {
+      border-color: rgba(0, 119, 181, 0.5);
+    }
+
+    .contact-btn.linkedin:hover {
+      border-color: #0077b5;
+      box-shadow: 0 0 30px rgba(0, 119, 181, 0.5);
+      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(0, 119, 181, 0.05));
+    }
+
+    .contact-btn.email {
+      border-color: rgba(230, 86, 22, 0.5);
+    }
+
+    .contact-btn.email:hover {
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-primary);
+      background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(230, 86, 22, 0.05));
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    .contact-btn.linkedin .contact-icon {
+      background: linear-gradient(45deg, #0077b5, #00a0dc);
+      box-shadow: 0 0 20px rgba(0, 119, 181, 0.3);
+    }
+
+    .contact-btn.email .contact-icon {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      box-shadow: var(--shadow-primary);
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      color: var(--neon-green);
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-value {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .contact-arrow {
+      font-size: 1.5rem;
+      color: var(--neon-green);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-btn:hover .contact-arrow {
+      transform: translateX(5px);
+    }
+
+    .contact-btn:hover .contact-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* Info Message */
+    .contact-message {
+      margin-top: 40px;
+      padding: 25px;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 15px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 1s ease 3.5s forwards;
+    }
+
+    .contact-message p {
+      font-family: 'Fira Code', monospace;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .response-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 25px;
+      color: var(--neon-green);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 100px 15px 80px;
+      }
+
+      .contact-title {
+        font-size: 2.5rem;
+      }
+
+      .contact-subtitle {
+        font-size: 1rem;
+      }
+
+      .terminal-body {
+        padding: 30px 20px;
+      }
+
+      .contact-btn {
+        padding: 20px;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .contact-value {
+        font-size: 0.9rem;
+      }
+
+      .nav-container {
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-item {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-title {
+        font-size: 2rem;
+      }
+
+      .contact-btn {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-arrow {
+        transform: rotate(90deg);
+      }
+
+      .contact-btn:hover .contact-arrow {
+        transform: rotate(90deg) translateX(5px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="cyber-grid"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="desktop-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">Y</div>
+        <span>Yacine Ben Omrane</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-item">
+          <span class="nav-text">Accueil</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="about.html" class="nav-item">
+          <span class="nav-text">À propos</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="projects.html" class="nav-item">
+          <span class="nav-text">Projets</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="certifications.html" class="nav-item">
+          <span class="nav-text">Certifications</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="compétences.html" class="nav-item">
+          <span class="nav-text">Compétences</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="equipements.html" class="nav-item">
+          <span class="nav-text">Équipements</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="contact.html" class="nav-item active">
+          <span class="nav-text">Contact</span>
+          <div class="nav-underline"></div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <main class="contact-section">
+    <div class="contact-container">
+      <!-- Header -->
+      <div class="contact-header">
+        <h1 class="contact-title">
+          <span class="accent">CONTACT</span>
+        </h1>
+        <div class="contact-subtitle">
+          <span class="typing-text">Restons en contact • Échangeons • Collaborons</span>
+        </div>
+      </div>
+
+      <!-- Terminal Card -->
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn red"></span>
+            <span class="btn yellow"></span>
+            <span class="btn green"></span>
+          </div>
+          <div class="terminal-title">contact@benomrane-yacine.com</div>
+        </div>
+
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="command"> cat contact_info.txt</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output">→ Disponible pour échanges professionnels</span>
+          </div>
+          <div class="terminal-line">
+            <span class="output">→ Ouvert aux opportunités : stage 2026 et alternance 2027</span>
+          </div>
+
+          <!-- Contact Buttons -->
+          <div class="contact-methods">
+            <a href="https://www.linkedin.com/in/benomrane-yacine" target="_blank" class="contact-btn linkedin">
+              <div class="contact-info">
+                <div class="contact-icon">
+                  <img src="Image/linkedin.png" alt="LinkedIn" />
+                </div>
+                <div class="contact-text">
+                  <div class="contact-label">LinkedIn</div>
+                  <div class="contact-value">linkedin.com/in/benomrane-yacine</div>
+                </div>
+              </div>
+              <div class="contact-arrow">→</div>
+            </a>
+
+            <a href="mailto:contact@benomrane-yacine.com?subject=Contact%20depuis%20le%20portfolio&body=Bonjour%20Yacine,%0A%0AJe%20souhaite%20vous%20contacter%20au%20sujet%20de..." class="contact-btn email">
+              <div class="contact-info">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-text">
+                  <div class="contact-label">Email Professionnel</div>
+                  <div class="contact-value">contact@benomrane-yacine.com</div>
+                </div>
+              </div>
+              <div class="contact-arrow">→</div>
+            </a>
+          </div>
+
+          <!-- Info Message -->
+          <div class="contact-message">
+            <p>Je réponds généralement sous 24-48h aux messages professionnels.</p>
+            <div class="response-time">
+              <div class="status-dot"></div>
+              <span>Disponible pour échanges</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Animation typing effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const typingElement = document.querySelector('.typing-text');
+      if (typingElement) {
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
+        typingElement.style.borderRight = '2px solid var(--neon-green)';
+        
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+          } else {
+            setInterval(() => {
+              typingElement.style.borderColor = 
+                typingElement.style.borderColor === 'transparent' ? 
+                'var(--neon-green)' : 'transparent';
+            }, 1000);
+          }
+        }
+        
+        setTimeout(typeWriter, 800);
+      }
+    });
+  </script>
+</body>
+</html>
