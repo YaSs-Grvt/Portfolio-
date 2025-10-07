@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Message Envoyé - Yacine Ben Omrane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #e65616;
+      --primary-light: #ff6b35;
+      --neon-green: #00ff41;
+      --neon-blue: #00d4ff;
+      --dark-bg: #0a0a0a;
+      --darker-bg: #050505;
+      --card-bg: rgba(15, 15, 35, 0.8);
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --shadow-neon: 0 0 30px rgba(0, 255, 65, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .cyber-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 20s linear infinite;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .success-container {
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+      padding: 60px 40px;
+      background: var(--darker-bg);
+      border: 2px solid var(--neon-green);
+      border-radius: 30px;
+      box-shadow: var(--shadow-neon);
+      animation: appearScale 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes appearScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .success-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      animation: iconBounce 0.8s ease 0.3s;
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.6);
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(0.95); }
+      75% { transform: scale(1.05); }
+    }
+
+    .success-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--neon-green);
+      text-shadow: 0 0 30px var(--neon-green);
+      margin-bottom: 20px;
+      animation: slideInDown 0.6s ease 0.4s backwards;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-message {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-family: 'Fira Code', monospace;
+      animation: fadeIn 0.8s ease 0.6s backwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .success-details {
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 30px 0;
+      animation: fadeIn 1s ease 0.8s backwards;
+    }
+
+    .success-details p {
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .success-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      background: rgba(0, 255, 65, 0.15);
+      border: 1px solid rgba(0, 255, 65, 0.4);
+      border-radius: 25px;
+      color: var(--neon-green);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      animation: pulse-animation 2s infinite;
+    }
+
+    @keyframes pulse-animation {
+      0%, 100% { 
+        opacity: 1;
+        box-shadow: 0 0 10px var(--neon-green);
+      }
+      50% { 
+        opacity: 0.5;
+        box-shadow: 0 0 20px var(--neon-green);
+      }
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      padding: 18px 40px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 30px rgba(230, 86, 22, 0.5);
+      margin-top: 20px;
+      animation: fadeInUp 1s ease 1s backwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .back-btn:hover::before {
+      left: 100%;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(230, 86, 22, 0.7);
+    }
+
+    .back-arrow {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-btn:hover .back-arrow {
+      transform: translateX(-5px);
+    }
+
+    .rocket-animation {
+      font-size: 2rem;
+      display: inline-block;
+      animation: rocket-fly 3s ease-in-out infinite;
+    }
+
+    @keyframes rocket-fly {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(-10deg); }
+    }
+
+    @media (max-width: 768px) {
+      .success-container {
+        padding: 40px 25px;
+      }
+
+      .success-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 3rem;
+      }
+
+      .success-title {
+        font-size: 2rem;
+      }
+
+      .success-message {
+        font-size: 1rem;
+      }
+
+      .back-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg">
+    <div class="cyber-grid"></div>
+  </div>
+
+  <div class="success-container">
+    <div class="success-icon">✅</div>
+    
+    <h1 class="success-title">MESSAGE ENVOYÉ !</h1>
+    
+    <p class="success-message">
+      <span class="rocket-animation">🚀</span><br>
+      Merci pour votre message !<br>
+      J'ai bien reçu votre demande et je vous répondrai dans les plus brefs délais.
+    </p>
+
+    <div class="success-details">
+      <p>
+        <strong>📧 Confirmation d'envoi</strong><br>
+        Votre message a été transmis avec succès
+      </p>
+      
+      <div class="success-time">
+        <div class="pulse-dot"></div>
+        <span>Réponse sous 24-48h maximum</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-btn">
+      <span class="back-arrow">←</span>
+      <span>Retour au Portfolio</span>
+    </a>
+  </div>
+</body>
+</html>
