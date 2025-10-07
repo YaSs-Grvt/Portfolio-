@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* Variables CSS Ultra-Stylées */
+
     :root {
       --primary-color: #e65616;
       --primary-light: #ff6b35;
@@ -27,7 +27,6 @@
       --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
     }
 
-    /* Reset et Base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,7 +46,6 @@
       position: relative;
     }
 
-    /* Animated Background */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -87,7 +85,6 @@
       100% { transform: translate(50px, 50px); }
     }
 
-    /* Navigation */
     .desktop-nav {
       position: fixed;
       top: 0;
@@ -117,8 +114,8 @@
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--neon-green);
-  text-decoration: none; /* enlève le soulignement */
-  cursor: pointer;       /* ajoute la main au survol */
+  text-decoration: none; 
+  cursor: pointer;       
     }
 
     .logo-icon {
@@ -171,7 +168,7 @@
       width: 100%;
     }
 
-    /* About Section */
+
     .about-section {
       min-height: 100vh;
       padding: 120px 20px 50px;
@@ -237,7 +234,7 @@
       }
     }
 
-    /* Profile Card */
+
     .profile-card {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -347,7 +344,7 @@
       margin-bottom: 30px;
     }
 
-    /* Sections Grid */
+
     .about-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -456,7 +453,7 @@
       font-weight: bold;
     }
 
-    /* Stats Section */
+
     .stats-section {
       background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
       border: 1px solid rgba(0, 255, 65, 0.3);
@@ -512,7 +509,7 @@
       font-weight: 600;
     }
 
-    /* Timeline Section */
+
     .timeline-section {
       margin-bottom: 60px;
       opacity: 0;
@@ -616,7 +613,7 @@
       line-height: 1.6;
     }
 
-    /* Contact CTA */
+
     .contact-cta {
       text-align: center;
       background: linear-gradient(135deg, rgba(230, 86, 22, 0.1), rgba(230, 86, 22, 0.05));
@@ -663,7 +660,7 @@
       box-shadow: 0 15px 40px rgba(230, 86, 22, 0.6);
     }
 
-    /* Responsive Design */
+
     @media (max-width: 768px) {
       .about-section {
         padding: 100px 15px 80px;
@@ -767,14 +764,12 @@
   </style>
 </head>
 <body>
-  <!-- Animated Background -->
   <div class="animated-bg">
     <div class="matrix-rain"></div>
     <div class="floating-particles"></div>
     <div class="cyber-grid"></div>
   </div>
 
-<!-- Navigation -->
 <nav class="desktop-nav">
   <div class="nav-container">
     <a href="index.html" class="nav-logo">
@@ -846,10 +841,10 @@
     </div>
   </nav>
 
-  <!-- About Section -->
+
   <main class="about-section">
     <div class="about-container">
-      <!-- Header -->
+
       <div class="about-header">
         <h1 class="about-title">
           À <span class="accent">PROPOS</span>
@@ -859,7 +854,7 @@
         </div>
       </div>
 
-      <!-- Profile Card -->
+
       <div class="profile-card">
         <div class="profile-image-section">
           <div class="profile-avatar">
@@ -897,7 +892,7 @@ Je suis dès à présent à la recherche d’un stage pour 2026 afin de mettre e
         </div>
       </div>
 
-      <!-- Content Cards -->
+
       <div class="about-content">
         <div class="content-card">
           <div class="card-header">
@@ -946,10 +941,9 @@ Je suis dès à présent à la recherche d’un stage pour 2026 afin de mettre e
         </div>
       </div>
 
-      <!-- Stats Section -->
 
 
-      <!-- Timeline Section -->
+
       <div class="timeline-section">
         <h2 class="timeline-title">Mon Parcours</h2>
         <div class="timeline">
@@ -983,7 +977,7 @@ Je suis dès à présent à la recherche d’un stage pour 2026 afin de mettre e
         </div>
       </div>
 
-      <!-- Contact CTA -->
+
 <div class="contact-cta">
   <h2 class="cta-title">Pour en savoir plus sur mon parcours et mes projets</h2>
 
@@ -995,7 +989,7 @@ Je suis dès à présent à la recherche d’un stage pour 2026 afin de mettre e
   </main>
 
   <script>
-    // Animation simple pour le typing effect
+
     document.addEventListener('DOMContentLoaded', function() {
       const typingElement = document.querySelector('.typing-text');
       if (typingElement) {
