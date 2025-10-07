@@ -1,8 +1,4 @@
-/* ===================================
-   FICHIER CSS COMMUN POUR TOUTES LES PAGES
-   =================================== */
 
-/* Variables CSS Ultra-Stylées */
 :root {
   --primary-color: #e65616;
   --primary-light: #ff6b35;
@@ -21,7 +17,7 @@
   --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
 }
 
-/* Reset et Base */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -41,7 +37,7 @@ body {
   position: relative;
 }
 
-/* Animated Background */
+
 .animated-bg {
   position: fixed;
   top: 0;
@@ -81,7 +77,7 @@ body {
   100% { transform: translate(50px, 50px); }
 }
 
-/* Desktop Navigation */
+
 .desktop-nav {
   position: fixed;
   top: 0;
@@ -138,14 +134,14 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--neon-green);
-  text-decoration: none; /* enlève le soulignement */
+  text-decoration: none; 
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .nav-logo:hover {
   color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green); /* effet glow au survol */
+  text-shadow: 0 0 10px var(--neon-green); 
 }
 .logo-icon {
   width: 45px;
@@ -163,7 +159,7 @@ body {
 
 
 .nav-item {
-  position: relative; /* nécessaire pour que .nav-underline soit positionné */
+  position: relative; 
 }
 
 .nav-item .nav-underline {
@@ -275,7 +271,7 @@ body {
   transform: scale(1.1);
 }
 
-/* LinkedIn Button Corrections */
+
 .desktop-linkedin {
   display: flex;
   align-items: center;
@@ -295,7 +291,7 @@ body {
   box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
 }
 
-/* Si pas d'image, utiliser une icône fontawesome ou un texte */
+ 
 .desktop-linkedin::before {
   content: 'in';
   font-family: 'Arial', sans-serif;
@@ -307,16 +303,16 @@ body {
   justify-content: center;
 }
 
-/* Si l'image existe, la styler correctement */
+ 
 .desktop-linkedin img {
   width: 20px;
   height: 20px;
-  filter: brightness(0) invert(1); /* Rendre l'icône blanche */
+  filter: brightness(0) invert(1);  
   position: relative;
   z-index: 1;
 }
 
-/* Alternative avec SVG inline pour LinkedIn */
+ 
 .desktop-linkedin-icon {
   width: 40px;
   height: 40px;
@@ -341,7 +337,7 @@ body {
   fill: white;
 }
 
-/* Main Content Section */
+ 
 .main-section {
   min-height: 100vh;
   padding: 120px 20px 50px;
@@ -353,7 +349,7 @@ body {
   margin: 0 auto;
 }
 
-/* Page Header */
+ 
 .page-header {
   text-align: center;
   margin-bottom: 80px;
@@ -420,7 +416,7 @@ body {
   51%, 100% { border-color: transparent; }
 }
 
-/* Content Cards */
+ 
 .content-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -532,7 +528,7 @@ body {
   font-weight: bold;
 }
 
-/* Stats Section */
+ 
 .stats-section {
   background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
   border: 1px solid rgba(0, 255, 65, 0.3);
@@ -588,7 +584,7 @@ body {
   font-weight: 600;
 }
 
-/* CTA Section */
+ 
 .cta-section {
   text-align: center;
   background: linear-gradient(135deg, rgba(230, 86, 22, 0.1), rgba(230, 86, 22, 0.05));
@@ -635,7 +631,7 @@ body {
   box-shadow: 0 15px 40px rgba(230, 86, 22, 0.6);
 }
 
-/* Badge Styles */
+ 
 .badge {
   display: inline-block;
   padding: 5px 12px;
@@ -666,7 +662,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Progress Bar */
+ 
 .progress-bar {
   width: 100%;
   height: 10px;
@@ -684,7 +680,7 @@ body {
   box-shadow: 0 0 10px var(--neon-green);
 }
 
-/* Special Effects */
+ 
 .glow-text {
   text-shadow: 0 0 20px currentColor;
 }
@@ -698,7 +694,7 @@ body {
   50% { opacity: 0.8; transform: scale(1.05); }
 }
 
-/* Mobile Navigation */
+ 
 .mobile-nav-wrapper {
   display: none;
   position: fixed;
@@ -886,7 +882,7 @@ body {
   border-radius: 6px;
 }
 
-/* Mobile Bottom Navigation */
+
 .mobile-bottom-nav {
   display: none;
   position: fixed;
@@ -926,7 +922,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* Responsive Design */
+ 
 @media (max-width: 768px) {
   .mobile-nav-wrapper {
     display: block;
@@ -989,7 +985,7 @@ body {
   }
 }
 
-/* Tablet Portrait */
+  
 @media (min-width: 769px) and (max-width: 1024px) {
   .content-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1005,7 +1001,7 @@ body {
   }
 }
 
-/* Desktop Large */
+ 
 @media (min-width: 1367px) {
   .main-container {
     max-width: 1600px;
