@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* Variables CSS Ultra-Stylées */
+
     :root {
       --primary-color: #e65616;
       --primary-light: #ff6b35;
@@ -27,7 +27,6 @@
       --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
     }
 
-    /* Reset et Base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,7 +46,6 @@
       position: relative;
     }
 
-    /* Animated Background */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -74,7 +72,7 @@
       100% { transform: translate(50px, 50px); }
     }
 
-    /* Navigation */
+
     .desktop-nav {
       position: fixed;
       top: 0;
@@ -158,7 +156,7 @@
       width: 100%;
     }
 
-    /* Contact Section */
+
     .contact-section {
       min-height: 100vh;
       padding: 120px 20px 50px;
@@ -228,7 +226,7 @@
       }
     }
 
-    /* Terminal Card */
+
     .terminal-card {
       background: var(--darker-bg);
       border: 2px solid var(--neon-green);
@@ -316,7 +314,7 @@
       color: var(--text-secondary);
     }
 
-    /* Contact Buttons */
+
     .contact-methods {
       display: grid;
       grid-template-columns: 1fr;
@@ -451,7 +449,7 @@
       transform: scale(1.1) rotate(5deg);
     }
 
-    /* Info Message */
+ 
     .contact-message {
       margin-top: 40px;
       padding: 25px;
@@ -496,7 +494,7 @@
       50% { opacity: 0.3; }
     }
 
-    /* Responsive Design */
+  
     @media (max-width: 768px) {
       .contact-section {
         padding: 100px 15px 80px;
@@ -568,12 +566,11 @@
   </style>
 </head>
 <body>
-  <!-- Animated Background -->
+
   <div class="animated-bg">
     <div class="cyber-grid"></div>
   </div>
 
-  <!-- Navigation -->
   <nav class="desktop-nav">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -614,10 +611,10 @@
     </div>
   </nav>
 
-  <!-- Contact Section -->
+
   <main class="contact-section">
     <div class="contact-container">
-      <!-- Header -->
+
       <div class="contact-header">
         <h1 class="contact-title">
           <span class="accent">CONTACT</span>
@@ -627,7 +624,7 @@
         </div>
       </div>
 
-      <!-- Terminal Card -->
+
       <div class="terminal-card">
         <div class="terminal-header">
           <div class="terminal-buttons">
@@ -650,7 +647,7 @@
             <span class="output">→ Ouvert aux opportunités : stage 2026 et alternance 2027</span>
           </div>
 
-          <!-- Contact Buttons -->
+
           <div class="contact-methods">
             <a href="https://www.linkedin.com/in/benomrane-yacine" target="_blank" class="contact-btn linkedin">
               <div class="contact-info">
@@ -677,7 +674,7 @@
             </a>
           </div>
 
-          <!-- Info Message -->
+
           <div class="contact-message">
             <p>Je réponds généralement sous 24-48h aux messages professionnels.</p>
             <div class="response-time">
@@ -691,7 +688,7 @@
   </main>
 
   <script>
-    // Animation typing effect
+
     document.addEventListener('DOMContentLoaded', function() {
       const typingElement = document.querySelector('.typing-text');
       if (typingElement) {
