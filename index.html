@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yacine Ben Omrane — Cybersécurité</title>
 
-  <!-- Google Fonts (important: charger avant le CSS) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Feuille de style principale -->
+
   <link rel="stylesheet" href="styles_accueil.css">
 </head>
 <body>
-  <!-- Mobile Warning Screen (affiché sur mobile) -->
   <div class="mobile-warning">
     <div class="cyber-grid"></div>
 
@@ -46,16 +44,13 @@
     </div>
   </div>
 
-  <!-- Desktop Content : ton ancien site placé ici -->
   <div class="desktop-content">
-    <!-- Animated Background -->
     <div class="animated-bg">
       <div class="matrix-rain"></div>
       <div class="floating-particles"></div>
       <div class="cyber-grid"></div>
     </div>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav-wrapper">
       <button class="mobile-menu-btn" onclick="toggleMobileNav()">
         <span></span>
@@ -114,7 +109,6 @@
       </div>
     </div>
 
-    <!-- Desktop Navigation -->
     <nav class="desktop-nav">
       <div class="nav-container">
         <div class="nav-logo">
@@ -159,10 +153,8 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <main class="hero-section">
       <div class="hero-container">
-        <!-- Mobile Hero Layout -->
         <div class="mobile-hero">
           <div class="mobile-profile">
             <div class="profile-avatar">
@@ -220,7 +212,6 @@
           </div>
         </div>
 
-        <!-- Desktop Hero Layout -->
         <div class="desktop-hero">
           <div class="hero-content">
             <div class="hero-intro">
@@ -283,35 +274,32 @@
                 </div>
               </div>
             </div>
-          </div> <!-- .hero-content -->
-        </div> <!-- .desktop-hero -->
-      </div> <!-- .hero-container -->
+          </div> 
+        </div> 
+      </div>  
     </main>
-  </div> <!-- .desktop-content -->
+  </div> 
 
-  <!-- Script: fonction pour forcer l'affichage (appelée par le bouton Continuer sur mobile) -->
+ 
   <script>
     function forceView() {
-      // Cache l'avertissement et affiche le contenu
+ 
       const mw = document.querySelector('.mobile-warning');
       const dc = document.querySelector('.desktop-content');
       if (mw && dc) {
         mw.style.display = 'none';
         dc.style.display = 'block';
         document.body.style.overflow = 'auto';
-        // Optionnel: sauvegarder la préférence
+ 
         sessionStorage.setItem('forceMobileView', 'true');
       }
     }
 
-    // Vérifier si l'utilisateur a déjà choisi de continuer (persistant pendant la session)
     if (sessionStorage.getItem('forceMobileView') === 'true') {
-      // Si la préférence a été sauvegardée, forcer l'affichage (utile si l'utilisateur recharge la page)
       forceView();
     }
   </script>
 
-  <!-- Ton script principal (toggleMobileNav etc.) -->
   <script src="script.js"></script>
 </body>
 </html>
