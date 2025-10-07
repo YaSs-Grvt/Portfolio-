@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yacine Ben Omrane – Formulaire de Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Variables CSS Ultra-Stylées */
+    :root {
+      --primary-color: #e65616;
+      --primary-light: #ff6b35;
+      --primary-dark: #cc4a12;
+      --neon-green: #00ff41;
+      --neon-blue: #00d4ff;
+      --neon-purple: #b300ff;
+      --dark-bg: #0a0a0a;
+      --darker-bg: #050505;
+      --card-bg: rgba(15, 15, 35, 0.8);
+      --card-border: rgba(0, 255, 65, 0.2);
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-accent: #00ff41;
+      --shadow-neon: 0 0 30px rgba(0, 255, 65, 0.5);
+      --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
+    }
+
+    /* Reset et Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .cyber-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 20s linear infinite;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navigation */
+    .desktop-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+      padding: 0;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      gap: 40px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--neon-green);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-item {
+      position: relative;
+      padding: 10px 0;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .nav-underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-green), var(--primary-color));
+      transition: width 0.4s ease;
+    }
+
+    .nav-item:hover .nav-underline,
+    .nav-item.active .nav-underline {
+      width: 100%;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      min-height: 100vh;
+      padding: 120px 20px 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--text-primary);
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      margin-bottom: 20px;
+      animation: slideInDown 1s ease forwards;
+    }
+
+    .contact-title .accent {
+      color: var(--neon-green);
+      text-shadow: 0 0 30px var(--neon-green);
+      background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-subtitle {
+      font-size: 1.3rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Form Card */
+    .form-card {
+      background: var(--darker-bg);
+      border: 2px solid var(--neon-green);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-neon);
+      opacity: 0;
+      animation: slideInUp 1s ease 1s forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-header {
+      background: linear-gradient(135deg, var(--dark-bg), rgba(26, 26, 46, 0.8));
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn.red { background: #ff5f57; }
+    .btn.yellow { background: #ffbd2e; }
+    .btn.green { background: #28ca42; }
+
+    .form-title {
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .form-body {
+      padding: 40px 30px;
+    }
+
+    /* Form Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .optional-label {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(0, 255, 65, 0.05);
+      border: 2px solid var(--card-border);
+      border-radius: 10px;
+      padding: 15px;
+      color: var(--text-primary);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--neon-green);
+      background: rgba(0, 255, 65, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300ff41' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding-right: 40px;
+    }
+
+    .form-group option {
+      background: var(--darker-bg);
+      color: var(--text-primary);
+    }
+
+    /* Character Counter */
+    .char-counter {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 18px 35px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: var(--shadow-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(230, 86, 22, 0.6);
+    }
+
+    .submit-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Back Link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--neon-green);
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      border-color: var(--neon-green);
+      box-shadow: var(--shadow-neon);
+      transform: translateX(-5px);
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 255, 65, 0.1));
+      border: 2px solid var(--neon-green);
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-message p {
+      font-family: 'Fira Code', monospace;
+      color: var(--neon-green);
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 100px 15px 80px;
+      }
+
+      .contact-title {
+        font-size: 2.5rem;
+      }
+
+      .contact-subtitle {
+        font-size: 1rem;
+      }
+
+      .form-body {
+        padding: 30px 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-item {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-title {
+        font-size: 2rem;
+      }
+
+      .submit-btn {
+        padding: 15px 25px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="cyber-grid"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="desktop-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">Y</div>
+        <span>Yacine Ben Omrane</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-item">
+          <span class="nav-text">Accueil</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="about.html" class="nav-item">
+          <span class="nav-text">À propos</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="projects.html" class="nav-item">
+          <span class="nav-text">Projets</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="certifications.html" class="nav-item">
+          <span class="nav-text">Certifications</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="compétences.html" class="nav-item">
+          <span class="nav-text">Compétences</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="equipements.html" class="nav-item">
+          <span class="nav-text">Équipements</span>
+          <div class="nav-underline"></div>
+        </a>
+        <a href="contact.html" class="nav-item active">
+          <span class="nav-text">Contact</span>
+          <div class="nav-underline"></div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <main class="contact-section">
+    <div class="contact-container">
+      <!-- Header -->
+      <div class="contact-header">
+        <h1 class="contact-title">
+          <span class="accent">FORMULAIRE</span> DE CONTACT
+        </h1>
+        <div class="contact-subtitle">
+          Envoyez-moi un message • Je vous répondrai rapidement
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <div class="form-header">
+          <div class="form-buttons">
+            <span class="btn red"></span>
+            <span class="btn yellow"></span>
+            <span class="btn green"></span>
+          </div>
+          <div class="form-title">nouveau_message.form</div>
+        </div>
+
+        <div class="form-body">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@benomrane-yacine.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://votresite.com/contact2.html?success=true">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="Nom" required placeholder="Votre nom">
+              </div>
+
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="Prénom" required placeholder="Votre prénom">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="Email" required placeholder="votre.email@exemple.com">
+              </div>
+
+              <div class="form-group">
+                <label for="telephone">
+                  Téléphone 
+                  <span class="optional-label">(facultatif)</span>
+                </label>
+                <input type="tel" id="telephone" name="Téléphone" placeholder="+33 6 12 34 56 78">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sujet">Sujet *</label>
+              <select id="sujet" name="Sujet" required>
+                <option value="">Sélectionnez un sujet</option>
+                <option value="Opportunité de stage">Opportunité de stage</option>
+                <option value="Opportunité d'alternance">Opportunité d'alternance</option>
+                <option value="Collaboration sur un projet">Collaboration sur un projet</option>
+                <option value="Demande d'information">Demande d'information</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="Message" required placeholder="Écrivez votre message ici..."></textarea>
+              <div class="char-counter">
+                <span id="charCount">0</span> caractères
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span>✉️</span>
+              <span>Envoyer le message</span>
+            </button>
+          </form>
+
+          <div class="success-message" id="successMessage">
+            <p>✅ Message envoyé avec succès !<br>Je vous répondrai dans les plus brefs délais.</p>
+          </div>
+
+          <a href="contact.html" class="back-link">
+            <span>←</span>
+            <span>Retour aux informations de contact</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Character counter
+    const messageTextarea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+
+    if (messageTextarea && charCount) {
+      messageTextarea.addEventListener('input', function() {
+        charCount.textContent = this.value.length;
+      });
+    }
+
+    // Check if we're on the success page
+    const urlParams = new URLSearchParams(window.location.search);
+    const successMessage = document.getElementById('successMessage');
+    
+    if (urlParams.has('success')) {
+      if (successMessage) {
+        successMessage.classList.add('show');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }, 8000);
+      }
+    }
+  </script>
+</body>
+</html>
