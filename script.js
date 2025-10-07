@@ -1,14 +1,13 @@
-// Variables globales
+
 let isAnimationReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let isMobile = window.innerWidth <= 768;
 let particles = [];
 let matrixChars = [];
 
-// Utilitaires
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-// Navigation Mobile Ultra-Stylée
+
 function toggleMobileNav() {
     const mobileNav = $('#mobile-nav');
     const menuBtn = $('.mobile-menu-btn');
@@ -18,12 +17,12 @@ function toggleMobileNav() {
         const isActive = mobileNav.classList.contains('active');
         
         if (isActive) {
-            // Fermer le menu
+        
             mobileNav.classList.remove('active');
             menuBtn.classList.remove('active');
             body.style.overflow = '';
             
-            // Animation de fermeture des liens
+      
             const links = mobileNav.querySelectorAll('.mobile-nav-links .nav-link');
             links.forEach((link, index) => {
                 setTimeout(() => {
@@ -33,12 +32,11 @@ function toggleMobileNav() {
             });
             
         } else {
-            // Ouvrir le menu
             mobileNav.classList.add('active');
             menuBtn.classList.add('active');
             body.style.overflow = 'hidden';
             
-            // Animation d'ouverture des liens
+
             setTimeout(() => {
                 const links = mobileNav.querySelectorAll('.mobile-nav-links .nav-link');
                 links.forEach((link, index) => {
@@ -53,7 +51,7 @@ function toggleMobileNav() {
     }
 }
 
-// Fermer le menu mobile en cliquant à l'extérieur
+
 function setupMobileNavClose() {
     document.addEventListener('click', (e) => {
         const mobileNav = $('#mobile-nav');
@@ -67,7 +65,7 @@ function setupMobileNavClose() {
     });
 }
 
-// Sélecteur de langue
+
 function toggleFlags() {
     const dropdown = $('#flag-dropdown');
     if (dropdown) {
@@ -76,7 +74,7 @@ function toggleFlags() {
 }
 
 function changeLanguage(url) {
-    // Animation de transition
+
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.3s ease';
     
@@ -85,7 +83,7 @@ function changeLanguage(url) {
     }, 300);
 }
 
-// Fermer le dropdown de langue
+
 function setupLanguageClose() {
     document.addEventListener('click', (e) => {
         const selector = $('.language-selector');
@@ -99,7 +97,7 @@ function setupLanguageClose() {
     });
 }
 
-// Système de particules optimisé
+
 class ParticleSystem {
     constructor() {
         this.particles = [];
@@ -156,23 +154,22 @@ class ParticleSystem {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.particles.forEach(particle => {
-            // Mise à jour position
+    
             particle.x += particle.speedX;
             particle.y += particle.speedY;
             
-            // Rebond sur les bords
+    
             if (particle.x < 0 || particle.x > this.canvas.width) {
                 particle.speedX *= -1;
             }
             if (particle.y < 0 || particle.y > this.canvas.height) {
                 particle.speedY *= -1;
             }
-            
-            // Contraindre dans les limites
+  
             particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
             particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
             
-            // Dessiner la particule
+ 
             this.ctx.globalAlpha = particle.opacity;
             this.ctx.fillStyle = particle.color;
             this.ctx.shadowBlur = 10;
@@ -192,7 +189,7 @@ class ParticleSystem {
         this.canvas.width = this.canvas.offsetWidth;
         this.canvas.height = this.canvas.offsetHeight;
         
-        // Recréer les particules avec la nouvelle taille
+
         this.particles = [];
         this.createParticles();
     }
@@ -208,7 +205,7 @@ class ParticleSystem {
     }
 }
 
-// Matrix Rain Effect
+
 class MatrixRain {
     constructor() {
         this.characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
@@ -298,7 +295,7 @@ class MatrixRain {
         this.canvas.width = this.canvas.offsetWidth;
         this.canvas.height = this.canvas.offsetHeight;
         
-        // Recréer les gouttes avec la nouvelle taille
+
         this.drops = [];
         this.createDrops();
     }
@@ -314,7 +311,7 @@ class MatrixRain {
     }
 }
 
-// Animations d'apparition au scroll
+
 class ScrollAnimations {
     constructor() {
         this.observer = null;
@@ -430,7 +427,7 @@ class ScrollAnimations {
     }
 }
 
-// Parallax Effect (désactivé sur mobile)
+
 class ParallaxEffect {
     constructor() {
         this.elements = [];
@@ -473,7 +470,7 @@ class ParallaxEffect {
     }
 }
 
-// Gestionnaire de performance
+
 class PerformanceManager {
     constructor() {
         this.isLowPerformance = false;
@@ -488,7 +485,7 @@ class PerformanceManager {
     }
     
     detectPerformance() {
-        // Détecter les appareils moins puissants
+
         const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
         
         this.isLowPerformance = (
@@ -500,10 +497,10 @@ class PerformanceManager {
     
     optimizeForDevice() {
         if (this.isLowPerformance) {
-            // Réduire les animations
+
             document.documentElement.style.setProperty('--animation-duration', '0.2s');
             
-            // Désactiver certains effets
+
             const heavyEffects = document.querySelectorAll('.glitch, [data-parallax]');
             heavyEffects.forEach(el => {
                 el.style.animation = 'none';
@@ -530,7 +527,7 @@ class PerformanceManager {
     }
 }
 
-// Gestionnaire de navigation active
+
 class NavigationManager {
     constructor() {
         this.currentPath = window.location.pathname;
@@ -542,7 +539,7 @@ class NavigationManager {
     }
     
     updateActiveStates() {
-        // Desktop navigation
+
         const desktopNavItems = document.querySelectorAll('.desktop-nav .nav-item');
         desktopNavItems.forEach(link => {
             const href = link.getAttribute('href');
@@ -552,7 +549,7 @@ class NavigationManager {
             }
         });
         
-        // Mobile navigation
+
         const mobileNavItems = document.querySelectorAll('.mobile-nav-links .nav-link');
         mobileNavItems.forEach(link => {
             const href = link.getAttribute('href');
@@ -562,7 +559,7 @@ class NavigationManager {
             }
         });
         
-        // Bottom navigation
+
         const bottomNavItems = document.querySelectorAll('.mobile-bottom-nav .bottom-nav-item');
         bottomNavItems.forEach(link => {
             const href = link.getAttribute('href');
@@ -592,7 +589,6 @@ class NavigationManager {
     }
 }
 
-// Système principal d'initialisation
 class App {
     constructor() {
         this.particleSystem = new ParticleSystem();
@@ -610,17 +606,16 @@ class App {
         try {
             console.log('🚀 Initialisation du site cybersécurité...');
             
-            // Détecter les capacités de l'appareil
+           
             this.detectDevice();
-            
-            // Initialiser les gestionnaires
+         
             this.performance.init();
             this.navigation.init();
             
-            // Configurer les événements
+           
             this.setupEventListeners();
             
-            // Initialiser les animations (si supportées)
+           
             if (!isAnimationReduced) {
                 this.matrixRain.init();
                 this.particleSystem.init();
@@ -628,7 +623,7 @@ class App {
                 this.parallax.init();
             }
             
-            // Finaliser l'initialisation
+          
             this.finalizeInit();
             
             console.log('✅ Site initialisé avec succès!');
@@ -644,18 +639,18 @@ class App {
         isMobile = window.innerWidth <= 768;
         isAnimationReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
-        // Ajouter des classes CSS basées sur le device
+ 
         document.body.classList.toggle('is-mobile', isMobile);
         document.body.classList.toggle('is-desktop', !isMobile);
         document.body.classList.toggle('reduced-motion', isAnimationReduced);
     }
     
     setupEventListeners() {
-        // Navigation mobile
+
         setupMobileNavClose();
         setupLanguageClose();
         
-        // Redimensionnement de fenêtre avec debounce
+ 
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -664,14 +659,14 @@ class App {
             }, 250);
         }, { passive: true });
         
-        // Gestion du changement d'orientation
+
         window.addEventListener('orientationchange', () => {
             setTimeout(() => {
                 this.handleResize();
             }, 500);
         });
         
-        // Performance monitoring
+      
         if (!isMobile) {
             this.performance.monitorFPS();
         }
@@ -684,7 +679,7 @@ class App {
         if (oldIsMobile !== isMobile) {
             this.detectDevice();
             
-            // Redémarrer les effets si nécessaire
+         
             if (!isAnimationReduced) {
                 this.matrixRain.resize();
                 this.particleSystem.resize();
@@ -693,7 +688,7 @@ class App {
     }
     
     finalizeInit() {
-        // Masquer le loader s'il existe
+      
         const loader = $('.loading');
         if (loader) {
             loader.style.opacity = '0';
@@ -702,7 +697,7 @@ class App {
             }, 500);
         }
         
-        // Animer l'entrée du body
+     
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.5s ease';
         
@@ -710,17 +705,17 @@ class App {
             document.body.style.opacity = '1';
         });
         
-        // Déclencher l'événement d'initialisation personnalisé
+        
         window.dispatchEvent(new CustomEvent('appInitialized'));
     }
     
     fallbackInit() {
-        // Mode de fallback en cas d'erreur
+       
         console.log('🔧 Mode de fallback activé');
         
         document.body.classList.add('fallback-mode');
         
-        // Désactiver toutes les animations
+        
         const style = document.createElement('style');
         style.textContent = `
             *, *::before, *::after {
@@ -731,14 +726,14 @@ class App {
         `;
         document.head.appendChild(style);
         
-        // Navigation basique
+      
         setupMobileNavClose();
         setupLanguageClose();
         this.navigation.init();
     }
     
     destroy() {
-        // Nettoyage pour éviter les fuites mémoire
+       
         this.particleSystem.destroy();
         this.matrixRain.destroy();
         this.scrollAnimations.destroy();
@@ -747,32 +742,32 @@ class App {
     }
 }
 
-// Instanciation et lancement de l'application
+
 const app = new App();
 
-// Initialisation différée pour optimiser les performances
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        // Petit délai pour s'assurer que tous les styles sont chargés
+      
         setTimeout(() => app.init(), 100);
     });
 } else {
     setTimeout(() => app.init(), 100);
 }
 
-// Support pour les navigateurs plus anciens
+
 window.addEventListener('load', () => {
     if (!app.isInitialized) {
         app.init();
     }
 });
 
-// Nettoyage lors de la fermeture de la page
+
 window.addEventListener('beforeunload', () => {
     app.destroy();
 });
 
-// Export pour utilisation globale
+
 window.App = app;
 window.toggleMobileNav = toggleMobileNav;
 window.toggleFlags = toggleFlags;
@@ -782,16 +777,12 @@ window.changeLanguage = changeLanguage;
 
 
 
-// Projet
-// === AJOUTS POUR LA PAGE PROJETS - VERSION MOBILE OPTIMISÉE ===
-// Ajoutez ces fonctions à la fin de votre fichier script.js existant
 
-// Gestionnaire de projets optimisé mobile
 function toggleProject(element) {
     const isExpanded = element.classList.contains('expanded');
     const allCards = document.querySelectorAll('.project-card');
     
-    // Fermer tous les autres projets avec animation fluide
+ 
     allCards.forEach(card => {
         if (card !== element && card.classList.contains('expanded')) {
             card.classList.remove('expanded');
@@ -810,7 +801,7 @@ function toggleProject(element) {
     const arrow = element.querySelector('.expand-arrow');
     
     if (!isExpanded) {
-        // Ouvrir le projet cliqué
+       
         element.classList.add('expanded');
         
         if (arrow) {
@@ -818,12 +809,12 @@ function toggleProject(element) {
             arrow.style.color = 'var(--primary-color)';
         }
         
-        // Délai pour permettre l'animation CSS
+       
         setTimeout(() => {
             if (content) content.classList.add('show');
         }, 150);
         
-        // Scroll optimisé pour mobile
+      
         setTimeout(() => {
             const isMobileView = window.innerWidth <= 768;
             const scrollOffset = isMobileView ? 20 : 80;
@@ -838,7 +829,7 @@ function toggleProject(element) {
         }, 400);
         
     } else {
-        // Fermer le projet
+        
         element.classList.remove('expanded');
         
         if (arrow) {
@@ -850,12 +841,12 @@ function toggleProject(element) {
     }
 }
 
-// Gestionnaire tactile pour mobile
+
 class TouchManager {
     constructor() {
         this.startY = 0;
         this.startX = 0;
-        this.threshold = 50; // pixels
+        this.threshold = 50; 
     }
     
     init() {
@@ -882,7 +873,7 @@ class TouchManager {
         const diffY = Math.abs(this.startY - endY);
         const diffX = Math.abs(this.startX - endX);
         
-        // Si c'est un tap (pas un scroll)
+
         if (diffY < this.threshold && diffX < this.threshold) {
             toggleProject(card);
         }
@@ -892,7 +883,7 @@ class TouchManager {
     }
 }
 
-// Animation d'apparition optimisée pour mobile
+
 function animateProjectsOnLoad() {
     const projectCards = document.querySelectorAll('.project-card');
     const isMobileView = window.innerWidth <= 768;
@@ -911,14 +902,14 @@ function animateProjectsOnLoad() {
     });
 }
 
-// Effet typing optimisé pour mobile
+
 function initProjectsTyping() {
     const typingElement = document.querySelector('.projects-subtitle .typing-text');
     if (!typingElement) return;
     
     const text = typingElement.textContent;
     const isMobileView = window.innerWidth <= 768;
-    const speed = isMobileView ? 30 : 50; // Plus rapide sur mobile
+    const speed = isMobileView ? 30 : 50; 
     
     typingElement.textContent = '';
     typingElement.style.borderRight = '2px solid var(--neon-green)';
@@ -930,7 +921,7 @@ function initProjectsTyping() {
             i++;
             setTimeout(typeWriter, speed);
         } else {
-            // Animation du curseur moins fréquente sur mobile
+           
             const blinkSpeed = isMobileView ? 1500 : 1000;
             setInterval(() => {
                 typingElement.style.borderColor = 
@@ -943,14 +934,14 @@ function initProjectsTyping() {
     setTimeout(typeWriter, 800);
 }
 
-// Gestionnaire de redimensionnement optimisé
+
 let resizeTimer;
 function handleProjectsResize() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
         const isMobileView = window.innerWidth <= 768;
         
-        // Fermer tous les projets ouverts lors du redimensionnement
+
         const openProjects = document.querySelectorAll('.project-card.expanded');
         openProjects.forEach(card => {
             card.classList.remove('expanded');
@@ -964,7 +955,7 @@ function handleProjectsResize() {
             }
         });
         
-        // Réinitialiser les animations si nécessaire
+
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
             card.style.transition = '';
@@ -975,7 +966,7 @@ function handleProjectsResize() {
     }, 250);
 }
 
-// Gestionnaire principal pour les projets
+
 class ProjectsManager {
     constructor() {
         this.touchManager = new TouchManager();
@@ -997,21 +988,21 @@ class ProjectsManager {
     setupProjectEvents() {
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach((card, index) => {
-            // Accessibilité
+        
             card.setAttribute('tabindex', '0');
             card.setAttribute('role', 'button');
             card.setAttribute('aria-expanded', 'false');
             card.setAttribute('aria-label', `Projet ${index + 1}: cliquer pour voir les détails`);
             
-            // Support clavier
+            
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     toggleProject(card);
                 }
             });
+
             
-            // Améliorer le feedback visuel
             card.addEventListener('mouseenter', () => {
                 if (!card.classList.contains('expanded')) {
                     card.style.transform = 'translateY(-5px)';
@@ -1035,7 +1026,7 @@ class ProjectsManager {
     }
     
     setupAccessibility() {
-        // Améliorer l'accessibilité pour les lecteurs d'écran
+   
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach((card, index) => {
             const title = card.querySelector('.project-title-section h3');
@@ -1056,7 +1047,7 @@ class ProjectsManager {
                 arrow.setAttribute('aria-hidden', 'true');
             }
             
-            // Message pour les lecteurs d'écran
+      
             const srOnly = document.createElement('span');
             srOnly.className = 'sr-only';
             srOnly.textContent = 'Appuyez sur Entrée ou Espace pour développer';
@@ -1089,10 +1080,10 @@ class ProjectsManager {
     }
 }
 
-// Initialisation automatique
+
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.projects-section')) {
-        // Petit délai pour s'assurer que les styles sont chargés
+
         setTimeout(() => {
             animateProjectsOnLoad();
             initProjectsTyping();
@@ -1100,33 +1091,33 @@ document.addEventListener('DOMContentLoaded', function() {
             const projectsManager = new ProjectsManager();
             projectsManager.init();
             
-            // Gestionnaire de redimensionnement
+          
             window.addEventListener('resize', handleProjectsResize, { passive: true });
             
-            // Ajouter à l'objet App global si disponible
+        
             if (window.App) {
                 window.App.projectsManager = projectsManager;
             }
             
-            // Export global
+           
             window.projectsManager = projectsManager;
         }, 200);
     }
 });
 
-// Optimisation des performances sur mobile
+
 if ('ontouchstart' in window) {
-    // Désactiver le zoom sur double tap pour les projets
+    
     document.addEventListener('touchend', function(e) {
         if (e.target.closest('.project-card')) {
             e.preventDefault();
         }
     }, { passive: false });
     
-    // Améliorer les performances de scroll
+  
     let ticking = false;
     function updateScrollEffects() {
-        // Effets légers sur mobile seulement
+
         ticking = false;
     }
     
@@ -1138,6 +1129,6 @@ if ('ontouchstart' in window) {
     }, { passive: true });
 }
 
-// Export des fonctions
 window.toggleProject = toggleProject;
 window.ProjectsManager = ProjectsManager;
+
