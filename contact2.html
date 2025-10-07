@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-
+    /* Variables CSS Ultra-Stylées */
     :root {
       --primary-color: #e65616;
       --primary-light: #ff6b35;
@@ -27,7 +27,7 @@
       --shadow-primary: 0 0 30px rgba(230, 86, 22, 0.5);
     }
 
-
+    /* Reset et Base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,7 +47,7 @@
       position: relative;
     }
 
-
+    /* Animated Background */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -74,7 +74,7 @@
       100% { transform: translate(50px, 50px); }
     }
 
-
+    /* Navigation */
     .desktop-nav {
       position: fixed;
       top: 0;
@@ -158,7 +158,7 @@
       width: 100%;
     }
 
-
+    /* Contact Section */
     .contact-section {
       min-height: 100vh;
       padding: 120px 20px 50px;
@@ -228,7 +228,7 @@
       }
     }
 
- 
+    /* Form Card */
     .form-card {
       background: var(--darker-bg);
       border: 2px solid var(--neon-green);
@@ -285,7 +285,7 @@
       padding: 40px 30px;
     }
 
-
+    /* Form Styles */
     .contact-form {
       display: flex;
       flex-direction: column;
@@ -364,7 +364,7 @@
       color: var(--text-primary);
     }
 
-
+    /* Character Counter */
     .char-counter {
       text-align: right;
       font-size: 0.8rem;
@@ -372,7 +372,7 @@
       font-family: 'Fira Code', monospace;
     }
 
-
+    /* Submit Button */
     .submit-btn {
       display: flex;
       align-items: center;
@@ -423,7 +423,7 @@
       transform: none;
     }
 
-
+    /* Back Link */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -446,7 +446,7 @@
       transform: translateX(-5px);
     }
 
- 
+    /* Success Message */
     .success-message {
       display: none;
       padding: 30px;
@@ -543,7 +543,7 @@
       }
     }
 
-
+    /* Responsive Design */
     @media (max-width: 768px) {
       .contact-section {
         padding: 100px 15px 80px;
@@ -591,12 +591,12 @@
   </style>
 </head>
 <body>
-
+  <!-- Animated Background -->
   <div class="animated-bg">
     <div class="cyber-grid"></div>
   </div>
 
-
+  <!-- Navigation -->
   <nav class="desktop-nav">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -637,10 +637,10 @@
     </div>
   </nav>
 
-
+  <!-- Contact Section -->
   <main class="contact-section">
     <div class="contact-container">
-
+      <!-- Header -->
       <div class="contact-header">
         <h1 class="contact-title">
           <span class="accent">FORMULAIRE</span> DE CONTACT
@@ -650,7 +650,7 @@
         </div>
       </div>
 
-
+      <!-- Form Card -->
       <div class="form-card">
         <div class="form-header">
           <div class="form-buttons">
@@ -663,11 +663,11 @@
 
         <div class="form-body">
           <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@benomrane-yacine.com" method="POST">
-         
+            <!-- FormSubmit Configuration -->
             <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://benomrane-yacine.com/contact2.html?success=true">
+            <input type="hidden" name="_next" value="https://benomrane-yacine.github.io/contact2.html?success=true">
             
             <div class="form-row">
               <div class="form-group">
@@ -750,37 +750,57 @@
   </main>
 
   <script>
+    // Attendre que la page soit complètement chargée
+    window.addEventListener('DOMContentLoaded', function() {
+      
+      // Character counter
+      const messageTextarea = document.getElementById('message');
+      const charCount = document.getElementById('charCount');
 
-    const messageTextarea = document.getElementById('message');
-    const charCount = document.getElementById('charCount');
-
-    if (messageTextarea && charCount) {
-      messageTextarea.addEventListener('input', function() {
-        charCount.textContent = this.value.length;
-      });
-    }
-
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const successMessage = document.getElementById('successMessage');
-    const contactForm = document.getElementById('contactForm');
-    
-    if (urlParams.has('success')) {
-      if (successMessage && contactForm) {
-        contactForm.style.display = 'none';
-        
-        successMessage.classList.add('show');
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        setTimeout(() => {
-          contactForm.style.display = 'flex';
-          successMessage.classList.remove('show');
-          window.history.replaceState({}, document.title, window.location.pathname);
-          contactForm.reset();
-          charCount.textContent = '0';
-        }, 10000);
+      if (messageTextarea && charCount) {
+        messageTextarea.addEventListener('input', function() {
+          charCount.textContent = this.value.length;
+        });
       }
-    }
+
+      // Vérifier si on a le paramètre success dans l'URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasSuccess = urlParams.get('success');
+      
+      console.log('Success parameter:', hasSuccess); // Pour debug
+      
+      if (hasSuccess === 'true') {
+        const successMessage = document.getElementById('successMessage');
+        const contactForm = document.getElementById('contactForm');
+        
+        console.log('Success message element:', successMessage); // Pour debug
+        console.log('Contact form element:', contactForm); // Pour debug
+        
+        if (successMessage && contactForm) {
+          // Masquer le formulaire
+          contactForm.style.display = 'none';
+          
+          // Afficher le message de succès
+          successMessage.style.display = 'block';
+          successMessage.classList.add('show');
+          
+          // Scroll vers le message
+          setTimeout(function() {
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+          
+          // Réinitialiser après 10 secondes
+          setTimeout(function() {
+            contactForm.style.display = 'flex';
+            successMessage.style.display = 'none';
+            successMessage.classList.remove('show');
+            window.history.replaceState({}, document.title, window.location.pathname);
+            contactForm.reset();
+            if (charCount) charCount.textContent = '0';
+          }, 10000);
+        }
+      }
+    });
   </script>
 </body>
 </html>
