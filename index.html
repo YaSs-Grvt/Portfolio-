@@ -1,308 +1,326 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yacine Ben Omrane — Cybersécurité</title>
-  <link rel="icon" type="image/png" href="Image/logo.png" />
-<link rel="shortcut icon" href="Image/logo.png" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yacine Ben Omrane</title>
+  <meta name="description" content="Étudiant en BUT Réseaux & Télécoms, parcours cybersécurité. Microsoft Purview, Defender XDR, Intune, Entra ID. Recherche un stage en 2026.">
+  <meta property="og:title" content="Yacine Ben Omrane, cybersécurité et Microsoft Security">
+  <meta property="og:description" content="Protection des données, détection et investigation d'incidents dans Microsoft 365. Recherche un stage en 2026.">
+  <meta property="og:image" content="https://benomrane-yacine.com/assets/yacine.jpg">
+  <meta property="og:url" content="https://benomrane-yacine.com/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F3F6F5">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&display=swap">
 
-
-  <link rel="stylesheet" href="styles_accueil.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="mobile-warning">
-    <div class="cyber-grid"></div>
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-    <div class="warning-card">
-      <div class="warning-icon">💻</div>
-
-      <h1 class="warning-title">PORTFOLIO<br>VERSION DESKTOP REQUISE</h1>
-
-      <p class="warning-message">
-        Ce portfolio n’est <strong>momentanément pas accessible sur mobile</strong>, la version mobile est en <strong>maintenance</strong></p>
-
-      <div class="terminal-box">
-        <div class="terminal-line">
-          <span class="prompt">$</span> device_check --mobile
-        </div>
-        <div class="terminal-line">
-          <span class="error">⚠ AVERTISSEMENT:</span> Appareil mobile détecté
-        </div>
-        <div class="terminal-line">
-          <span class="prompt">→</span> Merci d'utiliser un ordinateur
-        </div>
-      </div>
-
-
-      <div class="status">
-        <div class="status-dot"></div>
-        <span>Toutes mes excuses pour la gêne occasionnée.</span>
-      </div>
+  <header class="topbar" id="haut">
+    <div class="topbar__in">
+      <a class="brand" href="#haut" aria-label="Retour en haut">
+        <span class="brand__mark" aria-hidden="true">Y</span>
+        <span>Yacine Ben Omrane</span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Sections">
+        <a href="#scenario">Mon métier</a>
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projets">Projets</a>
+      </nav>
+      <a class="btn btn--small" href="#contact">Me contacter</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
-  </div>
+  </header>
 
-  <div class="desktop-content">
-    <div class="animated-bg">
-      <div class="matrix-rain"></div>
-      <div class="floating-particles"></div>
-      <div class="cyber-grid"></div>
-    </div>
+  <main id="contenu">
 
-    <div class="mobile-nav-wrapper">
-      <button class="mobile-menu-btn" onclick="toggleMobileNav()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="mobile-nav-overlay" id="mobile-nav">
-        <div class="mobile-nav-content">
-          <div class="mobile-nav-header">
-            <h3>NAVIGATION</h3>
-            <button class="close-btn" onclick="toggleMobileNav()">×</button>
-          </div>
-
-          <div class="mobile-nav-links">
-            <a href="index.html" class="nav-link active">
-              <div class="nav-icon">🏠</div>
-              <span>Accueil</span>
-              <div class="nav-arrow">→</div>
-            </a>
-            <a href="about.html" class="nav-link">
-              <div class="nav-icon">👤</div>
-              <span>À propos</span>
-              <div class="nav-arrow">→</div>
-            </a>
-            <a href="projects.html" class="nav-link">
-              <div class="nav-icon">💻</div>
-              <span>Projets</span>
-              <div class="nav-arrow">→</div>
-            </a>
-            <a href="certifications.html" class="nav-link">
-              <div class="nav-icon">🏆</div>
-              <span>Certifications</span>
-              <div class="nav-arrow">→</div>
-            </a>
-            <a href="compétences.html" class="nav-link">
-              <div class="nav-icon">⚡</div>
-              <span>Compétences</span>
-              <div class="nav-arrow">→</div>
-            </a>
-            <a href="equipements.html" class="nav-link">
-              <div class="nav-icon">🔧</div>
-              <span>Équipements</span>
-              <div class="nav-arrow">→</div>
-              
-            </a>
-          </div>
-
-          <div class="mobile-nav-footer">
-            <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="linkedin-btn">
-              <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiByeD0iNCIgZmlsbD0iIzAwNzdCNSIvPgo8cGF0aCBkPSJNNy41IDEwSDEyLjVWMjIuNUg3LjVWMTBaTTEwIDcuNUMxMS4zODA3IDcuNSAxMi41IDguNjE5MjkgMTIuNSAxMEMxMi41IDExLjM4MDcgMTEuMzgwNyAxMi41IDEwIDEyLjVDOC42MTkyOSAxMi41IDcuNSAxMS4zODA3IDcuNSAxMEM3LjUgOC42MTkyOSA4LjYxOTI5IDcuNSAxMCA3LjVaTTE1IDEwSDIwVjExLjVIMjBDMjAuNSAxMC41IDIxLjUgMTAuMjUgMjIuNSAxMC4yNUMyNC41IDEwLjI1IDI2IDExLjUgMjYgMTMuNVYyMi41SDIxVjE0QzIxIDEzIDIwIDEyLjUgMTkgMTIuNUMxOCAxMi41IDE2LjUgMTMgMTYuNSAxNFYyMi41SDE1VjEwWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==';" />
-              <span>LinkedIn Profile</span>
-            </a>
+    <!-- ===================== ACCUEIL ===================== -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <p class="status"><span class="status__dot" aria-hidden="true"></span>Disponible pour un stage en 2026</p>
+          <h1 class="hero__title">Je protège les données et les identités dans Microsoft&nbsp;365.</h1>
+          <p class="hero__lead">Je m'appelle Yacine Ben Omrane. Étudiant en BUT Réseaux &amp; Télécoms, parcours cybersécurité, je me spécialise dans la sécurité Microsoft&nbsp;: Purview, Defender XDR, Intune et Entra ID.</p>
+          <div class="hero__actions">
+            <a class="btn" href="#scenario">Voir ce que je fais</a>
+            <a class="btn btn--ghost" href="#contact">Me contacter</a>
           </div>
         </div>
+
+        <figure class="portrait">
+          <div class="portrait__frame">
+            <picture>
+              <source srcset="assets/yacine.webp" type="image/webp">
+              <img src="assets/yacine.jpg" alt="Portrait de Yacine Ben Omrane, souriant, en polo beige" width="663" height="1003">
+            </picture>
+          </div>
+          <figcaption class="badge-id">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor" opacity=".18"/><path d="m8 12 3 3 5-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Identité vérifiée</strong><small>Connexion validée par MFA</small></span>
+          </figcaption>
+        </figure>
       </div>
-    </div>
+    </section>
 
-    <nav class="desktop-nav">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <div class="logo-icon">Y</div>
-          <span>Yacine Ben Omrane</span>
-        </div>
-
-        <div class="nav-links">
-          <a href="index.html" class="nav-item active">
-            <span class="nav-text">Accueil</span>
-            <div class="nav-underline"></div>
-          </a>
-          <a href="about.html" class="nav-item">
-            <span class="nav-text">À propos</span>
-            <div class="nav-underline"></div>
-          </a>
-          <a href="projects.html" class="nav-item">
-            <span class="nav-text">Projets</span>
-            <div class="nav-underline"></div>
-          </a>
-          <a href="certifications.html" class="nav-item">
-            <span class="nav-text">Certifications</span>
-            <div class="nav-underline"></div>
-          </a>
-          <a href="compétences.html" class="nav-item">
-            <span class="nav-text">Compétences</span>
-            <div class="nav-underline"></div>
-          </a>
-          <a href="equipements.html" class="nav-item">
-            <span class="nav-text">Équipements</span>
-            <div class="nav-underline"></div>
-          </a>
-                        <a href="contact.html" class="nav-item">
-          <span class="nav-text">Contact</span>
-          <div class="nav-underline"></div>
-        </a>
-        </div>
-
-        <a href="https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/" target="_blank" class="desktop-linkedin">
-          <img src="images/linkedin.png" alt="LinkedIn" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/500px-LinkedIn_logo_initials.png';" />
-        </a>
+    <!-- ===================== SCÉNARIO (scroll-telling) ===================== -->
+    <section class="scenario" id="scenario" aria-labelledby="scenario-titre">
+      <div class="wrap scenario__intro">
+        <h2 id="scenario-titre">Un fichier sensible essaie de quitter l'entreprise. Que se passe-t-il&nbsp;?</h2>
+        <p>Faites défiler la page&nbsp;: voici, étape par étape, la chaîne de protection que je configure et que je surveille au quotidien.</p>
       </div>
-    </nav>
 
-    <main class="hero-section">
-      <div class="hero-container">
-        <div class="mobile-hero">
-          <div class="mobile-profile">
-            <div class="profile-avatar">
-              <div class="avatar-glow"></div>
-              <span class="avatar-initial">Y</span>
-            </div>
-            <div class="profile-status">
-              <div class="status-dot"></div>
-              <span>FORMATION RÉSEAU - PARCOURS CYBERSÉCURITÉ</span>
-            </div>
-          </div>
-
-          <div class="mobile-intro">
-            <h1 class="mobile-title">
-              <span class="title-line">ÉTUDIANT</span>
-              <span class="title-line accent">RÉSEAUX & TÉLÉCOMS</span>
-              <span class="title-line">PARCOURS CYBERSÉCURITÉ</span>
-            </h1>
-
-            <div class="mobile-subtitle">
-              <span class="subtitle-item">🔒 Ethical Hacking</span>
-              <span class="subtitle-item">🛡️ Penetration Testing</span>
-              <span class="subtitle-item">⚡ Security Analysis</span>
-            </div>
-          </div>
-
-          <div class="mobile-description">
-            <p>Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.</p>
-          </div>
-
-          <div class="mobile-actions">
-            <a href="projects.html" class="action-btn primary">
-              <span>Mes Projets</span>
-              <div class="btn-icon">💻</div>
-            </a>
-            <a href="about.html" class="action-btn secondary">
-              <span>En savoir plus</span>
-              <div class="btn-icon">👤</div>
-            </a>
-          </div>
-
-          <div class="mobile-stats">
-            <div class="stat-card">
-              <div class="stat-number">2+</div>
-              <div class="stat-label">Années d'études</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">∞</div>
-              <div class="stat-label">Passion</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">Veille techno</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="desktop-hero">
-          <div class="hero-content">
-            <div class="hero-intro">
-              <h1 class="hero-title">
-                <span class="title-word" data-text="FORMATION RÉSEAU & TÉLÉCOMS -">FORMATION RÉSEAU & TÉLÉCOMS -</span>
-                <span class="title-word accent" data-text="PARCOURS CYBERSÉCURITÉ">PARCOURS CYBERSÉCURITÉ</span>
-              </h1>
-
-              <div class="hero-subtitle">
-                <span class="typing-text">Étudiant Cybersécurité • Réseaux & Télécoms • Montage et configuration PC</span>
+      <div class="story" id="story">
+        <div class="wrap story__grid">
+          <ol class="steps" id="steps">
+            <li class="step is-active">
+              <span class="step__num">1</span>
+              <div>
+                <h3>Détecter</h3>
+                <p>Microsoft Purview lit le contenu du fichier et repère un IBAN et un numéro de sécurité sociale.</p>
+                <span class="step__tool">Purview, types d'informations sensibles</span>
               </div>
-
-              <p class="hero-description">
-                Passionné par les réseaux et l’administration système, j’aime configurer des équipements réseau, monter et configurer des PC, ainsi que gérer l’achat et la revente de composants informatiques. Découvrez mon univers et mon parcours complet sur la page À propos.
-              </p>
-
-              <div class="hero-actions">
-                <a href="projects.html" class="cta-btn primary">
-                  <span>Découvrir mes Projets</span>
-                  <div class="btn-effect"></div>
-                </a>
-                <a href="about.html" class="cta-btn secondary">
-                  <span>En savoir plus</span>
-                  <div class="btn-effect"></div>
-                </a>
+            </li>
+            <li class="step">
+              <span class="step__num">2</span>
+              <div>
+                <h3>Classer</h3>
+                <p>Le document reçoit automatiquement le label «&nbsp;Confidentiel&nbsp;». Tout le monde voit d'un coup d'œil comment le traiter.</p>
+                <span class="step__tool">Labels de sensibilité</span>
               </div>
-            </div>
+            </li>
+            <li class="step">
+              <span class="step__num">3</span>
+              <div>
+                <h3>Chiffrer</h3>
+                <p>Le label chiffre le fichier. Copié sur une clé USB ou dans un autre cloud, il reste illisible pour qui n'est pas autorisé.</p>
+                <span class="step__tool">Chiffrement Microsoft 365</span>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">4</span>
+              <div>
+                <h3>Bloquer</h3>
+                <p>Quelqu'un tente de l'envoyer vers une adresse Gmail. La règle DLP bloque l'envoi et explique pourquoi à l'utilisateur.</p>
+                <span class="step__tool">Data Loss Prevention</span>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">5</span>
+              <div>
+                <h3>Enquêter</h3>
+                <p>L'alerte arrive dans Defender XDR. Je reconstitue la chronologie, je la relie au référentiel MITRE ATT&amp;CK et je clôture l'incident.</p>
+                <span class="step__tool">Defender XDR, MITRE ATT&amp;CK</span>
+              </div>
+            </li>
+          </ol>
 
-            <div class="hero-visual">
-              <div class="terminal-window">
-                <div class="terminal-header">
-                  <div class="terminal-buttons">
-                    <span class="btn red"></span>
-                    <span class="btn yellow"></span>
-                    <span class="btn green"></span>
-                  </div>
-                  <div class="terminal-title">root@yacine:~</div>
+          <div class="stage-wrap">
+            <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+            <div class="stage" id="stage" aria-hidden="true">
+
+              <!-- Le document -->
+              <div class="doc" id="doc">
+                <div class="doc__head">
+                  <span class="doc__icon">W</span>
+                  <span class="doc__name">Contrat_Dupont.docx</span>
+                  <span class="label" id="label">Confidentiel</span>
                 </div>
-                <div class="terminal-body">
-                  <div class="terminal-line" style="--delay: 0.5s">
-                    <span class="prompt">$</span>
-                    <span class="command">whoami</span>
+                <div class="doc__body">
+                  <p class="doc__title">Contrat de prestation</p>
+                  <span class="bar" style="--w:92%"></span>
+                  <span class="bar" style="--w:78%"></span>
+                  <div class="field">
+                    <span class="field__k">IBAN</span>
+                    <span class="field__v"><mark class="plain">FR76 3000 6000 0112 3456 7890 189</mark><span class="enc">9fQ2 kX7a Lm0p R4tz 8vB1 cW3n Hy6</span></span>
                   </div>
-                  <div class="terminal-line" style="--delay: 1s">
-                    <span class="output">→ Étudiant BUT Réseaux & Télécoms</span>
+                  <div class="field">
+                    <span class="field__k">N° de sécurité sociale</span>
+                    <span class="field__v"><mark class="plain">1 89 05 13 055 042 17</mark><span class="enc">Zp8 4Gq rT1 wN5 vK2 7eD</span></span>
                   </div>
-                  <div class="terminal-line" style="--delay: 1.5s">
-                    <span class="output">→ Parcours Cybersécurité</span>
-                  </div>
-                  <div class="terminal-line" style="--delay: 2s">
-                    <span class="output">→ Passionné de technologie</span>
-                  </div>
-                  <div class="terminal-line" style="--delay: 2.5s">
-                    <span class="output">→ Installation et configuration de PC</span>
-                  </div>
-                  <div class="terminal-line" style="--delay: 3s">
-                    <span class="prompt">$</span>
-                    <span class="cursor">█</span>
-                  </div>
+                  <span class="bar" style="--w:86%"></span>
+                  <span class="bar" style="--w:64%"></span>
+                  <span class="bar" style="--w:72%"></span>
+                </div>
+                <div class="scanline" id="scanline"></div>
+                <div class="doc__chip doc__chip--found" id="found">2 informations sensibles détectées</div>
+                <div class="doc__chip doc__chip--lock" id="lock">
+                  <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+                  Chiffré
                 </div>
               </div>
+
+              <!-- L'e-mail -->
+              <div class="panel mail" id="mail">
+                <div class="panel__head">Nouveau message</div>
+                <div class="mail__row"><span>À</span>prenom.perso@gmail.com</div>
+                <div class="mail__row"><span>Objet</span>Contrat à relire</div>
+                <div class="mail__att"><span class="doc__icon">W</span>Contrat_Dupont.docx</div>
+                <div class="mail__block" id="block">
+                  <strong>Envoi bloqué</strong>
+                  Ce message contient des données confidentielles destinées à un domaine externe.
+                </div>
+              </div>
+
+              <!-- L'incident -->
+              <div class="panel xdr" id="xdr">
+                <div class="panel__head xdr__head">
+                  <span>Incident 4127</span>
+                  <span class="pill pill--warn" id="statusOpen">En cours</span>
+                  <span class="pill pill--ok" id="statusDone">Résolu</span>
+                </div>
+                <ol class="tl">
+                  <li><time>14:02</time>Fichier classé Confidentiel</li>
+                  <li><time>14:05</time>Envoi externe bloqué par la DLP</li>
+                  <li><time>14:05</time>Alerte corrélée à l'utilisateur et à l'appareil</li>
+                  <li><time>14:12</time>Analyse terminée, accès restreint</li>
+                </ol>
+                <div class="xdr__mitre">MITRE ATT&amp;CK&nbsp;: TA0010 Exfiltration</div>
+              </div>
+
             </div>
-          </div> 
-        </div> 
-      </div>  
-    </main>
-  </div> 
+          </div>
+        </div>
+      </div>
+    </section>
 
- 
-  <script>
-    function forceView() {
- 
-      const mw = document.querySelector('.mobile-warning');
-      const dc = document.querySelector('.desktop-content');
-      if (mw && dc) {
-        mw.style.display = 'none';
-        dc.style.display = 'block';
-        document.body.style.overflow = 'auto';
- 
-        sessionStorage.setItem('forceMobileView', 'true');
-      }
-    }
+    <!-- ===================== COMPÉTENCES ===================== -->
+    <section class="section" id="competences" aria-labelledby="comp-titre">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="comp-titre">Ce que je sais faire</h2>
+          <p>Douze compétences qui comptent pour un poste en SOC, en Blue Team ou en sécurité Microsoft, expliquées simplement.</p>
+        </header>
+        <div class="keyskills" id="keyskills"></div>
 
-    if (sessionStorage.getItem('forceMobileView') === 'true') {
-      forceView();
-    }
-  </script>
+        <h3 class="subhead">Toutes mes compétences</h3>
+        <div class="allskills" id="allskills"></div>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- ===================== PARCOURS ===================== -->
+    <section class="section section--tint" id="parcours" aria-labelledby="parcours-titre">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="parcours-titre">Parcours</h2>
+          <p>Mes postes et ma formation, du plus récent au plus ancien.</p>
+        </header>
+        <div class="timeline" id="timeline">
+          <div class="timeline__rail" aria-hidden="true"><span id="timelineFill"></span></div>
+          <ol class="timeline__list" id="timelineList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CERTIFICATIONS ===================== -->
+    <section class="section" id="certifications" aria-labelledby="certif-titre">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="certif-titre">Certifications et formations</h2>
+          <p>Classées selon leur valeur&nbsp;: les examens officiels d'abord, puis les parcours de cours.</p>
+        </header>
+
+        <h3 class="subhead">Certifications officielles</h3>
+        <div class="certs" id="certsOfficial"></div>
+
+        <div class="tiers">
+          <div class="tier">
+            <h3 class="subhead">Cisco Networking Academy</h3>
+            <p class="note">Modules de cours validés. Ils préparent au CCNA mais ne remplacent pas l'examen CCNA 200-301.</p>
+            <ul class="cisco" id="certsCisco"></ul>
+          </div>
+          <div class="tier">
+            <h3 class="subhead">Microsoft Learn</h3>
+            <p class="learn-count"><span id="learnCount">29</span> modules suivis sur Microsoft Purview et Defender XDR</p>
+            <div class="learn" id="certsLearn"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJETS ===================== -->
+    <section class="section section--tint" id="projets" aria-labelledby="projets-titre">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="projets-titre">Projets</h2>
+          <p>Des réalisations menées pendant ma formation.</p>
+        </header>
+        <div class="projects" id="projectsList"></div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-titre">
+      <div class="wrap contact__grid">
+        <div>
+          <h2 id="contact-titre">Vous recrutez en sécurité&nbsp;?</h2>
+          <p class="contact__lead" id="dispo"></p>
+          <div class="contact__ways">
+            <div class="copyline">
+              <span class="copyline__label">E-mail</span>
+              <a class="copyline__value" id="emailLink" href="#"></a>
+              <button class="btn btn--small btn--ghost" id="copyEmail" type="button">Copier</button>
+            </div>
+            <div class="copyline">
+              <span class="copyline__label">LinkedIn</span>
+              <a class="copyline__value" id="linkedinLink" href="#" target="_blank" rel="noopener">Voir mon profil</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm" action="https://formsubmit.co/contact@benomrane-yacine.com" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+          <input type="hidden" name="_next" value="https://benomrane-yacine.com/merci.html">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form__row">
+            <label for="f-nom">Nom et prénom</label>
+            <input id="f-nom" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="form__row">
+            <label for="f-email">E-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form__row">
+            <label for="f-sujet">Sujet</label>
+            <select id="f-sujet" name="sujet" required>
+              <option value="Stage">Proposition de stage</option>
+              <option value="Alternance">Proposition d'alternance</option>
+              <option value="Projet">Collaboration sur un projet</option>
+              <option value="Autre">Autre demande</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="btn" type="submit">Envoyer le message</button>
+          <p class="form__status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <span>© <span id="year">2026</span> Yacine Ben Omrane</span>
+      <a href="#haut">Retour en haut</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
