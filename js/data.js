@@ -23,18 +23,47 @@ window.PORTFOLIO = {
       ]
     },
 
-     Ajoute  placeholder: true  pour l'afficher en pointillés « À compléter ».
+     "missions" peut rester vide [] : la carte s'affiche alors sans liste.
+     "lieu" est facultatif.
      ------------------------------------------------------------------------ */
   experiences: [
     {
-      periode: "En cours",
-      type: "Formation",
-      poste: "BUT Réseaux & Télécommunications, parcours Cybersécurité",
-      entreprise: "IUT d'Aix-Marseille Université",
+      periode: "Sept. 2026 – aujourd'hui",
+      type: "Alternance",
+      poste: "Consultant junior en cybersécurité",
+      entreprise: "Magellan",
+      lieu: "Aix-en-Provence, en hybride",
+      missions: []
+    },
+    {
+      periode: "Avr. 2026 – juin 2026",
+      type: "Stage",
+      poste: "Stagiaire infrastructure et sécurité",
+      entreprise: "Magellan",
+      lieu: "Aix-en-Provence, sur site",
+      missions: []
+    }
+  ],
+
+  /* ------------------------------------------------------------------------
+     FORMATION ACADÉMIQUE
+     ------------------------------------------------------------------------ */
+  formations: [
+    {
+      periode: "Sept. 2024 – juin 2027",
+      poste: "BUT Réseaux et Télécommunications, parcours cybersécurité",
+      entreprise: "Aix-Marseille Université",
       missions: [
         "Protocoles réseau, systèmes Linux et Windows, sécurité des infrastructures.",
-        "Travaux pratiques sur des topologies d'entreprise grâce aux partenariats Cisco et Stormshield.",
-        "Objectif après le BUT : une école d'ingénieurs en cybersécurité."
+        "Travaux pratiques sur des topologies d'entreprise grâce aux partenariats Cisco et Stormshield."
+      ]
+    },
+    {
+      periode: "Sept. 2021 – juin 2024",
+      poste: "Baccalauréat technologique, sciences de l'ingénierie",
+      entreprise: "Lycée du Rempart",
+      missions: [
+        "Spécialité SIN : systèmes d'information et numérique."
       ]
     }
   ],
@@ -267,7 +296,7 @@ window.PORTFOLIO = {
 
   contact: {
     email: "contact@benomrane-yacine.com",
-    linkedin: "https://www.linkedin.com/in/yacine-ben-omrane-7a84a8301/",
-    disponibilite: "Je recherche un stage en 2026 et une alternance en 2027, en SOC, Blue Team ou sécurité Microsoft."
+    linkedin: "https://www.linkedin.com/in/benomrane-yacine/",
+    disponibilite: "Je suis en alternance chez Magellan. Je reste ouvert aux échanges sur la sécurité Microsoft, la protection des données et la réponse aux incidents."
   }
 };

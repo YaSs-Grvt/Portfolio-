@@ -40,16 +40,19 @@
     }).join("");
   }
 
-  function renderTimeline() {
-    var el = $("#timelineList");
-    if (!el || !D.experiences) return;
-    el.innerHTML = D.experiences.map(function (x) {
+  function renderTimeline(sel, items) {
+    var el = $(sel);
+    if (!el || !items) return;
+    el.innerHTML = items.map(function (x) {
+      var missions = x.missions && x.missions.length ? "<ul>" + list(x.missions) + "</ul>" : "";
       var todo = x.placeholder ? '<span class="todo-tag">À compléter</span>' : "";
-      return '<li class="job' + (x.placeholder ? " job--todo" : "") + '"><div class="job__card">' +
+      var cls = "job" + (x.placeholder ? " job--todo" : "") + (missions ? "" : " job--short");
+      return '<li class="' + cls + '"><div class="job__card">' +
         '<div><div class="job__meta"><span class="job__period">' + esc(x.periode) + "</span>" +
         (x.type ? '<span class="job__type">' + esc(x.type) + "</span>" : "") + todo + "</div>" +
-        "<h3>" + esc(x.poste) + '</h3><p class="job__org">' + esc(x.entreprise) + "</p></div>" +
-        "<ul>" + list(x.missions || []) + "</ul></div></li>";
+        "<h3>" + esc(x.poste) + '</h3><p class="job__org">' + esc(x.entreprise) + "</p>" +
+        (x.lieu ? '<p class="job__place">' + esc(x.lieu) + "</p>" : "") + "</div>" +
+        missions + "</div></li>";
     }).join("");
   }
 
@@ -112,7 +115,8 @@
 
   renderKeySkills();
   renderAllSkills();
-  renderTimeline();
+  renderTimeline("#experienceList", D.experiences);
+  renderTimeline("#formationList", D.formations);
   renderCerts();
   renderProjects();
   renderContact();
@@ -322,9 +326,11 @@
   }
 
   /* --- Parcours : la ligne se remplit au fil du scroll --- */
-  gsap.fromTo("#timelineFill", { scaleY: 0 }, {
-    scaleY: 1, ease: "none",
-    scrollTrigger: { trigger: "#timeline", start: "top 70%", end: "bottom 60%", scrub: true }
+  $$(".timeline").forEach(function (t) {
+    gsap.fromTo($(".timeline__fill", t), { scaleY: 0 }, {
+      scaleY: 1, ease: "none",
+      scrollTrigger: { trigger: t, start: "top 75%", end: "bottom 60%", scrub: true }
+    });
   });
 
   /* --- Compteur Microsoft Learn --- */
