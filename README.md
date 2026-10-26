@@ -2,36 +2,49 @@
 
 Site personnel publié sur [benomrane-yacine.com](https://benomrane-yacine.com) avec GitHub Pages.
 
-Étudiant en BUT Réseaux & Télécoms, parcours cybersécurité, spécialisé en sécurité Microsoft : Purview, Defender XDR, Intune et Entra ID.
+Consultant junior en cybersécurité en alternance chez Magellan, étudiant en BUT Réseaux & Télécoms parcours cybersécurité, spécialisé en sécurité Microsoft : Purview, Defender XDR, Intune et Entra ID.
 
 ## Structure
 
 ```
-index.html        La page unique du portfolio
-merci.html        Page affichée après l'envoi du formulaire
-css/style.css     Styles (couleurs et typographie définies en haut du fichier)
-js/data.js        TOUT le contenu modifiable : postes, compétences, certifications, projets
-js/main.js        Affichage du contenu et animations
-assets/           Photo et favicon
-CNAME             Nom de domaine pour GitHub Pages
-*.html (autres)   Redirections des anciennes adresses vers les sections de la page
+index.html, css/, js/main.js   Version en ligne, compactée (générée, ne pas modifier à la main)
+js/data.js                     TOUT le contenu : postes, formation, compétences, certifications, projets
+js/vendor/                     GSAP, ScrollTrigger et Lenis, hébergés sur le site
+assets/                        Photo, favicon et polices
+_src/                          Sources lisibles (non publiées sur le site)
+CNAME                          Nom de domaine pour GitHub Pages
+*.html (autres)                Redirections des anciennes adresses vers la page d'accueil
 ```
+
+Le dossier `_src/` commence par un tiret bas : GitHub Pages ne le publie pas. Les sources lisibles restent dans le dépôt, mais pas sur le site.
 
 ## Modifier le contenu
 
-Tout se passe dans `js/data.js`. Exemples :
+Tout se passe dans `js/data.js`, directement à la racine, sans étape de construction :
 
-- **Ajouter un poste** : ajoute un objet en tête de `experiences` (le plus récent en premier).
+- **Ajouter un poste** : ajoute un objet en tête de `experiences` (un modèle est en commentaire).
+- **Ajouter une formation** : ajoute un objet dans `formations`.
 - **Ajouter une certification** : ajoute une ligne dans `certifications.officielles`, `cisco` ou `learn`. Le champ `lien` accepte une URL de vérification (Credly, Microsoft Learn).
 - **Changer la photo** : remplace `assets/yacine.jpg` et `assets/yacine.webp` en gardant les mêmes noms.
 
-## Animations
+## Modifier le design ou les animations
 
-- [GSAP](https://gsap.com) et ScrollTrigger pour le scénario au scroll : la section « Mon métier » reste épinglée pendant qu'un fichier passe par 5 étapes (détecter, classer, chiffrer, bloquer, enquêter).
-- [Lenis](https://github.com/darkroomengineering/lenis) pour un défilement fluide.
-- Les bibliothèques sont chargées depuis un CDN : aucune installation ni étape de build.
-- Si le visiteur a activé « réduire les animations » dans son système, tout le contenu s'affiche sans mouvement.
+Les fichiers à modifier sont dans `_src/` (`index.html`, `css/style.css`, `js/main.js`). Ensuite :
 
-## Formulaire
+```
+cd _src
+npm install
+npm run build
+```
 
-Le formulaire passe par [FormSubmit](https://formsubmit.co). Au premier envoi, FormSubmit envoie un e-mail d'activation à `contact@benomrane-yacine.com` : il faut cliquer sur le lien pour recevoir les messages suivants.
+La construction compacte le code et ajoute un numéro de version à chaque fichier, pour que les visiteurs reçoivent toujours la dernière version au lieu d'une copie en cache.
+
+## Vie privée
+
+Le site ne collecte aucune donnée : pas de cookie, pas de mesure d'audience, pas de formulaire. Les polices et les bibliothèques sont hébergées sur le site, le navigateur du visiteur ne contacte aucun service tiers (Google Fonts, CDN…). Seul GitHub Pages, l'hébergeur, conserve des journaux techniques de connexion, comme tout hébergeur.
+
+## Licences
+
+- GSAP : licence standard GreenSock, gratuite
+- Lenis : MIT (`js/vendor/LICENSE-lenis.txt`)
+- Bricolage Grotesque, Atkinson Hyperlegible Next : SIL Open Font License 1.1 (`assets/fonts/LICENSE.txt`)
