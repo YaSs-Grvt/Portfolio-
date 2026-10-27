@@ -46,13 +46,19 @@
     el.innerHTML = items.map(function (x) {
       var missions = x.missions && x.missions.length ? "<ul>" + list(x.missions) + "</ul>" : "";
       var todo = x.placeholder ? '<span class="todo-tag">À compléter</span>' : "";
-      var cls = "job" + (x.placeholder ? " job--todo" : "") + (missions ? "" : " job--short");
-      return '<li class="' + cls + '"><div class="job__card">' +
+      var v = x.visuel;
+      var visual = v && v.src
+        ? '<div class="job__visual job__visual--' + (v.mode === "photo" ? "photo" : "logo") + '"' +
+          (v.fond ? ' style="--visual-bg:' + esc(v.fond) + '"' : "") + ">" +
+          '<img src="' + esc(v.src) + '" alt="' + esc(v.alt || "") + '" loading="lazy" decoding="async"></div>'
+        : "";
+      var cls = "job" + (x.placeholder ? " job--todo" : "") + (missions ? "" : " job--short") + (visual ? " job--visual" : "");
+      return '<li class="' + cls + '"><div class="job__card"><div class="job__body">' +
         '<div><div class="job__meta"><span class="job__period">' + esc(x.periode) + "</span>" +
         (x.type ? '<span class="job__type">' + esc(x.type) + "</span>" : "") + todo + "</div>" +
         "<h3>" + esc(x.poste) + '</h3><p class="job__org">' + esc(x.entreprise) + "</p>" +
         (x.lieu ? '<p class="job__place">' + esc(x.lieu) + "</p>" : "") + "</div>" +
-        missions + "</div></li>";
+        missions + "</div>" + visual + "</div></li>";
     }).join("");
   }
 

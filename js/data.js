@@ -25,6 +25,14 @@ window.PORTFOLIO = {
 
      "missions" peut rester vide [] : la carte s'affiche alors sans liste.
      "lieu" est facultatif.
+
+     "visuel" (facultatif) : image affichée à droite de la carte, en fondu
+     vers le blanc.
+       src   : chemin de l'image
+       alt   : description de l'image
+       mode  : "logo" (logo centré sur une couleur de fond)
+               ou "photo" (image qui remplit toute la zone)
+       fond  : couleur de fond derrière un logo (mode "logo")
      ------------------------------------------------------------------------ */
   experiences: [
     {
@@ -33,6 +41,7 @@ window.PORTFOLIO = {
       poste: "Consultant junior en cybersécurité",
       entreprise: "Magellan",
       lieu: "Aix-en-Provence, en hybride",
+      visuel: { src: "assets/parcours/magellan.webp", alt: "Logo de Magellan", mode: "logo", fond: "#01037E" },
       missions: []
     },
     {
@@ -41,6 +50,7 @@ window.PORTFOLIO = {
       poste: "Stagiaire infrastructure et sécurité",
       entreprise: "Magellan",
       lieu: "Aix-en-Provence, sur site",
+      visuel: { src: "assets/parcours/magellan.webp", alt: "Logo de Magellan", mode: "logo", fond: "#01037E" },
       missions: []
     }
   ],
@@ -53,6 +63,7 @@ window.PORTFOLIO = {
       periode: "Sept. 2024 – juin 2027",
       poste: "BUT Réseaux et Télécommunications, parcours cybersécurité",
       entreprise: "Aix-Marseille Université",
+      visuel: { src: "assets/parcours/amu.webp", alt: "Logo d'Aix-Marseille Université", mode: "logo", fond: "#E4F4FC" },
       missions: [
         "Protocoles réseau, systèmes Linux et Windows, sécurité des infrastructures.",
         "Travaux pratiques sur des topologies d'entreprise grâce aux partenariats Cisco et Stormshield."
@@ -62,6 +73,8 @@ window.PORTFOLIO = {
       periode: "Sept. 2021 – juin 2024",
       poste: "Baccalauréat technologique, sciences de l'ingénierie",
       entreprise: "Lycée du Rempart",
+      lieu: "Marseille",
+      visuel: { src: "assets/parcours/lycee-du-rempart.webp", alt: "Façade du Lycée du Rempart", mode: "photo" },
       missions: [
         "Spécialité SIN : systèmes d'information et numérique."
       ]
